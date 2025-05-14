@@ -1,8 +1,8 @@
 # React + Vite
 
-# Website for Inquivesta XI
+# Website for Inquivesta XII
 
-This is the official website for Inquivesta XI
+This is the official website for Inquivesta XII
 
 ### Code Base
 
