@@ -1,0 +1,84 @@
+.gallerySection {
+  padding: 60px 20px;
+  background-color: #1c1c1c; /* Dark background */
+  text-align: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.gallerySection h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: rgba(255, 255, 255, 0.87); /* Light text color */
+}
+
+.galleryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.galleryItem {
+  overflow: hidden;
+  border-radius: 8px;
+  /* Adjusted box-shadow for dark theme, can be subtle or a light glow */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Darker shadow, or consider a light glow */
+  /* Alternative for a very subtle look on dark: box-shadow: 0 1px 3px rgba(255,255,255,0.05); */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #2a2a2a; /* Optional: slightly lighter background for items */
+}
+
+.galleryItem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.galleryItem:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); /* Darker shadow on hover */
+  /* Alternative for hover: box-shadow: 0 2px 8px rgba(255,255,255,0.1); */
+}
+
+.galleryItem:hover img {
+  transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+  .gallerySection h2 {
+    font-size: 2rem;
+  }
+  .galleryGrid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .galleryGrid {
+    grid-template-columns: 1fr; /* Single column on very small screens */
+    gap: 10px;
+  }
+}
+
+.galleryToggleButton {
+  background-color: #ff6347; /* Accent color */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 30px; /* Space above the button */
+  transition: background-color 0.3s ease;
+}
+
+.galleryToggleButton:hover {
+  background-color: #ff4500; /* Darker accent on hover */
+}
