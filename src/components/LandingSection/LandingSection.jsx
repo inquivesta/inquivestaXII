@@ -12,7 +12,7 @@ const LandingSection = () => {
         <h1 className={styles.headline}>
           Inquivesta XII <br /> is Coming Soon!
         </h1>
-        {/* <p className={styles.date}>January 2026</p> */}
+        <p className={styles.date}>2026</p>
         <a
           href="https://inquivesta.in" 
           target="_blank"

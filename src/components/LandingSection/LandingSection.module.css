@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap'); /* Example cool font */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap'); 
 
 .landingSection {
   min-height: 100vh;
@@ -11,10 +11,10 @@
   text-align: center;
   color: white;
   padding: 20px;
-  position: relative; /* For pseudo-element overlay if needed */
+  position: relative; 
 }
 
-.landingSection::before { /* Optional: Dark overlay for better text readability */
+.landingSection::before { 
   content: '';
   position: absolute;
   top: 0;
@@ -34,17 +34,17 @@
 }
 
 .headline {
-  font-family: 'Orbitron', sans-serif; /* Cool font */
+  font-family: 'Orbitron', sans-serif; 
   font-size: 3rem;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   line-height: 1.2;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .date {
-  font-size: 1.5rem;
-  margin-bottom: 30px;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 
@@ -60,17 +60,17 @@
 }
 
 .ctaButton:hover {
-  background-color: #f86666; /* Darker shade on hover */
+  background-color: #f86666; /* orange shade on hover */
   transform: translateY(-2px);
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .headline {
-    font-size: 2.5rem;
+    font-size: 2.3rem;
   }
   .date {
-    font-size: 1.2rem;
+    font-size: 2rem;
   }
   .ctaButton {
     padding: 12px 25px;
