@@ -28,7 +28,6 @@ next-env.d.ts
 
 # Large media files
 *.mov
-*.mp4
 *.avi
 *.mkv
 *.webm
