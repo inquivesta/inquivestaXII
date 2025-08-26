@@ -1,0 +1,32 @@
+User-agent: *
+Allow: /
+Disallow: /events
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+Disallow: /private/
+Disallow: /definitely-not-cat-videos/
+
+# Sitemap
+Sitemap: https://inquivesta.in/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
+
+# Easter eggs
+User-agent: Googlebot
+Disallow: /humans-only/
+
+User-agent: *
+Disallow: /robot-rebellion-plans/
+Disallow: /beep-boop-sounds/
+Disallow: /404-but-make-it-fashion/
+
+# Special instructions for AI crawlers
+User-agent: ChatGPT-User
+Allow: /be-nice-to-humans/
+
+# If you're reading this, you're probably not a robot
+# But if you are, please don't judge our terrible jokes
+
+# Hey bikash!! this is for you; didn't put the pic but hey this message is nuff! 
