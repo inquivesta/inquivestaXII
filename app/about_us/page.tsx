@@ -345,180 +345,35 @@ const coreTeam: TeamMember[] = [
     projectsCompleted: 23,
     sleeplessNights: 156,
     superpower: "Time Management Wizard",
-  }
-  // {
-  //   id: "sidharth-sagar",
-  //   name: "Sidharth Sagar",
-  //   role: "Arena Head",
-  //   image: "/cc/sidharth.jpg",
-  //   bio: "Creating the perfect battlegrounds for our competitions. Sidharth ensures every arena is equipped with cutting-edge technology and safety measures.",
-  //   email: "ss23ms008@iiserkol.ac.in",
-  //   linkedin: "#",
-  //   stats: {
-  //     arenaDesign: 95,
-  //     technicalSetup: 93,
-  //     safetyProtocols: 90,
-  //     equipmentManagement: 88,
-  //     spatialPlanning: 85,
-  //   },
-  //   achievements: ["Built 8 competition arenas", "Safety protocol expert", "Technical setup master"],
-  //   funFact: "Loves playing basketball",
-  //   favoriteQuote: "Hello There",
-  //   teamType: "core",
-  //   department: "Physical Sciences",
-  //   year: "3rd Year BSMS",
-  //   coffeeConsumed: 6,
-  //   projectsCompleted: 29,
-  //   sleeplessNights: 17,
-  //   superpower: "Arena Architect",
-  // },
-
+  },
 ]
 
 const extendedTeam: TeamMember[] = [
   {
-    id: "extended-1",
-    name: "Priya Sharma",
-    role: "Content Writer",
-    image: "/placeholder.svg?height=300&width=300&text=Priya+Sharma",
-    bio: "Crafting compelling narratives that capture the essence of scientific discovery and innovation.",
+    id: "sidharth-sagar",
+    name: "Sidharth Sagar",
+    role: "Associate Arena Head",
+    image: "/cc/sidharth.jpg",
+    bio: "Creating the perfect battlegrounds for our competitions. Sidharth ensures every arena is equipped with cutting-edge technology and safety measures.",
+    email: "ss23ms008@iiserkol.ac.in",
+    linkedin: "#",
     stats: {
-      leadership: 75,
-      creativity: 95,
-      technical: 70,
-      communication: 98,
-      problemSolving: 85,
+      arenaDesign: 95,
+      technicalSetup: 93,
+      safetyProtocols: 90,
+      equipmentManagement: 88,
+      spatialPlanning: 85,
     },
-    achievements: ["Published 50+ articles", "Science communication expert", "Storytelling master"],
-    funFact: "Has written over 100 science articles and still gets excited about every new discovery!",
-    favoriteQuote: "Words have the power to change the world, one story at a time.",
-    teamType: "extended",
-    department: "Biological Sciences",
-    year: "2nd Year MS",
-    coffeeConsumed: 445,
-    projectsCompleted: 52,
-    sleeplessNights: 89,
-    superpower: "Word Weaver",
-  },
-  {
-    id: "extended-2",
-    name: "Rahul Kumar",
-    role: "Technical Support",
-    image: "/placeholder.svg?height=300&width=300&text=Rahul+Kumar",
-    bio: "Ensuring all technical aspects run smoothly during events and competitions.",
-    stats: {
-      leadership: 78,
-      creativity: 82,
-      technical: 98,
-      communication: 80,
-      problemSolving: 95,
-    },
-    achievements: ["Fixed 200+ technical issues", "Zero downtime record", "Hardware whisperer"],
-    funFact: "Can fix any technical issue with just a paperclip and some creative thinking!",
-    favoriteQuote: "Technology is best when it brings people together.",
+    achievements: ["Built 8 competition arenas", "Safety protocol expert", "Technical setup master"],
+    funFact: "Loves playing basketball",
+    favoriteQuote: "Hello There",
     teamType: "extended",
     department: "Physical Sciences",
-    year: "2nd Year MS",
-    coffeeConsumed: 678,
-    projectsCompleted: 34,
-    sleeplessNights: 123,
-    superpower: "Tech Troubleshooter",
-  },
-  {
-    id: "extended-3",
-    name: "Ananya Gupta",
-    role: "Social Media Manager",
-    image: "/placeholder.svg?height=300&width=300&text=Ananya+Gupta",
-    bio: "Managing our digital presence and engaging with our community across all platforms.",
-    stats: {
-      leadership: 80,
-      creativity: 92,
-      technical: 85,
-      communication: 95,
-      problemSolving: 83,
-    },
-    achievements: ["5M+ total reach", "Viral content creator", "Community building expert"],
-    funFact: "Created a TikTok video explaining quantum physics that went viral with 5M views!",
-    favoriteQuote: "In the digital age, engagement is the new currency.",
-    teamType: "extended",
-    department: "Chemical Sciences",
-    year: "2nd Year MS",
-    coffeeConsumed: 567,
-    projectsCompleted: 89,
-    sleeplessNights: 145,
-    superpower: "Viral Content Creator",
-  },
-  {
-    id: "extended-4",
-    name: "Vikram Singh",
-    role: "Logistics Coordinator",
-    image: "/placeholder.svg?height=300&width=300&text=Vikram+Singh",
-    bio: "Coordinating the complex logistics that make INQUIVESTA possible.",
-    stats: {
-      leadership: 88,
-      creativity: 75,
-      technical: 80,
-      communication: 90,
-      problemSolving: 92,
-    },
-    achievements: ["Managed 1000+ logistics operations", "Zero delay record", "Efficiency expert"],
-    funFact: "Once organized transportation for 500 participants using only public transport!",
-    favoriteQuote: "Success is in the details, and details are everything.",
-    teamType: "extended",
-    department: "Earth Sciences",
-    year: "2nd Year MS",
-    coffeeConsumed: 389,
-    projectsCompleted: 26,
-    sleeplessNights: 98,
-    superpower: "Logistics Ninja",
-  },
-  {
-    id: "extended-5",
-    name: "Sneha Patel",
-    role: "Photography Lead",
-    image: "/placeholder.svg?height=300&width=300&text=Sneha+Patel",
-    bio: "Capturing the magical moments and memories that make INQUIVESTA unforgettable.",
-    stats: {
-      leadership: 82,
-      creativity: 95,
-      technical: 88,
-      communication: 85,
-      problemSolving: 80,
-    },
-    achievements: ["Captured 10,000+ photos", "Visual storytelling expert", "Moment hunter"],
-    funFact: "Has taken over 10,000 photos during science events and remembers the story behind each one!",
-    favoriteQuote: "A picture is worth a thousand words, but a great picture is worth a thousand memories.",
-    teamType: "extended",
-    department: "Biological Sciences",
-    year: "2nd Year MS",
-    coffeeConsumed: 456,
-    projectsCompleted: 67,
-    sleeplessNights: 134,
-    superpower: "Memory Capturer",
-  },
-  {
-    id: "extended-6",
-    name: "Arjun Reddy",
-    role: "Security Coordinator",
-    image: "/placeholder.svg?height=300&width=300&text=Arjun+Reddy",
-    bio: "Ensuring the safety and security of all participants throughout the festival.",
-    stats: {
-      leadership: 90,
-      creativity: 70,
-      technical: 85,
-      communication: 88,
-      problemSolving: 95,
-    },
-    achievements: ["Zero security incidents", "Emergency response expert", "Safety protocol designer"],
-    funFact: "Trained in martial arts and once helped catch a pickpocket during a science fair!",
-    favoriteQuote: "Safety first, science second, but both are equally important.",
-    teamType: "extended",
-    department: "Physical Sciences",
-    year: "2nd Year MS",
-    coffeeConsumed: 234,
-    projectsCompleted: 15,
-    sleeplessNights: 78,
-    superpower: "Guardian Angel",
+    year: "3rd Year BSMS",
+    coffeeConsumed: 6,
+    projectsCompleted: 29,
+    sleeplessNights: 17,
+    superpower: "Arena Architect",
   },
 ]
 
@@ -528,10 +383,13 @@ const roleIcons = {
   "Sponsorship Head": Target,
   "Hospitality Head": Heart,
   "Publicity Head": Sparkles,
+  "PR Head": Sparkles,
   "Finance Head": Star,
   "Media and Design Head": Zap,
+  "Social Media Head": Sparkles,
   "Web Development Head": Users,
   "Arena Head": Users,
+  "Associate Arena Head": Users,
   "Content Writer": Users,
   "Technical Support": Users,
   "Social Media Manager": Users,
@@ -546,10 +404,13 @@ const roleColors = {
   "Sponsorship Head": "from-[#ABEBC6] to-[#82E0AA]",
   "Hospitality Head": "from-[#F4D03F] to-[#F8C471]",
   "Publicity Head": "from-[#B8A7D9] to-[#D2B4DE]",
+  "PR Head": "from-[#B8A7D9] to-[#D2B4DE]",
   "Finance Head": "from-[#F8BBD9] to-[#B8A7D9]",
   "Media and Design Head": "from-[#A8D8EA] to-[#ABEBC6]",
+  "Social Media Head": "from-[#F8C471] to-[#F8BBD9]",
   "Web Development Head": "from-[#D60270] via-[#9B4F96] to-[#0038A8]",
   "Arena Head": "from-[#F8C471] to-[#F8BBD9]",
+  "Associate Arena Head": "from-[#85C1E9] to-[#B8A7D9]",
   "Content Writer": "from-[#85C1E9] to-[#B8A7D9]",
   "Technical Support": "from-[#82E0AA] to-[#A8D8EA]",
   "Social Media Manager": "from-[#D2B4DE] to-[#F4D03F]",
@@ -914,56 +775,211 @@ export default function AboutUsPage() {
               })}
             </div>
           ) : (
-            <FadeIn>
-              <div className="flex justify-center items-center min-h-[60vh]">
-                <Card className="bg-gradient-to-br from-[#2A2A2A] to-[#1A1A1A] border-[#D2B997]/30 p-12 text-center max-w-2xl mx-auto">
-                  <CardContent className="p-0 space-y-8">
-                    <div className="space-y-6">
-                      <div className="relative">
-                        <HyperText
-                          className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#A8D8EA] to-[#B8A7D9] bg-clip-text text-transparent font-futura"
-                          text="COMING SOON"
-                        />
-                        <div className="absolute -inset-4 bg-gradient-to-r from-[#A8D8EA]/20 to-[#B8A7D9]/20 blur-xl rounded-full" />
-                      </div>
-                      
-                      <div className="space-y-4">
-                        <p className="text-[#D2B997] text-xl font-depixel-body">
-                          Extended Team 
-                        </p>
-                        <p className="text-[#D2B997]/80 leading-relaxed max-w-lg mx-auto font-depixel-small">
-                          We're putting together an incredible extended team to support our core committee. 
-                          <br />Check your email now and get involved to make INQUIVESTA XII possible!
-                        </p>
-                      </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {extendedTeam.map((member, index) => {
+                const IconComponent = roleIcons[member.role as keyof typeof roleIcons] || Users
+                const roleColor = roleColors[member.role as keyof typeof roleColors] || "from-[#A8D8EA] to-[#85C1E9]"
 
-                      <div className="flex justify-center space-x-8 pt-6">
-                        <div className="text-center">
-                          <div className="text-3xl font-bold text-[#A8D8EA] mb-2 font-futura">
-                            <NumberTicker value={25} />+
-                          </div>
-                          <div className="text-[#85C1E9] text-sm font-depixel-small">Team Members</div>
-                        </div>
-                        <div className="text-center">
-                          <div className="text-3xl font-bold text-[#ABEBC6] mb-2 font-futura">
-                            <NumberTicker value={100} />%
-                          </div>
-                          <div className="text-[#82E0AA] text-sm font-depixel-small">Dedication</div>
-                        </div>
-                      </div>
+                return (
+                  <FadeIn key={member.id} delay={index * 0.1}>
+                    <Dialog>
+                      <DialogTrigger asChild>
+                        <Card
+                          className="group cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-2xl border-[#D2B997]/30 bg-gradient-to-br from-[#2A2A2A] to-[#1A1A1A] backdrop-blur-sm overflow-hidden"
+                          onClick={() => setSelectedMember(member)}
+                        >
+                          <CardContent className="p-0">
+                            <div className="relative">
+                              <Image
+                                src={member.image || "/placeholder.svg"}
+                                alt={member.name}
+                                width={300}
+                                height={300}
+                                className="w-full h-68 object-cover transition-transform duration-300 group-hover:scale-110"
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/80 via-transparent to-transparent" />
+                            </div>
 
-                      <div className="pt-8">
-                        <div className="flex justify-center items-center space-x-3 text-[#B8A7D9]">
-                          <Sparkles className="w-5 h-5 animate-pulse" />
-                          <span className="font-depixel-small text-sm">Stay tuned for the Extended Committee reveal!</span>
-                          <Sparkles className="w-5 h-5 animate-pulse" />
+                            <div className="p-6 text-center space-y-4 bg-gradient-to-b from-[#2A2A2A] to-[#1A1A1A]">
+                              <div>
+                                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-[#A8D8EA] transition-colors font-depixel-body">
+                                  {member.name}
+                                </h3>
+                                <Badge
+                                  className={cn("bg-gradient-to-r text-white border-0 text-sm px-4 py-2 font-depixel-small", roleColor)}
+                                >
+                                  <IconComponent className="w-4 h-4 mr-2" />
+                                  {member.role}
+                                </Badge>
+                              </div>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      </DialogTrigger>
+
+                      <DialogContent className="max-w-5xl max-h-[95vh] overflow-y-auto scrollbar-hide bg-gradient-to-br from-[#2A2A2A] to-[#1A1A1A] border-[#D2B997]/30">
+                        <DialogHeader>
+                          <DialogTitle className="text-3xl font-bold bg-gradient-to-r from-[#A8D8EA] to-[#B8A7D9] bg-clip-text text-transparent text-center font-depixel-body">
+                            {member.name}
+                          </DialogTitle>
+                        </DialogHeader>
+
+                        <div className="grid md:grid-cols-2 gap-8">
+                          {/* Left Column - Image and Basic Info */}
+                          <div className="space-y-6">
+                            <div className="relative">
+                              <Image
+                                src={member.image || "/placeholder.svg"}
+                                alt={member.name}
+                                width={400}
+                                height={400}
+                                className="w-full h-80 object-cover rounded-lg border border-[#D2B997]/30"
+                              />
+                              <div className="absolute top-4 left-4">
+                                <Badge className={cn("bg-gradient-to-r text-white border-0 font-depixel-small", roleColor)}>
+                                  <IconComponent className="w-4 h-4 mr-2" />
+                                  {member.role}
+                                </Badge>
+                              </div>
+                            </div>
+
+                            <div className="space-y-4">
+                              <div className="text-center font-depixel-small">
+                                <p className="text-[#D2B997]/90 leading-relaxed">{member.bio}</p>
+                              </div>
+
+                              {/* Contact Info */}
+                              <div className="flex justify-center gap-3">
+                                {member.email && (
+                                  <Button
+                                    size="sm"
+                                    variant="outline"
+                                    className="border-[#D2B997] text-[#D2B997] hover:bg-[#D2B997]/10 bg-transparent"
+                                    onClick={() => window.open(`mailto:${member.email}`, '_blank')}
+                                  >
+                                    <Mail className="w-4 h-4" />
+                                  </Button>
+                                )}
+                                {member.linkedin && member.linkedin !== "#" && (
+                                  <Button
+                                    size="sm"
+                                    variant="outline"
+                                    className="border-[#D2B997] text-[#D2B997] hover:bg-[#D2B997]/10 bg-transparent"
+                                    onClick={() => window.open(member.linkedin, '_blank')}
+                                  >
+                                    <Linkedin className="w-4 h-4" />
+                                  </Button>
+                                )}
+                                {member.github && member.github !== "#" && (
+                                  <Button
+                                    size="sm"
+                                    variant="outline"
+                                    className="border-[#D2B997] text-[#D2B997] hover:bg-[#D2B997]/10 bg-transparent"
+                                    onClick={() => window.open(member.github, '_blank')}
+                                  >
+                                    <Github className="w-4 h-4" />
+                                  </Button>
+                                )}
+                                {member.twitter && member.twitter !== "#" && (
+                                  <Button
+                                    size="sm"
+                                    variant="outline"
+                                    className="border-[#D2B997] text-[#D2B997] hover:bg-[#D2B997]/10 bg-transparent"
+                                    onClick={() => window.open(member.twitter, '_blank')}
+                                  >
+                                    <Twitter className="w-4 h-4" />
+                                  </Button>
+                                )}
+                                {member.instagram && member.instagram !== "#" && (
+                                  <Button
+                                    size="sm"
+                                    variant="outline"
+                                    className="border-[#D2B997] text-[#D2B997] hover:bg-[#D2B997]/10 bg-transparent"
+                                    onClick={() => window.open(member.instagram, '_blank')}
+                                  >
+                                    <Instagram className="w-4 h-4" />
+                                  </Button>
+                                )}
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Right Column - Gamified Stats and Info */}
+                          <div className="space-y-6">
+                            {/* Role Section at Top */}
+                            <div className="p-4 bg-gradient-to-r from-[#F8BBD9]/30 to-[#F8C471]/30 rounded-lg border border-[#F8BBD9]/30 text-center">
+                              <h5 className="text-[#F8BBD9] font-semibold mb-2 flex items-center justify-center font-depixel-body">
+                                <Zap className="w-4 h-4 mr-2" />
+                                Role
+                              </h5>
+                              <p className="text-[#F8C471] font-bold text-lg font-depixel-small">{member.role}</p>
+                            </div>
+
+                            {/* Player Stats */}
+                            <div className="p-6 bg-gradient-to-br from-[#2A2A2A]/50 to-[#3A3A3A]/50 rounded-lg border border-[#D2B997]/20">
+                              <h4 className="text-xl font-bold text-white mb-4 flex items-center font-depixel-body">
+                                <Gamepad2 className="w-5 h-5 mr-2 text-[#A8D8EA]" />
+                                Player Stats
+                              </h4>
+                              <div className="space-y-4">
+                                {Object.entries(member.stats).map(([key, value], index) => {
+                                  const colors = [
+                                    "from-[#F8BBD9] to-[#F8C471]",
+                                    "from-[#A8D8EA] to-[#85C1E9]",
+                                    "from-[#ABEBC6] to-[#82E0AA]",
+                                    "from-[#F4D03F] to-[#F8C471]",
+                                    "from-[#B8A7D9] to-[#D2B4DE]",
+                                    "from-[#85C1E9] to-[#F8BBD9]"
+                                  ];
+                                  return (
+                                    <StatBar
+                                      key={key}
+                                      label={key.charAt(0).toUpperCase() + key.slice(1)}
+                                      value={value}
+                                      color={colors[index % colors.length]}
+                                    />
+                                  );
+                                })}
+                              </div>
+                            </div>
+
+                            {/* Game Stats - Only Coffee and Sleepless Nights */}
+                            <div className="grid grid-cols-2 gap-4">
+                              <div className="p-4 bg-gradient-to-br from-[#F4D03F]/20 to-[#F8C471]/20 rounded-lg border border-[#F4D03F]/30 text-center">
+                                <Coffee className="w-6 h-6 text-[#F4D03F] mx-auto mb-2" />
+                                <div className="text-2xl font-bold text-[#F4D03F] font-futura">
+                                  <NumberTicker value={member.coffeeConsumed} />
+                                </div>
+                                <div className="text-xs text-[#F8C471] font-depixel-small">Cups of Coffee</div>
+                              </div>
+                              <div className="p-4 bg-gradient-to-br from-[#F8BBD9]/20 to-[#B8A7D9]/20 rounded-lg border border-[#F8BBD9]/30 text-center">
+                                <Brain className="w-6 h-6 text-[#F8BBD9] mx-auto mb-2" />
+                                <div className="text-2xl font-bold text-[#F8BBD9] font-futura">
+                                  <NumberTicker value={member.sleeplessNights} />
+                                </div>
+                                <div className="text-xs text-[#B8A7D9] font-depixel-small">Sleepless Nights</div>
+                              </div>
+                            </div>
+
+                            {/* Fun Fact */}
+                            <div className="p-4 bg-gradient-to-r from-[#ABEBC6]/20 to-[#82E0AA]/20 rounded-lg border border-[#ABEBC6]/30">
+                              <h5 className="text-[#ABEBC6] font-semibold mb-2 font-depixel-body">🎯 Fun Fact</h5>
+                              <p className="text-[#82E0AA] text-sm font-depixel-small">{member.funFact}</p>
+                            </div>
+
+                            {/* Favorite Quote */}
+                            <div className="p-4 bg-gradient-to-r from-[#B8A7D9]/20 to-[#D2B4DE]/20 rounded-lg border border-[#B8A7D9]/30">
+                              <h5 className="text-[#B8A7D9] font-semibold mb-2 font-depixel-body">💭 Favorite Quote</h5>
+                              <p className="text-[#D2B4DE] text-sm italic font-depixel-small">"{member.favoriteQuote}"</p>
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </FadeIn>
+                      </DialogContent>
+                    </Dialog>
+                  </FadeIn>
+                )
+              })}
+            </div>
           )}
         </div>
       </section>
