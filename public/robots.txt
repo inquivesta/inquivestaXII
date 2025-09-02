@@ -1,6 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /events
 Disallow: /api/
 Disallow: /_next/
 Disallow: /admin/
@@ -8,7 +7,8 @@ Disallow: /private/
 Disallow: /definitely-not-cat-videos/
 
 # Sitemap
-Sitemap: https://inquivesta.in/sitemap.xml
+Sitemap: https://www.inquivesta.in/sitemap.xml
+Sitemap: https://www.inquivesta.in/manifest.webmanifest
 
 # Crawl-delay
 Crawl-delay: 1

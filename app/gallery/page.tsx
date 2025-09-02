@@ -7,6 +7,7 @@ import { HyperText } from "@/components/ui/hyper-text"
 import { ArrowLeft, Twitter, Instagram, Facebook } from "lucide-react"
 
 const galleryImages = [
+  "/gallery/I_WAS_ASKED_TO_PUT_THIS_IN.JPG",
   "/gallery/1_image_2 (Medium).JPG",
   "/gallery/2_image_21.jpg",
   "/gallery/anicon (Medium).JPG",
