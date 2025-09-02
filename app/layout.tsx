@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   description: "Inquivesta XII! IISER Kolkata's annual socio-cultural fest.",
   generator: 'Manish Behera!!!',
   icons: {
-    icon: '/ball.jpg',
+    icon: '/ball_a.jpg',
   },
 }
 
@@ -37,7 +37,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${futuraDisplay.variable} ${dePixelHalbfett.variable} ${dePixelBreit.variable}`}>
-      <body suppressHydrationWarning>{children}</body>
+      <body suppressHydrationWarning>
+        {children}
+      </body>
     </html>
   )
 }

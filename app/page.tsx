@@ -10,6 +10,7 @@ import { Marquee } from "@/components/ui/marquee"
 import { HyperText } from "@/components/ui/hyper-text"
 import { TextReveal } from "@/components/ui/text-reveal"
 import { FadeIn } from "@/components/ui/fade-in"
+import { InstallBanner } from "@/components/InstallBanner"
 import { id } from "date-fns/locale"
 
 const DATE_FEST = "Feb 06 2026"
@@ -638,6 +639,9 @@ export default function InquivestaLanding() {
           </div>
         </div>
       </footer>
+
+      {/* Install Banner */}
+      <InstallBanner />
     </div>
   )
 }
