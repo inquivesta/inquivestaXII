@@ -44,9 +44,6 @@ const luckyLinks = [
   "https://linear.axler.net/",
   "https://www.youtube.com/watch?v=cvh0nX08nRw",
   "https://alessandroroussel.com/creations_list",
-  "https://chem.libretexts.org/Bookshelves/Physical_and_Theoretical_Chemistry_Textbook_Maps/Book%3A_Quantum_States_of_Atoms_and_Molecules_(Zielinksi_et_al)/03%3A_The_Schrodinger_Equation/3.04%3A_Operators_Eigenfunctions_Eigenvalues_and_Eigenstates#:~:text=Such%20an%20equation%2C%20where%20the,value%20is%20called%20the%20eigenvalue.",
-  "https://agrawalprayer.github.io/rekindled/internship-page.html",
-  "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
   "https://acegikmo.com/",
   "https://mitxela.com/projects/fluid-pendant",
   "https://scaleofuniverse.com/",
@@ -63,7 +60,11 @@ const luckyLinks = [
   "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
   "https://identity-iiserkol.blogspot.com/2023/03/why-am-i-frequently-meeting-my-crush.html",
   "https://www.iiserkol.ac.in/~maths.club/assets/documents/articles/2022-03-14/tiki-taka-with-catalan-numbers.pdf",
-  "https://www.reddit.com/r/generative/"
+  "https://www.reddit.com/r/generative/",
+  "https://www.americanscientist.org/article/third-base",
+  "https://www.spidersge.org/",
+  "https://xkcd.com/",
+  "https://www.funwithcomputervision.com/"
 ]
 
 const funnyMessages = [
