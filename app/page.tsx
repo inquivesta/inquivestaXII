@@ -14,7 +14,7 @@ import { InstallBanner } from "@/components/InstallBanner"
 import { id } from "date-fns/locale"
 
 const DATE_FEST = "Feb 06 2026"
-const DATE_ANN = "Sep 06 2025"
+const DATE_ANN = "Sep 14 2025"
 
 const sponsors = {
   current: [
@@ -343,7 +343,7 @@ export default function InquivestaLanding() {
                 <TextReveal text="INQUIVESTA XII is IISER Kolkata's flagship annual science festival that brings together brilliant minds to celebrate science, innovation, and creativity." />
                 <TextReveal
                   delay={0.2}
-                  text="This year's retro sci-fi theme celebrates the golden age of scientific imagination while showcasing cutting-edge research and innovation."
+                  text="This year's retro futurism theme celebrates the golden age of scientific imagination while showcasing cutting-edge research and innovation."
                 />
                 <TextReveal
                   delay={0.3}
