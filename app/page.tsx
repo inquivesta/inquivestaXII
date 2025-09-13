@@ -14,7 +14,7 @@ import { InstallBanner } from "@/components/InstallBanner"
 import { id } from "date-fns/locale"
 
 const DATE_FEST = "Feb 06 2026"
-const DATE_ANN = "Sep 14 2025"
+const DATE_ANN = "Sep 15 2025"
 
 const sponsors = {
   current: [
