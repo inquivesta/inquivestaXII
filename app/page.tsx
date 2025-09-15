@@ -14,7 +14,7 @@ import { InstallBanner } from "@/components/InstallBanner"
 import { id } from "date-fns/locale"
 
 const DATE_FEST = "Feb 06 2026"
-const DATE_ANN = "Sep 16 2025"
+const DATE_ANN = "Sep 15 2025"
 
 const sponsors = {
   current: [
@@ -352,7 +352,7 @@ export default function InquivestaLanding() {
 
                 <div className="flex items-center space-x-4 text-[#D2B997]">
                   <Calendar className="w-5 h-5" />
-                    <span className="font-depixel-body">2026 (￣y▽￣)╭ Ohohoho..... </span>
+                    <span className="font-depixel-body">February 6th, 7th, 8th 2026`</span>
                 </div>
               </div>
             </FadeIn>
