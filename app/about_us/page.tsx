@@ -476,7 +476,7 @@ export default function AboutUsPage() {
           </nav>
 
           {/* Mobile Menu Button */}
-          <button className="md:hidden text-[#D2B997]" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <button className="md:hidden text-[#D2B997] pr-4" onClick={() => setIsMenuOpen(!isMenuOpen)}>
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>

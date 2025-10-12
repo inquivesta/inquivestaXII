@@ -14,7 +14,6 @@ import { InstallBanner } from "@/components/InstallBanner"
 import { id } from "date-fns/locale"
 
 const DATE_FEST = "Feb 06 2026"
-const DATE_ANN = "Sep 15 2025"
 
 const sponsors = {
   current: [
@@ -154,29 +153,44 @@ export default function InquivestaLanding() {
     minutes: 0,
     seconds: 0,
   })
-  const [showCountdown, setShowCountdown] = useState(false)
+  const [festivalState, setFestivalState] = useState<'countdown' | 'day1' | 'day2' | 'day3' | 'ended'>('countdown')
+  const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
+    setIsClient(true)
+
     const calculateTimeLeft = () => {
       const now = new Date().getTime()
-      const annDate = new Date(DATE_ANN).getTime()
       const festDate = new Date(DATE_FEST).getTime()
+      const day2Date = festDate + (24 * 60 * 60 * 1000) // Feb 7, 2026
+      const day3Date = festDate + (2 * 24 * 60 * 60 * 1000) // Feb 8, 2026
+      const endDate = festDate + (3 * 24 * 60 * 60 * 1000) // Feb 9, 2026
 
-      if (now < annDate) {
-        setShowCountdown(false)
-        return
-      }
+      if (now < festDate) {
+        // Before festival - show countdown
+        setFestivalState('countdown')
+        const difference = festDate - now
 
-      setShowCountdown(true)
-      const difference = festDate - now
-
-      if (difference > 0) {
-        setTimeLeft({
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-          minutes: Math.floor((difference / 1000 / 60) % 60),
-          seconds: Math.floor((difference / 1000) % 60),
-        })
+        if (difference > 0) {
+          setTimeLeft({
+            days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+            hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+            minutes: Math.floor((difference / 1000 / 60) % 60),
+            seconds: Math.floor((difference / 1000) % 60),
+          })
+        }
+      } else if (now >= festDate && now < day2Date) {
+        // Day 1 of festival
+        setFestivalState('day1')
+      } else if (now >= day2Date && now < day3Date) {
+        // Day 2 of festival
+        setFestivalState('day2')
+      } else if (now >= day3Date && now < endDate) {
+        // Day 3 of festival
+        setFestivalState('day3')
+      } else {
+        // Festival ended
+        setFestivalState('ended')
       }
     }
 
@@ -221,7 +235,7 @@ export default function InquivestaLanding() {
           </nav>
 
           {/* Mobile Menu Button */}
-          <button className="md:hidden text-[#D2B997]" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <button className="md:hidden text-[#D2B997] pr-4" onClick={() => setIsMenuOpen(!isMenuOpen)}>
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
@@ -282,9 +296,9 @@ export default function InquivestaLanding() {
           </div>
 
           <div className="text-xl md:text-2xl font-depixel-body text-[#D2B997]">
-            {!showCountdown ? (
+            {!isClient ? (
               <div className="text-3xl md:text-4xl font-bold text-[#F4D03F] animate-pulse font-depixel-Body">COMING SOON</div>
-            ) : (
+            ) : festivalState === 'countdown' ? (
               <div className="grid grid-cols-4 gap-4 max-w-md mx-auto">
                 <div className="bg-[#2A2A2A]/70 rounded-lg p-4 border border-[#D2B997]/30">
                   <div className="text-2xl md:text-3xl font-bold text-[#A8D8EA] font-futura">{timeLeft.days}</div>
@@ -302,6 +316,30 @@ export default function InquivestaLanding() {
                   <div className="text-2xl md:text-3xl font-bold text-[#A8D8EA] font-futura">{timeLeft.seconds}</div>
                   <div className="text-xs text-[#D2B997] font-depixel-small">SECS</div>
                 </div>
+              </div>
+            ) : festivalState === 'day1' ? (
+              <div className="bg-[#2A2A2A]/70 rounded-lg p-6 border border-[#ABEBC6]/50 max-w-md mx-auto">
+                <div className="text-4xl md:text-5xl font-bold text-[#ABEBC6] font-futura mb-2">DAY 1</div>
+                <div className="text-sm text-[#D2B997] font-depixel-small">INQUIVESTA XII IS LIVE!</div>
+                <div className="text-xs text-[#82E0AA] font-depixel-small mt-1">February 6th, 2026</div>
+              </div>
+            ) : festivalState === 'day2' ? (
+              <div className="bg-[#2A2A2A]/70 rounded-lg p-6 border border-[#F8C471]/50 max-w-md mx-auto">
+                <div className="text-4xl md:text-5xl font-bold text-[#F8C471] font-futura mb-2">DAY 2</div>
+                <div className="text-sm text-[#D2B997] font-depixel-small">THE EXCITEMENT CONTINUES!</div>
+                <div className="text-xs text-[#F4D03F] font-depixel-small mt-1">February 7th, 2026</div>
+              </div>
+            ) : festivalState === 'day3' ? (
+              <div className="bg-[#2A2A2A]/70 rounded-lg p-6 border border-[#F8BBD9]/50 max-w-md mx-auto">
+                <div className="text-4xl md:text-5xl font-bold text-[#F8BBD9] font-futura mb-2">DAY 3</div>
+                <div className="text-sm text-[#D2B997] font-depixel-small">GRAND FINALE!</div>
+                <div className="text-xs text-[#B8A7D9] font-depixel-small mt-1">February 8th, 2026</div>
+              </div>
+            ) : (
+              <div className="bg-[#2A2A2A]/70 rounded-lg p-6 border border-[#85C1E9]/50 max-w-md mx-auto">
+                <div className="text-3xl md:text-4xl font-bold text-[#85C1E9] font-futura mb-2">STAY TUNED</div>
+                <div className="text-sm text-[#D2B997] font-depixel-small">FOR NEXT YEAR!</div>
+                <div className="text-xs text-[#A8D8EA] font-depixel-small mt-1">Thank you for an amazing INQUIVESTA XII</div>
               </div>
             )}
           </div>
