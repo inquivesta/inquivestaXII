@@ -11,6 +11,9 @@ const nextConfig = {
   },
   output: 'standalone',
   trailingSlash: false,
+  experimental: {
+    allowedDevOrigins: ['172.29.80.1'],
+  },
 }
 
 export default nextConfig
