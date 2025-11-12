@@ -60,7 +60,7 @@ const merchItems: MerchItem[] = [
   },
   {
     id: 4,
-    name: "Centauri Cafe Sweatshirt",
+    name: "Centauri Café Sweatshirt",
     description: "INQ XII Stylish Festival Sweatshirt",
     price: "₹678",
     originalPrice: "₹799",
