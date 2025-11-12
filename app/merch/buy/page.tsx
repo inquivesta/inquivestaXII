@@ -22,10 +22,10 @@ interface MerchItem {
 }
 
 const availableItems: Omit<MerchItem, 'quantity' | 'size'>[] = [
-  { id: 1, code: "LS", name: "Inquivesta XII T-Shirt (Limitless Space)", price: 499, frontImage: "/merch/1.png" },
-  { id: 2, code: "LG", name: "Inquivesta XII T-Shirt (Limitless Green)", price: 499, frontImage: "/merch/3.png" },
-  { id: 3, code: "IC", name: "Inquivesta XII Sweatshirt (Inquisitive City)", price: 699, frontImage: "/merch/6.png" },
-  { id: 4, code: "CC", name: "Inquivesta XII Sweatshirt (Centauri Cafe)", price: 699, frontImage: "/merch/8.png" },
+  { id: 1, code: "LS", name: "Inquivesta XII T-Shirt (Limitless Space)", price: 469, frontImage: "/merch/1.png" },
+  { id: 2, code: "LG", name: "Inquivesta XII T-Shirt (Limitless Green)", price: 469, frontImage: "/merch/3.png" },
+  { id: 3, code: "IC", name: "Inquivesta XII Sweatshirt (Inquisitive City)", price: 678, frontImage: "/merch/6.png" },
+  { id: 4, code: "CC", name: "Inquivesta XII Sweatshirt (Centauri Cafe)", price: 678, frontImage: "/merch/8.png" },
 ]
 
 const sizes = ["S", "M", "L", "XL", "XXL"]
@@ -46,9 +46,13 @@ export default function BuyMerchPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   useEffect(() => {
-    // Randomly select QR on mount
+    // Randomly select QR on mount (1, 2, or 3)
     setSelectedQR(Math.floor(Math.random() * 3) + 1)
   }, [])
+
+  const cycleQR = () => {
+    setSelectedQR(prev => prev === 3 ? 1 : prev + 1)
+  }
 
   const updateQuantity = (id: number, delta: number) => {
     setSelectedItems(prev => prev.map(item => 
@@ -358,8 +362,15 @@ export default function BuyMerchPage() {
                       Scan QR code to pay ₹{getTotalPrice()}
                     </p>
                     <p className="text-center text-white/60 font-depixel-small text-xs mt-2">
-                      QR Code #{selectedQR} (Auto-selected)
+                      QR Code #{selectedQR}/3
                     </p>
+                    <button
+                      type="button"
+                      onClick={cycleQR}
+                      className="mt-3 w-full max-w-xs mx-auto block bg-[#D2B997]/20 hover:bg-[#D2B997]/30 border border-[#D2B997]/50 text-[#D2B997] font-depixel-small py-2 px-4 rounded-lg transition-colors"
+                    >
+                      Change QR Code
+                    </button>
                   </div>
                   
                   <div className="flex-1 space-y-4">
@@ -380,18 +391,25 @@ export default function BuyMerchPage() {
 
                     <div>
                       <Label htmlFor="utrNumber" className="text-[#D2B997] font-depixel-small">
-                        UTR Number *
+                        UTR Number * (12 digits)
                       </Label>
                       <Input
                         id="utrNumber"
                         required
+                        type="text"
+                        inputMode="numeric"
+                        pattern="[0-9]{12}"
+                        maxLength={12}
                         value={formData.utrNumber}
-                        onChange={(e) => setFormData({ ...formData, utrNumber: e.target.value })}
+                        onChange={(e) => {
+                          const value = e.target.value.replace(/\D/g, '').slice(0, 12)
+                          setFormData({ ...formData, utrNumber: value })
+                        }}
                         className="bg-[#1A1A1A] border-[#D2B997]/30 text-white font-depixel-small"
-                        placeholder="Enter UTR/Transaction ID"
+                        placeholder="Enter 12-digit UTR"
                       />
                       <p className="text-white/60 font-depixel-small text-xs mt-1">
-                        Found in your payment confirmation
+                        Found in your payment confirmation (exactly 12 digits)
                       </p>
                     </div>
                   </div>
@@ -460,6 +478,12 @@ export default function BuyMerchPage() {
                     <p>📦 Collect your merch at the fest venue</p>
                     <p>✅ Early bird pricing - Limited time offer!</p>
                     <p>💰 Complete payment before submitting the form</p>
+                  </div>
+
+                  <div className="bg-[#F4D03F]/10 border border-[#F4D03F]/30 p-4 rounded-lg">
+                    <p className="text-[#F4D03F] font-depixel-small text-sm">
+                      <span className="font-bold">Note:</span> One can only collect the merch while on campus. Anybody who is not on campus before the fest, must send someone to collect the merch during the fest.
+                    </p>
                   </div>
 
                   <Button
