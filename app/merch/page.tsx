@@ -24,51 +24,51 @@ interface MerchItem {
 const merchItems: MerchItem[] = [
   {
     id: 1,
-    name: "Inquivesta XII T-Shirt",
-    description: "Official Merchandise",
-    price: "₹499",
+    name: "Limitless Space T-Shirt",
+    description: "INQ XII Official Merchandise",
+    price: "₹469",
     originalPrice: "₹599",
     frontImage: "/merch/1.png",
     backImage: "/merch/2.png",
     color: "linear-gradient(135deg, #1a1a2e 0%, #2d3047 30%, #4a5568 70%, #718096 100%)",
-    features: ["Unisex Fit", "Limited Edition"],
+    features: ["Unisex Fit, 100% Cotton, 180 GSM", "Limited Edition"],
     tagline: "Be Limitless",
   },
   {
     id: 2,
-    name: "Inquivesta XII T-Shirt",
-    description: "Official Merchandise",
-    price: "₹499",
+    name: "Limitless Green T-Shirt",
+    description: "INQ XII Official Merchandise",
+    price: "₹469",
     originalPrice: "₹599",
     frontImage: "/merch/3.png",
     backImage: "/merch/4.png",
     color: "linear-gradient(135deg, #103830 0%, #1e5b4f 30%, #2f7c6c 70%, #4ea48f 100%)",
-    features: ["Unisex Fit", "Exclusive Print"],
+    features: ["Unisex Fit, 100% Cotton, 180 GSM", "Exclusive Print"],
     tagline: "Be Limitless",
   },
   {
     id: 3,
-    name: "Inquivesta XII Sweatshirt",
-    description: "Stylish Festival Sweatshirt",
-    price: "₹699",
+    name: "Inquisitive City Sweatshirt",
+    description: "INQ XII Stylish Festival Sweatshirt",
+    price: "₹678",
     originalPrice: "₹799",
     frontImage: "/merch/6.png",
     backImage: "/merch/5.png",
     color: "linear-gradient(135deg, #0f2537 0%, #1e3f52 30%, #2d5a6e 70%, #4a7a91 100%)",
-    features: ["Unisex Fit", "Limited Stock"],
+    features: ["Unisex Fit, 100% Cotton, 280 GSM", "Limited Stock"],
     tagline: "Be Inquisitive",
   },
   {
     id: 4,
-    name: "Inquivesta XII Sweatshirt",
-    description: "Stylish Festival Sweatshirt",
-    price: "₹699",
+    name: "Centauri Cafe Sweatshirt",
+    description: "INQ XII Stylish Festival Sweatshirt",
+    price: "₹678",
     originalPrice: "₹799",
     frontImage: "/merch/8.png",
     backImage: "/merch/7.png",
     color: "linear-gradient(135deg, #3d1416 0%, #5a1f22 30%, #7a2b2f 70%, #a8484d 100%)",
-    features: ["Unisex Fit", "Exclusive Design"],
-    tagline: "Be I  nquisitive",
+    features: ["Unisex Fit, 100% Cotton, 280 GSM", "Exclusive Design"],
+    tagline: "Be Inquisitive",
   },
 ]
 
@@ -299,14 +299,14 @@ export default function MerchPage() {
                   <div className="flex flex-row items-center justify-between gap-3 pt-3 md:pt-4 border-t border-white/20">
                     <div className="flex flex-col gap-1">
                       <div className="flex items-center gap-2">
-                        <p className="text-xl md:text-2xl lg:text-3xl font-bold text-black/40 line-through font-futura">
+                        <p className="text-xl md:text-2xl lg:text-3xl font-bold text-[#d9d7e0] font-futura diagonal-strikethrough" style={{ textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000' }}>
                           {currentItem.originalPrice}
                         </p>
                         <span className="bg-gradient-to-r from-[#F4D03F] to-[#e6b43d] text-black text-[10px] md:text-xs font-bold px-2 py-1 rounded-full font-depixel-small">
                           EARLY BIRD
                         </span>
                       </div>
-                      <p className="text-3xl md:text-4xl lg:text-5xl font-bold text-black font-futura leading-none">
+                      <p className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#e7b63d] font-futura leading-none">
                         {currentItem.price}
                       </p>
                     </div>
@@ -368,6 +368,24 @@ export default function MerchPage() {
       <style jsx global>{`
         .perspective-1000 {
           perspective: 1000px;
+        }
+        
+        /* Diagonal strikethrough effect */
+        .diagonal-strikethrough {
+          position: relative;
+          display: inline-block;
+        }
+        
+        .diagonal-strikethrough::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 50%;
+          width: 100%;
+          height: 3px;
+          background-color: #ef4444;
+          transform: translateY(-50%) rotate(-15deg);
+          transform-origin: center;
         }
         
         /* Hide scrollbar but keep functionality */

@@ -223,7 +223,7 @@ export default function InquivestaLanding() {
             <Link href="/coming_soon" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
               Pronite
             </Link>
-            <Link href="/coming_soon" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
+            <Link href="/merch" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
               Merch
             </Link>
             {/* <Link href="#schedule" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-body">
@@ -256,7 +256,7 @@ export default function InquivestaLanding() {
               <Link href="/coming_soon" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
                 Pronite
               </Link>
-              <Link href="/coming_soon" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
+              <Link href="/merch" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
                 Merch
               </Link>
               {/* <Link href="#schedule" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-body">
@@ -605,10 +605,10 @@ export default function InquivestaLanding() {
                   Pronite
                 </Link>
                 <Link
-                  href="#exhibitions"
+                  href="/merch"
                   className="block text-[#B8A7D9] hover:text-[#D2B997] transition-colors text-sm font-depixel-small"
                 >
-                  Exhibitions
+                  Merch
                 </Link>
               </div>
             </div>

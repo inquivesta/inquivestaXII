@@ -464,7 +464,7 @@ export default function AboutUsPage() {
             <Link href="/coming_soon" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
               Pronite
             </Link>
-            <Link href="/coming_soon" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
+            <Link href="/merch" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
               Merch
             </Link>
             {/* <Link href="#schedule" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
@@ -497,7 +497,7 @@ export default function AboutUsPage() {
               <Link href="/coming_soon" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
                 Pronite
               </Link>
-              <Link href="/coming_soon" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
+              <Link href="/merch" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
                 Merch
               </Link>
               <Link href="/about_us" className="text-[#D2B997] font-depixel-small font-bold">
