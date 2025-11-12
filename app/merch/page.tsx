@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ArrowLeft, ChevronLeft, ChevronRight, ShoppingCart, RotateCcw, Sparkles, ZoomIn } from "lucide-react"
+import { ArrowLeft, ChevronLeft, ChevronRight, ShoppingCart, RotateCcw, Sparkles, ZoomIn, Ruler, X } from "lucide-react"
 import { HyperText } from "@/components/ui/hyper-text"
 import { FadeIn } from "@/components/ui/fade-in"
 
@@ -80,6 +80,7 @@ export default function MerchPage() {
   const [zoomLevel, setZoomLevel] = useState(1)
   const [touchStart, setTouchStart] = useState<{ x: number; y: number } | null>(null)
   const [touchEnd, setTouchEnd] = useState<{ x: number; y: number } | null>(null)
+  const [showSizeChart, setShowSizeChart] = useState(false)
 
   useEffect(() => {
     setIsClient(true)
@@ -191,6 +192,15 @@ export default function MerchPage() {
 
       {/* Main Slider Section */}
       <main className="relative h-screen w-screen pt-20">
+        {/* Size Chart Button - Fixed Top Right */}
+        <Button
+          onClick={() => setShowSizeChart(true)}
+          className="fixed top-24 right-4 md:right-8 z-40 bg-gradient-to-r from-[#D2B997] to-[#B8A7D9] hover:from-[#B8A7D9] hover:to-[#D2B997] text-[#1A1A1A] font-depixel-small px-3 py-2 md:px-4 md:py-3 text-xs md:text-sm shadow-lg hover:shadow-2xl transition-all hover:scale-105"
+        >
+          <Ruler className="w-4 h-4 mr-1 md:mr-2" />
+          Size Chart
+        </Button>
+
         {/* Main Slide */}
         {isClient && (
           <div
@@ -363,6 +373,57 @@ export default function MerchPage() {
           ))}
         </div>
       </main>
+
+      {/* Size Chart Modal */}
+      {showSizeChart && (
+        <div 
+          className="fixed inset-0 z-[60] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
+          onClick={() => setShowSizeChart(false)}
+        >
+          <div 
+            className="relative bg-[#1A1A1A] border-2 border-[#D2B997] rounded-2xl p-4 md:p-6 max-w-5xl w-full max-h-[90vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              onClick={() => setShowSizeChart(false)}
+              className="absolute top-4 right-4 text-[#D2B997] hover:text-white transition-colors bg-white/10 hover:bg-white/20 p-2 rounded-full"
+            >
+              <X className="w-6 h-6" />
+            </button>
+
+            {/* Title */}
+            <h2 className="text-2xl md:text-3xl font-bold text-[#D2B997] mb-4 md:mb-6 font-futura text-center">
+              Size Chart
+            </h2>
+
+            {/* Size Chart Images */}
+            <div className="space-y-4 md:space-y-6">
+              <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden border border-[#D2B997]/30">
+                <Image
+                  src="/merch/size/img1.png"
+                  alt="Size Chart 1"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden border border-[#D2B997]/30">
+                <Image
+                  src="/merch/size/img2.png"
+                  alt="Size Chart 2"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+            </div>
+
+            {/* Info Text */}
+            <p className="text-white/60 text-sm text-center mt-4 font-depixel-small">
+              Please refer to the size chart above for accurate measurements
+            </p>
+          </div>
+        </div>
+      )}
 
       {/* Custom CSS for 3D flip effect and animations */}
       <style jsx global>{`
