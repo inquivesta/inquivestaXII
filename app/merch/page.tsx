@@ -24,7 +24,7 @@ interface MerchItem {
 const merchItems: MerchItem[] = [
   {
     id: 1,
-    name: "Limitless Space T-Shirt",
+    name: "Blast Off T-Shirt",
     description: "INQ XII Official Merchandise",
     price: "₹469",
     originalPrice: "₹599",
@@ -36,7 +36,7 @@ const merchItems: MerchItem[] = [
   },
   {
     id: 2,
-    name: "Limitless Green T-Shirt",
+    name: "Circuitree T-Shirt",
     description: "INQ XII Official Merchandise",
     price: "₹469",
     originalPrice: "₹599",
@@ -48,7 +48,7 @@ const merchItems: MerchItem[] = [
   },
   {
     id: 3,
-    name: "Inquisitive City Sweatshirt",
+    name: "Skyline Sweatshirt",
     description: "INQ XII Stylish Festival Sweatshirt",
     price: "₹678",
     originalPrice: "₹799",
@@ -60,7 +60,7 @@ const merchItems: MerchItem[] = [
   },
   {
     id: 4,
-    name: "Centauri Café Sweatshirt",
+    name: "Caffine Sweatshirt",
     description: "INQ XII Stylish Festival Sweatshirt",
     price: "₹678",
     originalPrice: "₹799",
