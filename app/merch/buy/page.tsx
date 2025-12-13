@@ -28,11 +28,11 @@ const availableItems: Omit<MerchItem, 'quantity' | 'size'>[] = [
   { id: 4, code: "CF", name: "Inquivesta XII Sweatshirt (Caffine)", price: 678, frontImage: "/merch/8.png" },
 ]
 
-const sizes = ["S", "M", "L", "XL", "XXL"]
+const sizes = ["NA", "S", "M", "L", "XL", "XXL", "XXXL"]
 
 export default function BuyMerchPage() {
   const [selectedItems, setSelectedItems] = useState<MerchItem[]>(
-    availableItems.map(item => ({ ...item, quantity: 0, size: "M" }))
+    availableItems.map(item => ({ ...item, quantity: 0, size: "NA" }))
   )
   const [selectedQR, setSelectedQR] = useState<number>(0)
   const [formData, setFormData] = useState({
@@ -78,6 +78,12 @@ export default function BuyMerchPage() {
     const totalPrice = getTotalPrice()
     if (totalPrice === 0) {
       alert("Please select at least one item!")
+      return
+    }
+
+    const itemsWithoutSize = selectedItems.filter(item => item.quantity > 0 && item.size === "NA")
+    if (itemsWithoutSize.length > 0) {
+      alert(`Please select a size for: ${itemsWithoutSize.map(item => item.name).join(", ")}`)
       return
     }
 
