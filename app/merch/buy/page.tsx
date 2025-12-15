@@ -22,10 +22,10 @@ interface MerchItem {
 }
 
 const availableItems: Omit<MerchItem, 'quantity' | 'size'>[] = [
-  { id: 1, code: "BO", name: "Inquivesta XII T-Shirt (Blast Off)", price: 469, frontImage: "/merch/1.png" },
-  { id: 2, code: "CT", name: "Inquivesta XII T-Shirt (Circuitree)", price: 469, frontImage: "/merch/3.png" },
-  { id: 3, code: "SL", name: "Inquivesta XII Sweatshirt (Skyline)", price: 678, frontImage: "/merch/6.png" },
-  { id: 4, code: "CF", name: "Inquivesta XII Sweatshirt (Caffine)", price: 678, frontImage: "/merch/8.png" },
+  { id: 1, code: "BO", name: "Inquivesta XII T-Shirt (Blast Off)", price: 599, frontImage: "/merch/1.png" },
+  { id: 2, code: "CT", name: "Inquivesta XII T-Shirt (Circuitree)", price: 599, frontImage: "/merch/3.png" },
+  { id: 3, code: "SL", name: "Inquivesta XII Sweatshirt (Skyline)", price: 799, frontImage: "/merch/6.png" },
+  { id: 4, code: "CF", name: "Inquivesta XII Sweatshirt (Caffine)", price: 799, frontImage: "/merch/8.png" },
 ]
 
 const sizes = ["NA", "S", "M", "L", "XL", "XXL", "XXXL"]
@@ -482,7 +482,6 @@ export default function BuyMerchPage() {
 
                   <div className="bg-[#1A1A1A]/50 p-4 rounded-lg text-sm text-[#D2B997]/80 font-depixel-small space-y-2">
                     <p>📦 Collect your merch at the fest venue</p>
-                    <p>✅ Early bird pricing - Limited time offer!</p>
                     <p>💰 Complete payment before submitting the form</p>
                   </div>
 

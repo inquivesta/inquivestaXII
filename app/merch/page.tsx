@@ -26,7 +26,7 @@ const merchItems: MerchItem[] = [
     id: 1,
     name: "Blast Off T-Shirt",
     description: "INQ XII Official Merchandise",
-    price: "₹469",
+    price: "₹599",
     originalPrice: "₹599",
     frontImage: "/merch/1.png",
     backImage: "/merch/2.png",
@@ -38,7 +38,7 @@ const merchItems: MerchItem[] = [
     id: 2,
     name: "Circuitree T-Shirt",
     description: "INQ XII Official Merchandise",
-    price: "₹469",
+    price: "₹599",
     originalPrice: "₹599",
     frontImage: "/merch/3.png",
     backImage: "/merch/4.png",
@@ -50,7 +50,7 @@ const merchItems: MerchItem[] = [
     id: 3,
     name: "Skyline Sweatshirt",
     description: "INQ XII Stylish Festival Sweatshirt",
-    price: "₹678",
+    price: "₹799",
     originalPrice: "₹799",
     frontImage: "/merch/6.png",
     backImage: "/merch/5.png",
@@ -62,7 +62,7 @@ const merchItems: MerchItem[] = [
     id: 4,
     name: "Caffine Sweatshirt",
     description: "INQ XII Stylish Festival Sweatshirt",
-    price: "₹678",
+    price: "₹799",
     originalPrice: "₹799",
     frontImage: "/merch/8.png",
     backImage: "/merch/7.png",
@@ -308,14 +308,6 @@ export default function MerchPage() {
 
                   <div className="flex flex-row items-center justify-between gap-3 pt-3 md:pt-4 border-t border-white/20">
                     <div className="flex flex-col gap-1">
-                      <div className="flex items-center gap-2">
-                        <p className="text-xl md:text-2xl lg:text-3xl font-bold text-[#d9d7e0] font-futura diagonal-strikethrough" style={{ textShadow: '-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000' }}>
-                          {currentItem.originalPrice}
-                        </p>
-                        <span className="bg-gradient-to-r from-[#F4D03F] to-[#e6b43d] text-black text-[10px] md:text-xs font-bold px-2 py-1 rounded-full font-depixel-small">
-                          EARLY BIRD
-                        </span>
-                      </div>
                       <p className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#e7b63d] font-futura leading-none">
                         {currentItem.price}
                       </p>
