@@ -21,7 +21,8 @@ interface TeamMember {
 const EVENT_CONFIG = {
   id: "botprix",
   name: "Botprix",
-  fee: 100,
+  fee: 200,
+  iiserkFee: 100,
   minTeamSize: 2,
   maxTeamSize: 4,
 }
@@ -57,6 +58,10 @@ export default function BotprixRegistrationPage() {
 
   const isIISERKEmail = (email: string) => {
     return email.toLowerCase().endsWith("@iiserkol.ac.in")
+  }
+
+  const getCurrentFee = () => {
+    return isIISERKEmail(formData.team_leader_email) ? EVENT_CONFIG.iiserkFee : EVENT_CONFIG.fee
   }
 
   const addTeamMember = () => {
@@ -130,7 +135,7 @@ export default function BotprixRegistrationPage() {
           team_leader_email: formData.team_leader_email,
           team_size: validMembers.length,
           team_members: validMembers,
-          amount_paid: EVENT_CONFIG.fee,
+          amount_paid: getCurrentFee(),
           utr_number: formData.utr_number,
           payment_qr_used: selectedQR,
         }),
@@ -209,7 +214,7 @@ export default function BotprixRegistrationPage() {
                     </div>
                     <div className="flex justify-between py-2 border-b border-[#D2B997]/20">
                       <span className="text-[#D2B997]/80 font-depixel-small">Amount Paid:</span>
-                      <span className="text-[#F4D03F] font-futura tracking-wide text-xl">₹{EVENT_CONFIG.fee}</span>
+                      <span className="text-[#F4D03F] font-futura tracking-wide text-xl">₹{getCurrentFee()}</span>
                     </div>
                   </div>
 
@@ -218,17 +223,21 @@ export default function BotprixRegistrationPage() {
                     <p>📱 QR Code for entry included in the email</p>
                     <p>🏆 See you at the event!</p>
                   </div>
+
+                  <div className="bg-[#1A1A1A]/50 p-4 rounded-lg text-xs text-[#D2B997]/70 font-depixel-small">
+                    <p>💬 If you have any issues, reply to the confirmation email with <span className="text-[#D2B997]">inquivesta@iiserkol.ac.in</span> in CC.</p>
+                  </div>
                 </CardContent>
               </Card>
 
-              <div className="flex gap-4 justify-center">
-                <Link href="/events">
-                  <Button className="bg-gradient-to-r from-[#A8D8EA] to-[#85C1E9] hover:from-[#7FB3D3] hover:to-[#6BB6FF] text-[#1A1A1A] font-depixel-body px-8 py-6">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center w-full">
+                <Link href="/events" className="w-full sm:w-auto">
+                  <Button className="w-full sm:w-auto bg-gradient-to-r from-[#A8D8EA] to-[#85C1E9] hover:from-[#7FB3D3] hover:to-[#6BB6FF] text-[#1A1A1A] font-depixel-body px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base">
                     Explore More Events
                   </Button>
                 </Link>
-                <Link href="/">
-                  <Button className="bg-white/10 hover:bg-white/20 text-white font-depixel-body px-8 py-6 border border-[#D2B997]/30">
+                <Link href="/" className="w-full sm:w-auto">
+                  <Button className="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white font-depixel-body px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base border border-[#D2B997]/30">
                     Back to Home
                   </Button>
                 </Link>
@@ -443,7 +452,10 @@ export default function BotprixRegistrationPage() {
                         )}
                       </div>
                       <p className="text-center text-[#D2B997]/80 font-depixel-small text-sm mt-4">
-                        Scan QR code to pay <span className="text-[#F4D03F] font-bold">₹{EVENT_CONFIG.fee}</span>
+                        Scan QR code to pay <span className="text-[#F4D03F] font-bold">₹{getCurrentFee()}</span>
+                        {isIISERKEmail(formData.team_leader_email) && (
+                          <span className="block text-xs text-green-400 mt-1">IISER Kolkata discount applied!</span>
+                        )}
                       </p>
                       <p className="text-center text-white/60 font-depixel-small text-xs mt-2">
                         QR Code #{selectedQR}/3
@@ -461,10 +473,12 @@ export default function BotprixRegistrationPage() {
                       <div className="bg-gradient-to-r from-[#A8D8EA]/10 to-[#B8A7D9]/10 rounded-lg border border-[#D2B997]/20 p-4">
                         <div className="flex justify-between items-center">
                           <span className="text-white font-depixel-body">Registration Fee:</span>
-                          <span className="text-[#F4D03F] font-futura tracking-wide text-3xl">₹{EVENT_CONFIG.fee}</span>
+                          <span className="text-[#F4D03F] font-futura tracking-wide text-3xl">₹{getCurrentFee()}</span>
                         </div>
                         <p className="text-[#D2B997]/60 font-depixel-small text-xs mt-2">
-                          Per team (regardless of team size)
+                          {isIISERKEmail(formData.team_leader_email) 
+                            ? "IISER Kolkata student discount applied!" 
+                            : `Per team • IISERK students: ₹${EVENT_CONFIG.iiserkFee}`}
                         </p>
                       </div>
 
@@ -518,7 +532,7 @@ export default function BotprixRegistrationPage() {
                 ) : (
                   <>
                     <CheckCircle className="w-5 h-5 mr-2" />
-                    Complete Registration - ₹{EVENT_CONFIG.fee}
+                    Complete Registration - ₹{getCurrentFee()}
                   </>
                 )}
               </Button>

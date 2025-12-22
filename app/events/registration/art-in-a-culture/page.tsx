@@ -7,25 +7,19 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Checkbox } from "@/components/ui/checkbox"
-import { ArrowLeft, Plus, Trash2, Users, CheckCircle } from "lucide-react"
+import { ArrowLeft, Palette, CheckCircle, User } from "lucide-react"
 import { HyperText } from "@/components/ui/hyper-text"
 import { FadeIn } from "@/components/ui/fade-in"
 
-interface TeamMember {
-  name: string
-}
-
 const EVENT_CONFIG = {
-  id: "csi",
-  name: "CSI - Crime Scene Investigation",
-  fee: 200,
-  iiserkFee: 120,
-  minTeamSize: 1,
-  maxTeamSize: 4,
+  id: "art-in-a-culture",
+  name: "Art in a Culture",
+  subtitle: "Cultural Art Competition",
+  fee: 50,
+  iiserkFee: 20,
 }
 
-export default function CSIRegistrationPage() {
+export default function ArtInACultureRegistrationPage() {
   const [selectedQR, setSelectedQR] = useState<number>(0)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -33,27 +27,15 @@ export default function CSIRegistrationPage() {
   const [registrationId, setRegistrationId] = useState("")
 
   const [formData, setFormData] = useState({
-    team_name: "",
-    team_leader_name: "",
-    team_leader_phone: "",
-    team_leader_email: "",
+    participant_name: "",
+    roll_number: "",
+    college_name: "",
+    participant_phone: "",
+    participant_email: "",
     utr_number: "",
-    played_csi_before: false,
-    agrees_to_rules: false,
   })
 
-  const [teamMembers, setTeamMembers] = useState<TeamMember[]>([])
-
-  const isIISERKEmail = (email: string) => {
-    return email.toLowerCase().endsWith("@iiserkol.ac.in")
-  }
-
-  const getCurrentFee = () => {
-    return isIISERKEmail(formData.team_leader_email) ? EVENT_CONFIG.iiserkFee : EVENT_CONFIG.fee
-  }
-
   useEffect(() => {
-    // Randomly select QR on mount (1, 2, or 3)
     setSelectedQR(Math.floor(Math.random() * 3) + 1)
   }, [])
 
@@ -61,64 +43,59 @@ export default function CSIRegistrationPage() {
     setSelectedQR(prev => prev === 3 ? 1 : prev + 1)
   }
 
-  const addTeamMember = () => {
-    // Max additional members is maxTeamSize - 1 (since leader counts as 1)
-    if (teamMembers.length < EVENT_CONFIG.maxTeamSize - 1) {
-      setTeamMembers([...teamMembers, { name: "" }])
-    }
+  const isIISERKEmail = (email: string) => {
+    return email.toLowerCase().endsWith("@iiserkol.ac.in")
   }
 
-  const removeTeamMember = (index: number) => {
-    setTeamMembers(teamMembers.filter((_, i) => i !== index))
-  }
-
-  const updateTeamMember = (index: number, value: string) => {
-    const updated = [...teamMembers]
-    updated[index].name = value
-    setTeamMembers(updated)
-  }
-
-  const getTotalTeamSize = () => {
-    // Leader + other members
-    return 1 + teamMembers.filter(m => m.name.trim()).length
+  const getCurrentFee = () => {
+    return isIISERKEmail(formData.participant_email) ? EVENT_CONFIG.iiserkFee : EVENT_CONFIG.fee
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setErrorMessage("")
 
-    // Validate agreement to rules
-    if (!formData.agrees_to_rules) {
-      setErrorMessage("You must agree to follow the rules to register")
+    // Validate required fields
+    if (!formData.participant_name.trim() || !formData.participant_email.trim() || 
+        !formData.participant_phone.trim() || !formData.college_name.trim() ||
+        !formData.roll_number.trim()) {
+      setErrorMessage("Please fill in all required fields")
       return
     }
 
-    // Validate UTR
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(formData.participant_email)) {
+      setErrorMessage("Please enter a valid email address")
+      return
+    }
+
+    // Validate phone number (10 digits)
+    const phoneDigits = formData.participant_phone.replace(/\D/g, "")
+    if (phoneDigits.length !== 10) {
+      setErrorMessage("Please enter a valid 10-digit phone number")
+      return
+    }
+
+    // Validate UTR number
     if (!formData.utr_number || formData.utr_number.length !== 12) {
       setErrorMessage("Please enter a valid 12-digit UTR number")
       return
     }
-
-    const validMembers = teamMembers.filter(m => m.name.trim())
 
     setIsSubmitting(true)
 
     try {
       const response = await fetch("/api/events/register", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           eventId: EVENT_CONFIG.id,
-          team_name: formData.team_name,
-          team_leader_name: formData.team_leader_name,
-          team_leader_phone: formData.team_leader_phone,
-          team_leader_email: formData.team_leader_email,
-          team_size: getTotalTeamSize(),
-          team_members: validMembers,
-          played_csi_before: formData.played_csi_before,
-          agrees_to_rules: formData.agrees_to_rules,
+          participant_name: formData.participant_name.trim(),
+          roll_number: formData.roll_number.trim(),
+          college_name: formData.college_name.trim(),
+          participant_email: formData.participant_email.trim().toLowerCase(),
+          participant_phone: phoneDigits,
           amount_paid: getCurrentFee(),
           utr_number: formData.utr_number,
           payment_qr_used: selectedQR,
@@ -134,6 +111,7 @@ export default function CSIRegistrationPage() {
       setRegistrationId(result.registrationId)
       setIsSubmitted(true)
     } catch (error) {
+      console.error("Registration error:", error)
       setErrorMessage(error instanceof Error ? error.message : "Registration failed. Please try again.")
     } finally {
       setIsSubmitting(false)
@@ -164,15 +142,15 @@ export default function CSIRegistrationPage() {
           <FadeIn>
             <div className="max-w-2xl mx-auto text-center">
               <div className="mb-8">
-                <div className="w-24 h-24 mx-auto mb-6 bg-gradient-to-r from-[#A8D8EA] to-[#85C1E9] rounded-full flex items-center justify-center">
+                <div className="w-24 h-24 mx-auto mb-6 bg-gradient-to-r from-[#E8B4D9] to-[#B8A7D9] rounded-full flex items-center justify-center">
                   <CheckCircle className="w-12 h-12 text-[#1A1A1A]" />
                 </div>
                 <HyperText
-                  className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-[#A8D8EA] to-[#B8A7D9] bg-clip-text text-transparent font-futura tracking-wide"
+                  className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-[#E8B4D9] to-[#B8A7D9] bg-clip-text text-transparent font-futura tracking-wide"
                   text="REGISTERED!"
                 />
                 <p className="text-[#D2B997] text-lg font-depixel-body mb-8">
-                  Your registration for CSI has been confirmed
+                  Your registration for {EVENT_CONFIG.name} has been confirmed
                 </p>
               </div>
 
@@ -189,16 +167,16 @@ export default function CSIRegistrationPage() {
                       <span className="text-white font-mono text-sm">{registrationId}</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-[#D2B997]/20">
-                      <span className="text-[#D2B997]/80 font-depixel-small">Team Name:</span>
-                      <span className="text-white font-depixel-body">{formData.team_name}</span>
+                      <span className="text-[#D2B997]/80 font-depixel-small">Participant:</span>
+                      <span className="text-white font-depixel-body">{formData.participant_name}</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-[#D2B997]/20">
-                      <span className="text-[#D2B997]/80 font-depixel-small">Team Leader:</span>
-                      <span className="text-white font-depixel-body">{formData.team_leader_name}</span>
+                      <span className="text-[#D2B997]/80 font-depixel-small">Roll Number:</span>
+                      <span className="text-white font-depixel-body">{formData.roll_number}</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-[#D2B997]/20">
-                      <span className="text-[#D2B997]/80 font-depixel-small">Team Size:</span>
-                      <span className="text-white font-depixel-body">{getTotalTeamSize()} member(s)</span>
+                      <span className="text-[#D2B997]/80 font-depixel-small">College:</span>
+                      <span className="text-white font-depixel-body">{formData.college_name}</span>
                     </div>
                     <div className="flex justify-between py-2 border-b border-[#D2B997]/20">
                       <span className="text-[#D2B997]/80 font-depixel-small">Amount Paid:</span>
@@ -207,9 +185,9 @@ export default function CSIRegistrationPage() {
                   </div>
 
                   <div className="bg-[#1A1A1A]/50 p-4 rounded-lg text-sm text-[#D2B997]/80 font-depixel-small space-y-2">
-                    <p>✅ Confirmation email sent to {formData.team_leader_email}</p>
+                    <p>✅ Confirmation email sent to {formData.participant_email}</p>
                     <p>📱 QR Code for entry included in the email</p>
-                    <p>🔍 Get ready to solve the mystery!</p>
+                    <p>🎨 Get ready to showcase your artistic talent!</p>
                   </div>
 
                   <div className="bg-[#1A1A1A]/50 p-4 rounded-lg text-xs text-[#D2B997]/70 font-depixel-small">
@@ -220,7 +198,7 @@ export default function CSIRegistrationPage() {
 
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center w-full">
                 <Link href="/events" className="w-full sm:w-auto">
-                  <Button className="w-full sm:w-auto bg-gradient-to-r from-[#A8D8EA] to-[#85C1E9] hover:from-[#7FB3D3] hover:to-[#6BB6FF] text-[#1A1A1A] font-depixel-body px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base">
+                  <Button className="w-full sm:w-auto bg-gradient-to-r from-[#E8B4D9] to-[#B8A7D9] hover:from-[#D9A3CA] hover:to-[#A896C8] text-[#1A1A1A] font-depixel-body px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base">
                     Explore More Events
                   </Button>
                 </Link>
@@ -239,15 +217,15 @@ export default function CSIRegistrationPage() {
           <FadeIn>
             <div className="text-center mb-12">
               <HyperText
-                className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[#A8D8EA] to-[#B8A7D9] bg-clip-text text-transparent font-futura tracking-wide"
-                text="CSI REGISTRATION"
+                className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[#E8B4D9] to-[#B8A7D9] bg-clip-text text-transparent font-futura tracking-wide"
+                text="ART IN A CULTURE"
               />
               <p className="text-[#D2B997] text-lg font-depixel-body">
-                Crime Scene Investigation - Can you solve the mystery?
+                {EVENT_CONFIG.subtitle}
               </p>
-              <div className="mt-4 inline-flex items-center gap-2 bg-[#F4D03F]/10 border border-[#F4D03F]/30 px-4 py-2 rounded-full">
-                <Users className="w-4 h-4 text-[#F4D03F]" />
-                <span className="text-[#F4D03F] font-depixel-small">Team Size: {EVENT_CONFIG.minTeamSize}-{EVENT_CONFIG.maxTeamSize} members</span>
+              <div className="mt-4 inline-flex items-center gap-2 bg-[#E8B4D9]/10 border border-[#E8B4D9]/30 px-4 py-2 rounded-full">
+                <Palette className="w-4 h-4 text-[#E8B4D9]" />
+                <span className="text-[#E8B4D9] font-depixel-small">INDIVIDUAL EVENT</span>
               </div>
             </div>
           </FadeIn>
@@ -259,173 +237,102 @@ export default function CSIRegistrationPage() {
           )}
 
           <form onSubmit={handleSubmit} className="max-w-4xl mx-auto space-y-8">
-            {/* Team Leader Details */}
+            {/* Participant Details */}
             <FadeIn delay={0.2}>
               <Card className="bg-[#2A2A2A]/50 border-[#D2B997]/30">
                 <CardHeader>
-                  <CardTitle className="text-2xl text-[#D2B997] font-futura tracking-wide">
-                    Team Leader Details
+                  <CardTitle className="text-2xl text-[#D2B997] font-futura tracking-wide flex items-center gap-2">
+                    <User className="w-6 h-6 text-[#E8B4D9]" />
+                    Participant Details
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
-                      <Label htmlFor="team_name" className="text-[#D2B997] font-depixel-small">
-                        Team Name *
+                      <Label htmlFor="participant_name" className="text-[#D2B997] font-depixel-small">
+                        Full Name *
                       </Label>
                       <Input
-                        id="team_name"
+                        id="participant_name"
                         required
-                        value={formData.team_name}
-                        onChange={(e) => setFormData({ ...formData, team_name: e.target.value })}
+                        value={formData.participant_name}
+                        onChange={(e) => setFormData({ ...formData, participant_name: e.target.value })}
                         className="bg-[#1A1A1A] border-[#D2B997]/30 text-white font-depixel-small"
-                        placeholder="Enter your team name"
+                        placeholder="Enter your full name"
                       />
                     </div>
 
                     <div>
-                      <Label htmlFor="team_leader_name" className="text-[#D2B997] font-depixel-small">
-                        Team Leader Name *
+                      <Label htmlFor="roll_number" className="text-[#D2B997] font-depixel-small">
+                        Roll Number *
                       </Label>
                       <Input
-                        id="team_leader_name"
+                        id="roll_number"
                         required
-                        value={formData.team_leader_name}
-                        onChange={(e) => setFormData({ ...formData, team_leader_name: e.target.value })}
+                        value={formData.roll_number}
+                        onChange={(e) => setFormData({ ...formData, roll_number: e.target.value })}
                         className="bg-[#1A1A1A] border-[#D2B997]/30 text-white font-depixel-small"
-                        placeholder="Leader's full name"
+                        placeholder="Enter your roll number"
                       />
                     </div>
                   </div>
 
+                  <div>
+                    <Label htmlFor="college_name" className="text-[#D2B997] font-depixel-small">
+                      College Name *
+                    </Label>
+                    <Input
+                      id="college_name"
+                      required
+                      value={formData.college_name}
+                      onChange={(e) => setFormData({ ...formData, college_name: e.target.value })}
+                      className="bg-[#1A1A1A] border-[#D2B997]/30 text-white font-depixel-small"
+                      placeholder="Enter your college/institution name"
+                    />
+                  </div>
+
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
-                      <Label htmlFor="team_leader_phone" className="text-[#D2B997] font-depixel-small">
-                        WhatsApp Number *
+                      <Label htmlFor="participant_phone" className="text-[#D2B997] font-depixel-small">
+                        Phone Number *
                       </Label>
                       <Input
-                        id="team_leader_phone"
+                        id="participant_phone"
                         type="tel"
                         required
-                        value={formData.team_leader_phone}
-                        onChange={(e) => setFormData({ ...formData, team_leader_phone: e.target.value })}
+                        value={formData.participant_phone}
+                        onChange={(e) => setFormData({ ...formData, participant_phone: e.target.value })}
                         className="bg-[#1A1A1A] border-[#D2B997]/30 text-white font-depixel-small"
-                        placeholder="10-digit number"
+                        placeholder="10-digit mobile number"
                       />
                     </div>
 
                     <div>
-                      <Label htmlFor="team_leader_email" className="text-[#D2B997] font-depixel-small">
+                      <Label htmlFor="participant_email" className="text-[#D2B997] font-depixel-small">
                         Email ID *
                       </Label>
                       <Input
-                        id="team_leader_email"
+                        id="participant_email"
                         type="email"
                         required
-                        value={formData.team_leader_email}
-                        onChange={(e) => setFormData({ ...formData, team_leader_email: e.target.value })}
+                        value={formData.participant_email}
+                        onChange={(e) => setFormData({ ...formData, participant_email: e.target.value })}
                         className="bg-[#1A1A1A] border-[#D2B997]/30 text-white font-depixel-small"
-                        placeholder="email@example.com"
+                        placeholder="your@email.com"
                       />
+                      {isIISERKEmail(formData.participant_email) && (
+                        <p className="text-green-400 text-xs mt-1 font-depixel-small">
+                          ✓ IISER Kolkata email detected - Discounted price applied!
+                        </p>
+                      )}
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </FadeIn>
-
-            {/* Team Members (Optional) */}
-            <FadeIn delay={0.3}>
-              <Card className="bg-[#2A2A2A]/50 border-[#D2B997]/30">
-                <CardHeader>
-                  <CardTitle className="text-2xl text-[#D2B997] font-futura tracking-wide flex items-center justify-between">
-                    <span>Additional Team Members (Optional)</span>
-                    {teamMembers.length < EVENT_CONFIG.maxTeamSize - 1 && (
-                      <Button
-                        type="button"
-                        onClick={addTeamMember}
-                        className="bg-[#D2B997]/20 hover:bg-[#D2B997]/30 text-[#D2B997] font-depixel-small"
-                      >
-                        <Plus className="w-4 h-4 mr-2" />
-                        Add Member
-                      </Button>
-                    )}
-                  </CardTitle>
-                  <p className="text-[#D2B997]/60 font-depixel-small text-sm">
-                    Current team size: {getTotalTeamSize()} / {EVENT_CONFIG.maxTeamSize}
-                  </p>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  {teamMembers.length === 0 ? (
-                    <div className="text-center py-8 text-[#D2B997]/60 font-depixel-small">
-                      <p>You can participate solo or add up to {EVENT_CONFIG.maxTeamSize - 1} more team members</p>
-                    </div>
-                  ) : (
-                    teamMembers.map((member, index) => (
-                      <div key={index} className="flex items-center gap-4 bg-[#1A1A1A]/50 p-4 rounded-lg border border-[#D2B997]/20">
-                        <span className="text-[#A8D8EA] font-depixel-small w-24">Member {index + 2}</span>
-                        <Input
-                          value={member.name}
-                          onChange={(e) => updateTeamMember(index, e.target.value)}
-                          className="bg-[#1A1A1A] border-[#D2B997]/30 text-white font-depixel-small flex-1"
-                          placeholder="Member's full name"
-                        />
-                        <Button
-                          type="button"
-                          onClick={() => removeTeamMember(index)}
-                          variant="ghost"
-                          className="text-red-400 hover:text-red-300 hover:bg-red-400/10 p-2 h-auto"
-                        >
-                          <Trash2 className="w-4 h-4" />
-                        </Button>
-                      </div>
-                    ))
-                  )}
-                </CardContent>
-              </Card>
-            </FadeIn>
-
-            {/* Additional Questions */}
-            <FadeIn delay={0.35}>
-              <Card className="bg-[#2A2A2A]/50 border-[#D2B997]/30">
-                <CardHeader>
-                  <CardTitle className="text-2xl text-[#D2B997] font-futura tracking-wide">
-                    Additional Information
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-6">
-                  <div className="flex items-center space-x-3">
-                    <Checkbox
-                      id="played_csi_before"
-                      checked={formData.played_csi_before}
-                      onCheckedChange={(checked) => 
-                        setFormData({ ...formData, played_csi_before: checked === true })
-                      }
-                      className="border-[#D2B997]/50 data-[state=checked]:bg-[#A8D8EA] data-[state=checked]:border-[#A8D8EA]"
-                    />
-                    <Label htmlFor="played_csi_before" className="text-white font-depixel-small cursor-pointer">
-                      Have you played a CSI / mystery game before?
-                    </Label>
-                  </div>
-
-                  <div className="flex items-start space-x-3 bg-[#F4D03F]/10 border border-[#F4D03F]/30 p-4 rounded-lg">
-                    <Checkbox
-                      id="agrees_to_rules"
-                      checked={formData.agrees_to_rules}
-                      onCheckedChange={(checked) => 
-                        setFormData({ ...formData, agrees_to_rules: checked === true })
-                      }
-                      className="border-[#F4D03F]/50 data-[state=checked]:bg-[#F4D03F] data-[state=checked]:border-[#F4D03F] mt-1"
-                    />
-                    <Label htmlFor="agrees_to_rules" className="text-[#F4D03F] font-depixel-small cursor-pointer">
-                      I agree to follow the rules and not share clues or spoilers *
-                    </Label>
                   </div>
                 </CardContent>
               </Card>
             </FadeIn>
 
             {/* Payment Section */}
-            <FadeIn delay={0.4}>
+            <FadeIn delay={0.3}>
               <Card className="bg-[#2A2A2A]/50 border-[#D2B997]/30">
                 <CardHeader>
                   <CardTitle className="text-2xl text-[#D2B997] font-futura tracking-wide">
@@ -448,7 +355,7 @@ export default function CSIRegistrationPage() {
                       </div>
                       <p className="text-center text-[#D2B997]/80 font-depixel-small text-sm mt-4">
                         Scan QR code to pay <span className="text-[#F4D03F] font-bold">₹{getCurrentFee()}</span>
-                        {isIISERKEmail(formData.team_leader_email) && (
+                        {isIISERKEmail(formData.participant_email) && (
                           <span className="block text-xs text-green-400 mt-1">IISER Kolkata discount applied!</span>
                         )}
                       </p>
@@ -465,15 +372,15 @@ export default function CSIRegistrationPage() {
                     </div>
 
                     <div className="flex-1 space-y-4">
-                      <div className="bg-gradient-to-r from-[#A8D8EA]/10 to-[#B8A7D9]/10 rounded-lg border border-[#D2B997]/20 p-4">
+                      <div className="bg-gradient-to-r from-[#E8B4D9]/10 to-[#B8A7D9]/10 rounded-lg border border-[#D2B997]/20 p-4">
                         <div className="flex justify-between items-center">
                           <span className="text-white font-depixel-body">Registration Fee:</span>
                           <span className="text-[#F4D03F] font-futura tracking-wide text-3xl">₹{getCurrentFee()}</span>
                         </div>
                         <p className="text-[#D2B997]/60 font-depixel-small text-xs mt-2">
-                          {isIISERKEmail(formData.team_leader_email) 
+                          {isIISERKEmail(formData.participant_email) 
                             ? "IISER Kolkata student discount applied!" 
-                            : `Per team • IISERK students: ₹${EVENT_CONFIG.iiserkFee}`}
+                            : `Per participant • IISERK students: ₹${EVENT_CONFIG.iiserkFee}`}
                         </p>
                       </div>
 
@@ -494,11 +401,16 @@ export default function CSIRegistrationPage() {
                             setFormData({ ...formData, utr_number: value })
                           }}
                           className="bg-[#1A1A1A] border-[#D2B997]/30 text-white font-depixel-small"
-                          placeholder="Enter 12-digit UTR"
+                          placeholder="Enter 12-digit UTR number"
                         />
-                        <p className="text-white/60 font-depixel-small text-xs mt-1">
-                          Found in your payment confirmation (exactly 12 digits)
+                        <p className="text-[#D2B997]/60 text-xs mt-1 font-depixel-small">
+                          UTR can be found in your UPI payment confirmation
                         </p>
+                      </div>
+
+                      <div className="bg-[#1A1A1A]/50 p-4 rounded-lg text-sm text-[#D2B997]/80 font-depixel-small space-y-1">
+                        <p>💡 After payment, enter the 12-digit UTR number from your UPI app</p>
+                        <p>📱 UTR is usually shown in the transaction details</p>
                       </div>
                     </div>
                   </div>
@@ -507,17 +419,17 @@ export default function CSIRegistrationPage() {
             </FadeIn>
 
             {/* Submit Button */}
-            <FadeIn delay={0.5}>
-              <div className="bg-[#F4D03F]/10 border border-[#F4D03F]/30 p-4 rounded-lg mb-6">
-                <p className="text-[#F4D03F] font-depixel-small text-sm">
-                  <span className="font-bold">Note:</span> Registration confirmation and entry QR code will be sent to the team leader&apos;s email. Make sure to check your spam folder.
+            <FadeIn delay={0.4}>
+              <div className="bg-[#E8B4D9]/10 border border-[#E8B4D9]/30 p-4 rounded-lg mb-6">
+                <p className="text-[#E8B4D9] font-depixel-small text-sm">
+                  <span className="font-bold">Note:</span> Registration confirmation and entry QR code will be sent to your email. Make sure to check your spam folder.
                 </p>
               </div>
 
               <Button
                 type="submit"
-                disabled={isSubmitting || !formData.agrees_to_rules}
-                className="w-full bg-gradient-to-r from-[#A8D8EA] to-[#85C1E9] hover:from-[#7FB3D3] hover:to-[#6BB6FF] text-[#1A1A1A] font-depixel-body py-6 text-base disabled:opacity-50 disabled:cursor-not-allowed"
+                disabled={isSubmitting}
+                className="w-full bg-gradient-to-r from-[#E8B4D9] to-[#B8A7D9] hover:from-[#D9A3CA] hover:to-[#A896C8] text-[#1A1A1A] font-depixel-body py-6 text-base disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
                   <>

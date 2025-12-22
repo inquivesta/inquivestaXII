@@ -62,7 +62,7 @@ export default function EODashboardPage() {
   // Columns to show first (priority order)
   const priorityColumns = [
     "id", "team_name", "team_leader_name", "team_leader_email", "team_leader_phone",
-    "participant_name", "participant_email", "participant_phone",
+    "participant_name", "participant_email", "participant_phone", "roll_number", "college_name",
     "player1_name", "player1_email", "player1_phone", "player1_uid",
     "institute_name", "institution", "amount_paid", "registration_status", "checked_in"
   ]
