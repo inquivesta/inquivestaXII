@@ -188,17 +188,21 @@ export default function InquizzitiveRegistrationPage() {
                     <p>📱 QR Code for entry included in the email</p>
                     <p>🧠 Get ready to quiz!</p>
                   </div>
+
+                  <div className="bg-[#1A1A1A]/50 p-4 rounded-lg text-xs text-[#D2B997]/70 font-depixel-small">
+                    <p>💬 If you have any issues, reply to the confirmation email with <span className="text-[#D2B997]">inquivesta@iiserkol.ac.in</span> in CC.</p>
+                  </div>
                 </CardContent>
               </Card>
 
-              <div className="flex gap-4 justify-center">
-                <Link href="/events">
-                  <Button className="bg-gradient-to-r from-[#A8D8EA] to-[#85C1E9] hover:from-[#7FB3D3] hover:to-[#6BB6FF] text-[#1A1A1A] font-depixel-body px-8 py-6">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center w-full">
+                <Link href="/events" className="w-full sm:w-auto">
+                  <Button className="w-full sm:w-auto bg-gradient-to-r from-[#A8D8EA] to-[#85C1E9] hover:from-[#7FB3D3] hover:to-[#6BB6FF] text-[#1A1A1A] font-depixel-body px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base">
                     Explore More Events
                   </Button>
                 </Link>
-                <Link href="/">
-                  <Button className="bg-white/10 hover:bg-white/20 text-white font-depixel-body px-8 py-6 border border-[#D2B997]/30">
+                <Link href="/" className="w-full sm:w-auto">
+                  <Button className="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white font-depixel-body px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base border border-[#D2B997]/30">
                     Back to Home
                   </Button>
                 </Link>

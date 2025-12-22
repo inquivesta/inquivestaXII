@@ -8,7 +8,7 @@ import QRCode from 'qrcode'
 const GAMING_EVENTS = ['headshot-bgmi', 'headshot-valorant']
 
 // Individual events that use participant_email instead of team_leader_email
-const INDIVIDUAL_EVENTS = ['photon']
+const INDIVIDUAL_EVENTS = ['photon', 'art-in-a-culture']
 
 export async function POST(request: NextRequest) {
   try {
@@ -326,16 +326,16 @@ function generateEmailHTML(data: EmailData): string {
                   </td>
                 </tr>
                 ${data.isIndividualEvent ? `
+                ${photoTitlesList ? `
                 <tr>
                   <td colspan="2" style="padding: 15px; border-bottom: 1px solid #333;">
                     <p style="margin: 0; font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">PHOTOGRAPH TITLE(S)</p>
-                    ${photoTitlesList ? `
                     <div style="margin: 0; font-size: 13px; color: #ccc; line-height: 1.6;">
                        ${photoTitlesList}
                     </div>
-                    ` : '<span style="color:#666;">-</span>'}
                   </td>
                 </tr>
+                ` : ''}
                 ` : `
                 <tr>
                   <td colspan="2" style="padding: 15px; border-bottom: 1px solid #333;">
@@ -395,7 +395,17 @@ function generateEmailHTML(data: EmailData): string {
               </table>
 
               <!-- Contact -->
-              <p style="color: #666; font-size: 12px; text-align: center; margin-top: 40px; border-top: 1px dashed #333; padding-top: 20px;">
+              <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="background-color: #1A1A1A; border: 1px solid #333; margin-bottom: 20px;">
+                <tr>
+                  <td style="padding: 15px; text-align: center;">
+                    <p style="color: #888; margin: 0; font-size: 12px; line-height: 1.6;">
+                      💬 If you have any issues, reply to this email with <a href="mailto:inquivesta@iiserkol.ac.in" style="color: #D2B997; text-decoration: none;">inquivesta@iiserkol.ac.in</a> in CC.
+                    </p>
+                  </td>
+                </tr>
+              </table>
+
+              <p style="color: #666; font-size: 12px; text-align: center; margin-top: 20px; border-top: 1px dashed #333; padding-top: 20px;">
                 Have questions? <a href="mailto:inquivesta@iiserkol.ac.in" style="color: #D2B997; text-decoration: none;">Contact Support</a>
               </p>
             </td>

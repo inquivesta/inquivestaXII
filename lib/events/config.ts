@@ -148,6 +148,19 @@ export const eventConfigs: Record<string, EventConfig> = {
     tableName: "event_registrations_photon",
     emailFrom: "photon@inquivesta.in",
   },
+  "art-in-a-culture": {
+    id: "art-in-a-culture",
+    name: "Art in a Culture",
+    slug: "art-in-a-culture",
+    isTeamEvent: false,
+    minTeamSize: 1,
+    maxTeamSize: 1,
+    fee: 50,
+    registrationOpen: true,
+    registrationDeadline: "2026-02-01",
+    tableName: "event_registrations_art_in_a_culture",
+    emailFrom: "art-in-a-culture@inquivesta.in",
+  },
 }
 
 export function isIISERKEmail(email: string): boolean {
