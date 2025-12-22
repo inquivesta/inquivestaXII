@@ -312,7 +312,7 @@ const events: Event[] = [
     category: "Competition",
     venue: "Beside LHC Cafeteria",
     prizes: "Prize Pool: ₹7,500",
-    registrationLink: "/events/registration/photon",
+    registrationLink: "#",
     socialLink: "https://www.instagram.com/pixel.iiser_kolkata",
     maxParticipants: "#",
     duration: "3 days",
