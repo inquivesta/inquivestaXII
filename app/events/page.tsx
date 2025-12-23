@@ -251,7 +251,7 @@ const events: Event[] = [
     name: "Junkyard Wars",
     day: "Day 3",
     date: "Feb 08, 2026",
-    time: "11:00 AM - 06:00 PM",
+    time: "10:00 AM - 06:00 PM",
     description: "Build working machines from random scrap materials to perform specified tasks - imagination rules the world!",
     detailedDescription: "JUNKYARD WARS: IMAGINATION RULES THE WORLD.\n\nThe participants will be given random scrap materials (The only inventory) out of which you have to build a working model (machines) which can perform the specified task. It's a test of your dexterity and intuitive thought process. The competition aims to test how quick and creative one can be at the same time and solve a problem. That's what JUNKYARD WARS is about.\n\nGENERAL POINTS:\n1. TEAM SIZE = 2-4 MEMBERS\n2. MACHINE SHOULD BE BUILT WITHIN THE TIME LIMIT\n3. JUDGE DECISION IS THE FINAL DECISION\n4. USE OF ANY OUTSIDE ITEM IS PROHIBITED EXCEPT MARKER & SCALE\n5. THE COMPLETE RULEBOOK WILL BE PROVIDED LATER",
     image: "/events/junkyard_wars/junkyard_wars.png",
@@ -262,7 +262,7 @@ const events: Event[] = [
     socialLink: "#",
     maxParticipants: "#",
     duration: "8 hours",
-    teamSize: "2-4 members"
+    teamSize: "2-3 members"
   },
   {
     id: "lost",
@@ -272,7 +272,7 @@ const events: Event[] = [
     time: "10:00 AM - 05:00 PM",
     description: "A high-stakes treasure hunt across campus where you must outsmart an AI system that has seized control.",
     detailedDescription: "L.O.S.T. isn't just a game — it's the story of humanity's last stand.\n\nParticipants enter a dystopian world where an advanced AI has taken over, shutting down systems and rewriting human control. Your mission is to infiltrate its defenses: uncover hidden clues across campus, decrypt corrupted files, and piece together the fragments of malware that can terminate its reign.\n\nEvery clue will challenge you with logic puzzles, code-breaking, cryptic trails, and tech-driven mysteries, all rooted in the theme of survival against machines. Teams must combine speed, reasoning, and collaboration to reconstruct the AI's weakness and upload the kill switch before time runs out.\n\nOnly the sharpest minds will survive the machine uprising. Will you rewrite the end, or become another lost cause?\n\nDecode, decrypt, and survive — before humanity is completely overwritten.",
-    image: "/events/lost/lost.jpg",
+    image: "/events/lost/lost.png",
     category: "Competition",
     venue: "Campus",
     prizes: "Prize Pool: ₹15,000",
@@ -280,7 +280,7 @@ const events: Event[] = [
     socialLink: "#",
     maxParticipants: "#",
     duration: "7 hours",
-    teamSize: "Teams"
+    teamSize: "upto 4 members"
   },
   {
     id: "masquerade",
