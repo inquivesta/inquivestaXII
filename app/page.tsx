@@ -345,7 +345,7 @@ export default function InquivestaLanding() {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/coming_soon">
+            <Link href="/events">
               <Button className="bg-gradient-to-r from-[#A8D8EA] to-[#85C1E9] hover:from-[#7FB3D3] hover:to-[#6BB6FF] text-[#1A1A1A] font-depixel-body px-8 py-3">
                 Register Now
               </Button>
