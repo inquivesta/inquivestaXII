@@ -22,10 +22,10 @@ interface MerchItem {
 }
 
 const availableItems: Omit<MerchItem, 'quantity' | 'size'>[] = [
-  { id: 1, code: "BO", name: "Inquivesta XII T-Shirt (Blast Off)", price: 599, frontImage: "/merch/1.png" },
-  { id: 2, code: "CT", name: "Inquivesta XII T-Shirt (Circuitree)", price: 599, frontImage: "/merch/3.png" },
-  { id: 3, code: "SL", name: "Inquivesta XII Sweatshirt (Skyline)", price: 799, frontImage: "/merch/6.png" },
-  { id: 4, code: "CF", name: "Inquivesta XII Sweatshirt (Caffine)", price: 799, frontImage: "/merch/8.png" },
+  { id: 1, code: "BO", name: "Inquivesta XII T-Shirt (Blast Off)", price: 499, frontImage: "/merch/1.png" },
+  { id: 2, code: "CT", name: "Inquivesta XII T-Shirt (Circuitree)", price: 499, frontImage: "/merch/3.png" },
+  { id: 3, code: "SL", name: "Inquivesta XII Sweatshirt (Skyline)", price: 749, frontImage: "/merch/6.png" },
+  { id: 4, code: "CF", name: "Inquivesta XII Sweatshirt (Caffine)", price: 749, frontImage: "/merch/8.png" },
 ]
 
 const sizes = ["NA", "S", "M", "L", "XL", "XXL", "XXXL"]
