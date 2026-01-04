@@ -40,6 +40,14 @@ import { Badge } from "@/components/ui/badge"
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Registration = Record<string, any>
 
+interface SubEventInfo {
+  id: string
+  name: string
+  fee: number
+  group_size?: number
+  members?: string[]
+}
+
 export default function EODashboardPage() {
   const router = useRouter()
   const [registrations, setRegistrations] = useState<Registration[]>([])
@@ -52,6 +60,11 @@ export default function EODashboardPage() {
   const [selectedRegistration, setSelectedRegistration] = useState<Registration | null>(null)
   const [expandedRows, setExpandedRows] = useState<Set<string>>(new Set())
   const [columns, setColumns] = useState<string[]>([])
+  
+  // Sub-event filtering
+  const [availableSubEvents, setAvailableSubEvents] = useState<string[]>([])
+  const [selectedSubEvent, setSelectedSubEvent] = useState<string>("all")
+  const [subEventCounts, setSubEventCounts] = useState<Record<string, number>>({})
 
   // Columns to hide from the table entirely
   const hiddenColumns = [
@@ -64,8 +77,26 @@ export default function EODashboardPage() {
     "id", "team_name", "team_leader_name", "team_leader_email", "team_leader_phone",
     "participant_name", "participant_email", "participant_phone", "roll_number", "college_name",
     "player1_name", "player1_email", "player1_phone", "player1_uid",
-    "institute_name", "institution", "amount_paid", "registration_status", "checked_in"
+    "institute_name", "institution", "sub_events", "total_amount", "amount_paid", "registration_status", "checked_in"
   ]
+
+  // Extract unique sub-events from registrations
+  const extractSubEvents = (regs: Registration[]) => {
+    const subEvents = new Set<string>()
+    const counts: Record<string, number> = { all: regs.length }
+    
+    regs.forEach(reg => {
+      if (reg.sub_events && Array.isArray(reg.sub_events)) {
+        reg.sub_events.forEach((se: SubEventInfo) => {
+          subEvents.add(se.id)
+          counts[se.id] = (counts[se.id] || 0) + 1
+        })
+      }
+    })
+    
+    setAvailableSubEvents(Array.from(subEvents))
+    setSubEventCounts(counts)
+  }
 
   // Format column name for display
   const formatColumnName = (col: string) => {
@@ -111,6 +142,9 @@ export default function EODashboardPage() {
       setTotalCount(data.totalCount)
       setCheckedInCount(data.checkedInCount)
 
+      // Extract sub-events if any
+      extractSubEvents(data.registrations)
+
       // Extract all unique column names from registrations
       if (data.registrations.length > 0) {
         const allColumns = new Set<string>()
@@ -131,19 +165,31 @@ export default function EODashboardPage() {
   }, [])
 
   useEffect(() => {
+    let filtered = registrations
+
+    // Filter by sub-event first
+    if (selectedSubEvent !== "all" && availableSubEvents.length > 0) {
+      filtered = filtered.filter((reg) => {
+        if (reg.sub_events && Array.isArray(reg.sub_events)) {
+          return reg.sub_events.some((se: SubEventInfo) => se.id === selectedSubEvent)
+        }
+        return false
+      })
+    }
+
+    // Then filter by search term
     if (searchTerm) {
-      const filtered = registrations.filter((reg) => {
-        const searchLower = searchTerm.toLowerCase()
+      const searchLower = searchTerm.toLowerCase()
+      filtered = filtered.filter((reg) => {
         // Search across ALL fields
         return Object.values(reg).some(value => 
           String(value).toLowerCase().includes(searchLower)
         )
       })
-      setFilteredRegistrations(filtered)
-    } else {
-      setFilteredRegistrations(registrations)
     }
-  }, [searchTerm, registrations])
+
+    setFilteredRegistrations(filtered)
+  }, [searchTerm, registrations, selectedSubEvent, availableSubEvents])
 
   const handleLogout = async () => {
     try {
@@ -164,12 +210,16 @@ export default function EODashboardPage() {
     setExpandedRows(newExpanded)
   }
 
-  // Format cell value for display
+  // Format cell value for display (simple version for table cells)
   const formatCellValue = (value: unknown, column: string): string => {
     if (value === null || value === undefined) return "-"
     if (typeof value === "boolean") return value ? "Yes" : "No"
     if (column === "created_at" || column === "updated_at") {
       return new Date(String(value)).toLocaleString()
+    }
+    // Handle sub_events specially - just show names in table
+    if (column === "sub_events" && Array.isArray(value)) {
+      return value.map((se: SubEventInfo) => se.name || se.id).join(", ")
     }
     // Handle arrays of objects (like team_members)
     if (Array.isArray(value)) {
@@ -196,6 +246,39 @@ export default function EODashboardPage() {
       return parts.join(", ")
     }
     return String(value)
+  }
+
+  // Render sub-events with full team details (for expanded view / dialog)
+  const renderSubEventsDetails = (subEvents: SubEventInfo[]) => {
+    return (
+      <div className="space-y-3">
+        {subEvents.map((se, idx) => (
+          <div key={idx} className="bg-[#2A2A2A]/50 rounded-lg p-3 border border-[#D2B997]/20">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-white font-depixel-body">{se.name || se.id}</span>
+              <span className="text-[#F8C471] font-depixel-small">₹{se.fee}</span>
+            </div>
+            {se.group_size && (
+              <p className="text-[#D2B997]/70 text-xs font-depixel-small mb-2">
+                Group Size: {se.group_size} members
+              </p>
+            )}
+            {se.members && se.members.length > 0 && (
+              <div className="mt-2 pl-3 border-l-2 border-[#A8D8EA]/30">
+                <p className="text-[#A8D8EA] text-xs font-depixel-small mb-1">Team Members:</p>
+                <ul className="space-y-1">
+                  {se.members.map((member, mIdx) => (
+                    <li key={mIdx} className="text-white text-sm font-depixel-small">
+                      {mIdx + 1}. {member}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    )
   }
 
   // Export to CSV
@@ -253,8 +336,9 @@ export default function EODashboardPage() {
     const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" })
     const link = document.createElement("a")
     const url = URL.createObjectURL(blob)
+    const subEventSuffix = selectedSubEvent !== "all" ? `_${selectedSubEvent}` : ""
     link.setAttribute("href", url)
-    link.setAttribute("download", `${eventName.replace(/\s+/g, "_")}_registrations_${new Date().toISOString().split("T")[0]}.csv`)
+    link.setAttribute("download", `${eventName.replace(/\s+/g, "_")}${subEventSuffix}_registrations_${new Date().toISOString().split("T")[0]}.csv`)
     link.style.visibility = "hidden"
     document.body.appendChild(link)
     link.click()
@@ -374,6 +458,37 @@ export default function EODashboardPage() {
               </CardContent>
             </Card>
           </div>
+
+          {/* Sub-Event Filters */}
+          {availableSubEvents.length > 0 && (
+            <div className="flex flex-wrap gap-2 mb-4">
+              <Button
+                onClick={() => setSelectedSubEvent("all")}
+                variant={selectedSubEvent === "all" ? "default" : "outline"}
+                size="sm"
+                className={selectedSubEvent === "all" 
+                  ? "bg-[#D2B997] text-[#1A1A1A] hover:bg-[#D2B997]/90 font-depixel-small text-xs"
+                  : "border-[#D2B997]/50 text-[#D2B997] hover:bg-[#D2B997]/10 bg-transparent font-depixel-small text-xs"
+                }
+              >
+                All ({subEventCounts.all || 0})
+              </Button>
+              {availableSubEvents.map(subEvent => (
+                <Button
+                  key={subEvent}
+                  onClick={() => setSelectedSubEvent(subEvent)}
+                  variant={selectedSubEvent === subEvent ? "default" : "outline"}
+                  size="sm"
+                  className={selectedSubEvent === subEvent 
+                    ? "bg-[#D2B997] text-[#1A1A1A] hover:bg-[#D2B997]/90 font-depixel-small text-xs"
+                    : "border-[#D2B997]/50 text-[#D2B997] hover:bg-[#D2B997]/10 bg-transparent font-depixel-small text-xs"
+                  }
+                >
+                  {subEvent.replace(/_/g, " ").replace(/\b\w/g, l => l.toUpperCase())} ({subEventCounts[subEvent] || 0})
+                </Button>
+              ))}
+            </div>
+          )}
 
           {/* Search and Refresh */}
           <div className="flex gap-2 md:gap-4 mb-4 md:mb-6">
@@ -570,6 +685,19 @@ export default function EODashboardPage() {
                                   {columns.filter(col => !hiddenColumns.includes(col)).map((col) => {
                                     const value = reg[col]
                                     if (value === null || value === undefined) return null
+                                    
+                                    // Special rendering for sub_events with team details
+                                    if (col === "sub_events" && Array.isArray(value)) {
+                                      return (
+                                        <div key={col} className="md:col-span-2 lg:col-span-3 space-y-1">
+                                          <p className="text-[#D2B997]/60 text-xs font-depixel-small">
+                                            {formatColumnName(col)}
+                                          </p>
+                                          {renderSubEventsDetails(value as SubEventInfo[])}
+                                        </div>
+                                      )
+                                    }
+                                    
                                     return (
                                       <div key={col} className={`space-y-1 ${Array.isArray(value) || typeof value === "object" ? "md:col-span-2 lg:col-span-3" : ""}`}>
                                         <p className="text-[#D2B997]/60 text-xs font-depixel-small">
@@ -626,6 +754,19 @@ export default function EODashboardPage() {
                 {columns.filter(col => !hiddenColumns.includes(col)).map((col) => {
                   const value = selectedRegistration[col]
                   if (value === null || value === undefined) return null
+                  
+                  // Special rendering for sub_events with team details
+                  if (col === "sub_events" && Array.isArray(value)) {
+                    return (
+                      <div key={col} className="col-span-1 md:col-span-2 space-y-1 p-2 md:p-3 bg-[#1A1A1A]/50 rounded-lg">
+                        <p className="text-[#D2B997]/60 text-xs font-depixel-small uppercase">
+                          {formatColumnName(col)}
+                        </p>
+                        {renderSubEventsDetails(value as SubEventInfo[])}
+                      </div>
+                    )
+                  }
+                  
                   return (
                     <div key={col} className={`space-y-1 p-2 md:p-3 bg-[#1A1A1A]/50 rounded-lg ${Array.isArray(value) || typeof value === "object" ? "col-span-1 md:col-span-2" : ""}`}>
                       <p className="text-[#D2B997]/60 text-xs font-depixel-small uppercase">
