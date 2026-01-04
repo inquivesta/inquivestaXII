@@ -186,11 +186,11 @@ const events: Event[] = [
     category: "Performance",
     venue: "LHC Backyard",
     prizes: "Prize Pool: ₹10,000",
-    registrationLink: "#",
+    registrationLink: "/events/registration/nukkad-natak",
     socialLink: "https://www.instagram.com/aarshi_iiserk/",
     maxParticipants: "#",
     duration: "3 hours",
-    teamSize: "10-15 members"
+    teamSize: "5-15 members"
   },
   {
     id: "headshot-bgmi",
@@ -330,7 +330,7 @@ const events: Event[] = [
     category: "Sports Competition",
     venue: "IISER Kolkata Cricket Ground",
     prizes: "Prize Pool: ₹14,000",
-    registrationLink: "#",
+    registrationLink: "/events/registration/smash7",
     socialLink: "https://www.instagram.com/cricket_club_iiserk/",
     maxParticipants: "128 (16 Teams)",
     duration: "3 days (8 hours each)",
@@ -348,7 +348,7 @@ const events: Event[] = [
     category: "Cultural Competition",
     venue: "Room 107",
     prizes: "Prize Pool: ₹22,000",
-    registrationLink: "#",
+    registrationLink: "/events/registration/soulbeats",
     socialLink: "#",
     maxParticipants: "#",
     duration: "2 days",
