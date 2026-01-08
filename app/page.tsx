@@ -4,14 +4,12 @@ import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Menu, X, Calendar, Users, Trophy, Camera, Twitter, Instagram, Facebook } from "lucide-react"
-import { NumberTicker } from "@/components/ui/number-ticker"
+import { Menu, X, Calendar, Camera, Twitter, Instagram, Facebook } from "lucide-react"
 import { Marquee } from "@/components/ui/marquee"
 import { HyperText } from "@/components/ui/hyper-text"
 import { TextReveal } from "@/components/ui/text-reveal"
 import { FadeIn } from "@/components/ui/fade-in"
-import { InstallBanner } from "@/components/InstallBanner"
-import { id } from "date-fns/locale"
+import { X as XIcon } from "lucide-react"
 
 const DATE_FEST = "Feb 06 2026"
 
@@ -147,6 +145,7 @@ const galleryImages = [
 
 export default function InquivestaLanding() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [showMerchPopup, setShowMerchPopup] = useState(false)
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -197,7 +196,13 @@ export default function InquivestaLanding() {
     calculateTimeLeft()
     const timer = setInterval(calculateTimeLeft, 1000)
 
-    return () => clearInterval(timer)
+    // Show merch popup after 2 seconds
+    const popupTimer = setTimeout(() => setShowMerchPopup(true), 2000)
+
+    return () => {
+      clearInterval(timer)
+      clearTimeout(popupTimer)
+    }
   }, [])
 
   return (
@@ -410,48 +415,111 @@ export default function InquivestaLanding() {
           </div>
         </div>
       </section>
-      {/* Statistics Section */}
+      {/* Limitless Events Section */}
       <section className="py-20 px-4 bg-[#2A2A2A]/30">
         <div className="container mx-auto">
           <FadeIn>
             <div className="text-center mb-12">
               <HyperText
                 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-[#F4D03F] to-[#F8C471] bg-clip-text text-transparent font-futura"
-                text="INQUIVESTA BY NUMBERS"
+                text="LIMITLESS EVENTS"
               />
+              <p className="text-[#D2B997] text-lg font-depixel-body">DISCOVER WHAT AWAITS YOU</p>
             </div>
           </FadeIn>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* CSI Event Card */}
             <FadeIn delay={0.2}>
-              <div className="text-center p-8 bg-gradient-to-b from-[#2A2A2A]/50 to-[#3A3A3A]/50 rounded-lg border border-[#D2B997]/30">
-                <Users className="w-12 h-12 text-[#A8D8EA] mx-auto mb-4" />
-                <div className="text-4xl md:text-5xl font-bold text-[#A8D8EA] mb-2">
-                  <NumberTicker value={7000} />+
+              <Link href="/events" className="block group">
+                <div className="relative overflow-hidden rounded-lg border border-[#D2B997]/30 bg-gradient-to-b from-[#2A2A2A]/50 to-[#3A3A3A]/50 transition-all duration-300 group-hover:border-[#A8D8EA] group-hover:shadow-[0_0_20px_rgba(168,216,234,0.3)]">
+                  <div className="relative h-48 overflow-hidden">
+                    <Image
+                      src="/events/csi/csi.png"
+                      alt="CSI Event"
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] to-transparent" />
+                  </div>
+                  <div className="p-4">
+                    <h3 className="text-xl font-bold text-[#A8D8EA] font-futura tracking-wide mb-2">CSI</h3>
+                    <p className="text-[#D2B997] text-sm font-depixel-small">Crime Scene Investigation</p>
+                  </div>
                 </div>
-                <div className="text-[#D2B997] font-depixel-body">Footfalls</div>
-              </div>
+              </Link>
             </FadeIn>
 
+            {/* Art in a Culture Event Card */}
+            <FadeIn delay={0.3}>
+              <Link href="/events" className="block group">
+                <div className="relative overflow-hidden rounded-lg border border-[#D2B997]/30 bg-gradient-to-b from-[#2A2A2A]/50 to-[#3A3A3A]/50 transition-all duration-300 group-hover:border-[#F8BBD9] group-hover:shadow-[0_0_20px_rgba(248,187,217,0.3)]">
+                  <div className="relative h-48 overflow-hidden">
+                    <Image
+                      src="/events/art/art.jpg"
+                      alt="Art in a Culture"
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] to-transparent" />
+                  </div>
+                  <div className="p-4">
+                    <h3 className="text-xl font-bold text-[#F8BBD9] font-futura tracking-wide mb-2">Art in a Culture</h3>
+                    <p className="text-[#D2B997] text-sm font-depixel-small">Art with science</p>
+                  </div>
+                </div>
+              </Link>
+            </FadeIn>
+
+            {/* Masquerade Event Card */}
             <FadeIn delay={0.4}>
-              <div className="text-center p-8 bg-gradient-to-b from-[#2A2A2A]/50 to-[#3A3A3A]/50 rounded-lg border border-[#D2B997]/30">
-                <Trophy className="w-12 h-12 text-[#F4D03F] mx-auto mb-4" />
-                <div className="text-4xl md:text-5xl font-bold text-[#F4D03F] mb-2">
-                  <NumberTicker value={20} />+
+              <Link href="/masquerade" className="block group">
+                <div className="relative overflow-hidden rounded-lg border border-[#D2B997]/30 bg-gradient-to-b from-[#2A2A2A]/50 to-[#3A3A3A]/50 transition-all duration-300 group-hover:border-[#F4D03F] group-hover:shadow-[0_0_20px_rgba(244,208,63,0.3)]">
+                  <div className="relative h-48 overflow-hidden">
+                    <Image
+                      src="/events/masquerade/masquerade logo final.jpg"
+                      alt="Masquerade"
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] to-transparent" />
+                  </div>
+                  <div className="p-4">
+                    <h3 className="text-xl font-bold text-[#F4D03F] font-futura tracking-wide mb-2">Masquerade</h3>
+                    <p className="text-[#D2B997] text-sm font-depixel-small">Disco & Romance</p>
+                  </div>
                 </div>
-                <div className="text-[#D2B997] font-depixel-body">Events & Competitions</div>
-              </div>
+              </Link>
             </FadeIn>
 
-            <FadeIn delay={0.6}>
-              <div className="text-center p-8 bg-gradient-to-b from-[#2A2A2A]/50 to-[#3A3A3A]/50 rounded-lg border border-[#D2B997]/30">
-                <Calendar className="w-12 h-12 text-[#ABEBC6] mx-auto mb-4" />
-                <div className="text-4xl md:text-5xl font-bold text-[#ABEBC6] mb-2">
-                  <NumberTicker value={50} />+
+            {/* Headshot Event Card */}
+            <FadeIn delay={0.5}>
+              <Link href="/events" className="block group">
+                <div className="relative overflow-hidden rounded-lg border border-[#D2B997]/30 bg-gradient-to-b from-[#2A2A2A]/50 to-[#3A3A3A]/50 transition-all duration-300 group-hover:border-[#ABEBC6] group-hover:shadow-[0_0_20px_rgba(171,235,198,0.3)]">
+                  <div className="relative h-48 overflow-hidden">
+                    <Image
+                      src="/events/headshot/headshot.png"
+                      alt="Headshot"
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] to-transparent" />
+                  </div>
+                  <div className="p-4">
+                    <h3 className="text-xl font-bold text-[#ABEBC6] font-futura tracking-wide mb-2">Headshot</h3>
+                    <p className="text-[#D2B997] text-sm font-depixel-small">Gaming Competition</p>
+                  </div>
                 </div>
-                <div className="text-[#D2B997] font-depixel-body">College Outreach</div>
-              </div>
+              </Link>
             </FadeIn>
+          </div>
+
+          <div className="text-center mt-12">
+            <Link href="/events">
+              <Button className="bg-gradient-to-r from-[#F4D03F] to-[#F8C471] hover:from-[#E5C100] hover:to-[#F5B041] text-[#1A1A1A] font-depixel-body px-8 py-3 text-lg">
+                More Events
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -593,10 +661,10 @@ export default function InquivestaLanding() {
                   Competitions
                 </Link>
                 <Link
-                  href="#workshops"
+                  href="/masquerade"
                   className="block text-[#B8A7D9] hover:text-[#D2B997] transition-colors text-sm font-depixel-small"
                 >
-                  Workshops
+                  Masquerade
                 </Link>
                 <Link
                   href="#pronite"
@@ -678,8 +746,48 @@ export default function InquivestaLanding() {
         </div>
       </footer>
 
-      {/* Install Banner */}
-      <InstallBanner />
+      {/* Merch Popup */}
+      {showMerchPopup && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
+          <div className="relative max-w-md w-full bg-gradient-to-b from-[#2A2A2A] to-[#1A1A1A] rounded-xl border-2 border-[#F4D03F] shadow-[0_0_40px_rgba(244,208,63,0.3)] overflow-hidden">
+            {/* Close Button */}
+            <button
+              onClick={() => setShowMerchPopup(false)}
+              className="absolute top-3 right-3 z-10 p-2 rounded-full bg-[#1A1A1A]/80 hover:bg-[#F4D03F]/20 transition-colors border border-[#D2B997]/30"
+            >
+              <XIcon className="w-5 h-5 text-[#D2B997]" />
+            </button>
+
+            {/* Popup Content */}
+            <Link href="/merch" onClick={() => setShowMerchPopup(false)} className="block">
+              <div className="p-4 text-center">
+                <h3 className="text-2xl md:text-3xl font-bold text-[#F4D03F] font-futura animate-pulse">
+                  Exclusive Merch Available! 
+                </h3>
+              </div>
+              
+              <div className="relative">
+                <Image
+                  src="/merch/merch_promo.png"
+                  alt="Exclusive Merch"
+                  width={500}
+                  height={400}
+                  className="w-full h-auto"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-transparent to-transparent" />
+              </div>
+              <div className="p-6 text-center">
+                <p className="text-[#D2B997] font-depixel-body mb-4">
+                  Limited edition INQUIVESTA XII merchandise
+                </p>
+                <div className="inline-block bg-gradient-to-r from-[#F4D03F] to-[#F8C471] text-[#1A1A1A] font-depixel-body px-6 py-3 rounded-lg font-bold hover:from-[#E5C100] hover:to-[#F5B041] transition-all">
+                  BUY NOW!!!
+                </div>
+              </div>
+            </Link>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
