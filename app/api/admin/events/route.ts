@@ -19,7 +19,11 @@ const EVENT_TABLES = [
   { id: 'bullseye', name: 'Bullseye', tableName: 'event_registrations_bullseye' },
   { id: 'smash7', name: 'Smash7', tableName: 'event_registrations_smash7' },
   { id: 'nukkad-natak', name: 'Nukkad Natak', tableName: 'event_registrations_nukkad_natak' },
-  // Add more events as needed
+  { id: 'hoop-hustle', name: 'Hoop Hustle (3v3 Basketball)', tableName: 'event_registrations_hoop_hustle' },
+  { id: 'inquicon', name: 'Inquicon', tableName: 'event_registrations_inquicon' },
+  { id: 'table-tennis-singles', name: 'Table Tennis - Singles', tableName: 'event_registrations_table_tennis_singles' },
+  { id: 'table-tennis-doubles', name: 'Table Tennis - Doubles', tableName: 'event_registrations_table_tennis_doubles' },
+  { id: 'masquerade', name: 'Masquerade', tableName: 'event_registrations_masquerade' },
 ]
 
 export async function GET() {

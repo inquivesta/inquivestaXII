@@ -115,7 +115,10 @@ export default function AdminDashboardPage() {
     "id", "team_name", "team_leader_name", "team_leader_email", "team_leader_phone",
     "participant_name", "participant_email", "participant_phone", "roll_number", "college_name",
     "player1_name", "player1_email", "player1_phone", "player1_uid",
-    "institute_name", "institution", "sub_events", "total_amount", "amount_paid", 
+    // Masquerade fields
+    "name", "email", "phone", "pass_type", "gender", "partner",
+    // Common fields
+    "institute_name", "institution", "category", "sub_events", "total_amount", "amount_paid", 
     "registration_status", "payment_verified", "utr_number", "checked_in"
   ]
 
@@ -277,7 +280,13 @@ export default function AdminDashboardPage() {
       return new Date(String(value)).toLocaleString()
     }
     if (column === "sub_events" && Array.isArray(value)) {
-      return value.map((se: SubEventInfo) => se.name || se.id).join(", ")
+      return value.map((se) => {
+        if (typeof se === 'string') return se
+        if (typeof se === 'object' && se !== null) {
+          return (se as SubEventInfo).name || (se as SubEventInfo).id || 'Unknown'
+        }
+        return String(se)
+      }).join(", ")
     }
     if (Array.isArray(value)) {
       if (value.length === 0) return "-"
@@ -286,7 +295,11 @@ export default function AdminDashboardPage() {
           if (typeof item === "object" && item !== null) {
             const parts = Object.entries(item)
               .filter(([, v]) => v !== null && v !== undefined && v !== "")
-              .map(([k, v]) => `${formatColumnName(k)}: ${v}`)
+              .map(([k, v]) => {
+                // Handle nested objects by converting them to string
+                if (typeof v === 'object') return `${formatColumnName(k)}: [Object]`
+                return `${formatColumnName(k)}: ${v}`
+              })
             return `#${idx + 1}: ${parts.join(", ")}`
           }
           return String(item)
@@ -297,41 +310,57 @@ export default function AdminDashboardPage() {
     if (typeof value === "object" && value !== null) {
       const parts = Object.entries(value)
         .filter(([, v]) => v !== null && v !== undefined && v !== "")
-        .map(([k, v]) => `${formatColumnName(k)}: ${v}`)
+        .map(([k, v]) => {
+          // Handle nested objects by converting them to string
+          if (typeof v === 'object') return `${formatColumnName(k)}: [Object]`
+          return `${formatColumnName(k)}: ${v}`
+        })
       return parts.join(", ")
     }
     return String(value)
   }
 
   // Render sub-events with full team details
-  const renderSubEventsDetails = (subEvents: SubEventInfo[]) => {
+  const renderSubEventsDetails = (subEvents: (SubEventInfo | string)[]) => {
     return (
       <div className="space-y-3">
-        {subEvents.map((se, idx) => (
-          <div key={idx} className="bg-[#2A2A2A]/50 rounded-lg p-3 border border-[#D2B997]/20">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-white font-depixel-body">{se.name || se.id}</span>
-              <span className="text-[#F8C471] font-depixel-small">₹{se.fee}</span>
-            </div>
-            {se.group_size && (
-              <p className="text-[#D2B997]/70 text-xs font-depixel-small mb-2">
-                Group Size: {se.group_size} members
-              </p>
-            )}
-            {se.members && se.members.length > 0 && (
-              <div className="mt-2 pl-3 border-l-2 border-[#A8D8EA]/30">
-                <p className="text-[#A8D8EA] text-xs font-depixel-small mb-1">Team Members:</p>
-                <ul className="space-y-1">
-                  {se.members.map((member, mIdx) => (
-                    <li key={mIdx} className="text-white text-sm font-depixel-small">
-                      {mIdx + 1}. {member}
-                    </li>
-                  ))}
-                </ul>
+        {subEvents.map((se, idx) => {
+          // Handle case where sub_events might be an array of strings
+          if (typeof se === 'string') {
+            return (
+              <div key={idx} className="bg-[#2A2A2A]/50 rounded-lg p-3 border border-[#D2B997]/20">
+                <span className="text-white font-depixel-body">{se}</span>
               </div>
-            )}
-          </div>
-        ))}
+            )
+          }
+          
+          // Handle object with name property
+          return (
+            <div key={idx} className="bg-[#2A2A2A]/50 rounded-lg p-3 border border-[#D2B997]/20">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-white font-depixel-body">{se.name || se.id || 'Unknown'}</span>
+                {se.fee !== undefined && <span className="text-[#F8C471] font-depixel-small">₹{se.fee}</span>}
+              </div>
+              {se.group_size && (
+                <p className="text-[#D2B997]/70 text-xs font-depixel-small mb-2">
+                  Group Size: {se.group_size} members
+                </p>
+              )}
+              {se.members && se.members.length > 0 && (
+                <div className="mt-2 pl-3 border-l-2 border-[#A8D8EA]/30">
+                  <p className="text-[#A8D8EA] text-xs font-depixel-small mb-1">Team Members:</p>
+                  <ul className="space-y-1">
+                    {se.members.map((member, mIdx) => (
+                      <li key={mIdx} className="text-white text-sm font-depixel-small">
+                        {mIdx + 1}. {member}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          )
+        })}
       </div>
     )
   }
@@ -368,11 +397,13 @@ export default function AdminDashboardPage() {
           emailMessage: emailMessage.trim() || null,
           recipientEmail: selectedRegistration.team_leader_email || 
                           selectedRegistration.participant_email || 
-                          selectedRegistration.player1_email,
+                          selectedRegistration.player1_email ||
+                          selectedRegistration.email,
           recipientName: selectedRegistration.team_name || 
                          selectedRegistration.team_leader_name || 
                          selectedRegistration.participant_name ||
-                         selectedRegistration.player1_name,
+                         selectedRegistration.player1_name ||
+                         selectedRegistration.name,
         }),
       })
 
@@ -692,33 +723,171 @@ export default function AdminDashboardPage() {
                   <>
                     <p className="text-[#D2B997] text-sm font-depixel-small">{filteredRegistrations.length} registrations</p>
                     {filteredRegistrations.map((reg) => {
-                      const displayName = reg.team_name || reg.team_leader_name || reg.participant_name || reg.player1_name || "Unknown"
-                      const displayEmail = reg.team_leader_email || reg.participant_email || reg.player1_email || ""
+                      const displayName = reg.team_name || reg.team_leader_name || reg.participant_name || reg.player1_name || reg.name || "Unknown"
+                      const displayEmail = reg.team_leader_email || reg.participant_email || reg.player1_email || reg.email || ""
+                      const displayPhone = reg.team_leader_phone || reg.participant_phone || reg.player1_phone || reg.phone || ""
                       const eventName = reg._event_name || "Unknown Event"
+                      const cardKey = `${reg._event_table}-${reg.id}`
+                      const isExpanded = expandedRows.has(cardKey)
                       return (
                         <Card 
-                          key={`${reg._event_table}-${reg.id}`} 
+                          key={cardKey} 
                           className="bg-[#2A2A2A]/50 border-[#D2B997]/30"
                         >
                           <CardContent className="p-4">
-                            <div className="flex items-start justify-between gap-2 mb-2">
-                              <div className="flex-1 min-w-0">
-                                <p className="text-white font-depixel-small truncate">{displayName}</p>
-                                <p className="text-[#A8D8EA] text-xs truncate">{displayEmail}</p>
-                                <p className="text-[#D2B997]/60 text-xs font-depixel-small mt-1">{eventName}</p>
+                            {/* Header - clickable to expand */}
+                            <div 
+                              className="cursor-pointer"
+                              onClick={() => toggleRowExpansion(cardKey)}
+                            >
+                              <div className="flex items-start justify-between gap-2 mb-2">
+                                <div className="flex-1 min-w-0">
+                                  <div className="flex items-center gap-2">
+                                    {isExpanded ? (
+                                      <ChevronUp className="w-4 h-4 text-[#A8D8EA] shrink-0" />
+                                    ) : (
+                                      <ChevronDown className="w-4 h-4 text-[#D2B997] shrink-0" />
+                                    )}
+                                    <p className="text-white font-depixel-small truncate">{displayName}</p>
+                                  </div>
+                                  <p className="text-[#A8D8EA] text-xs truncate ml-6">{displayEmail}</p>
+                                  <p className="text-[#D2B997]/60 text-xs font-depixel-small mt-1 ml-6">{eventName}</p>
+                                </div>
+                                <Button
+                                  size="sm"
+                                  onClick={(e) => {
+                                    e.stopPropagation()
+                                    openEditDialog(reg)
+                                  }}
+                                  className="bg-red-500/20 text-red-400 hover:bg-red-500/30 shrink-0"
+                                >
+                                  <Edit className="w-4 h-4" />
+                                </Button>
                               </div>
-                              <Button
-                                size="sm"
-                                onClick={() => openEditDialog(reg)}
-                                className="bg-red-500/20 text-red-400 hover:bg-red-500/30 shrink-0"
-                              >
-                                <Edit className="w-4 h-4" />
-                              </Button>
+                              <div className="flex flex-wrap gap-2 ml-6">
+                                {getStatusBadge(reg.registration_status || "pending")}
+                                {getPaymentBadge(reg.payment_verified)}
+                                {reg.checked_in && (
+                                  <Badge className="bg-green-500/20 text-green-400 border-green-500/30">
+                                    <CheckCircle className="w-3 h-3 mr-1" />
+                                    Checked In
+                                  </Badge>
+                                )}
+                              </div>
                             </div>
-                            <div className="flex flex-wrap gap-2">
-                              {getStatusBadge(reg.registration_status || "pending")}
-                              {getPaymentBadge(reg.payment_verified)}
-                            </div>
+
+                            {/* Expanded Details */}
+                            {isExpanded && (
+                              <div className="mt-4 pt-4 border-t border-[#D2B997]/20 space-y-3">
+                                {/* Basic Info */}
+                                <div className="grid grid-cols-2 gap-3">
+                                  <div className="space-y-1">
+                                    <p className="text-[#D2B997]/60 text-xs uppercase">ID</p>
+                                    <p className="text-[#A8D8EA] font-mono text-xs break-all">{reg.id}</p>
+                                  </div>
+                                  {displayPhone && (
+                                    <div className="space-y-1">
+                                      <p className="text-[#D2B997]/60 text-xs uppercase">Phone</p>
+                                      <p className="text-white text-sm">{displayPhone}</p>
+                                    </div>
+                                  )}
+                                  {reg.institution && (
+                                    <div className="space-y-1 col-span-2">
+                                      <p className="text-[#D2B997]/60 text-xs uppercase">Institution</p>
+                                      <p className="text-white text-sm">{reg.institution}</p>
+                                    </div>
+                                  )}
+                                  {reg.category && (
+                                    <div className="space-y-1">
+                                      <p className="text-[#D2B997]/60 text-xs uppercase">Category</p>
+                                      <p className="text-[#B8A7D9] text-sm">
+                                        {reg.category === 'mens' ? "Men's" : 
+                                         reg.category === 'womens' ? "Women's" : 
+                                         reg.category === 'mixed' ? "Mixed" : reg.category}
+                                      </p>
+                                    </div>
+                                  )}
+                                  {reg.pass_type && (
+                                    <div className="space-y-1">
+                                      <p className="text-[#D2B997]/60 text-xs uppercase">Pass Type</p>
+                                      <p className="text-[#B8A7D9] text-sm">
+                                        {reg.pass_type === 'couple' ? 'Couple Pass' : 
+                                         `Single (${reg.gender === 'male' ? 'Male' : 'Female'})`}
+                                      </p>
+                                    </div>
+                                  )}
+                                </div>
+
+                                {/* Payment Info */}
+                                <div className="grid grid-cols-2 gap-3">
+                                  {(reg.amount_paid !== undefined || reg.total_amount !== undefined) && (
+                                    <div className="space-y-1">
+                                      <p className="text-[#D2B997]/60 text-xs uppercase">Amount Paid</p>
+                                      <p className="text-green-400 font-depixel-small">₹{reg.amount_paid ?? reg.total_amount}</p>
+                                    </div>
+                                  )}
+                                  {reg.utr_number && (
+                                    <div className="space-y-1">
+                                      <p className="text-[#D2B997]/60 text-xs uppercase">UTR Number</p>
+                                      <p className="text-white font-mono text-xs">{reg.utr_number}</p>
+                                    </div>
+                                  )}
+                                </div>
+
+                                {/* Partner Info (Masquerade) */}
+                                {reg.partner && (
+                                  <div className="space-y-1 p-3 bg-[#1A1A1A]/50 rounded-lg">
+                                    <p className="text-[#D2B997]/60 text-xs uppercase">Partner</p>
+                                    <p className="text-white text-sm">{reg.partner.name}</p>
+                                    <p className="text-[#A8D8EA] text-xs">{reg.partner.email}</p>
+                                    <p className="text-white/60 text-xs">{reg.partner.phone}</p>
+                                  </div>
+                                )}
+
+                                {/* Sub Events (Soulbeats, Bullseye) */}
+                                {reg.sub_events && Array.isArray(reg.sub_events) && reg.sub_events.length > 0 && (
+                                  <div className="space-y-1">
+                                    <p className="text-[#D2B997]/60 text-xs uppercase">Events</p>
+                                    <div className="flex flex-wrap gap-1">
+                                      {reg.sub_events.map((se: SubEventInfo | string, idx: number) => (
+                                        <Badge key={idx} className="bg-[#A8D8EA]/10 text-[#A8D8EA] border-[#A8D8EA]/30 text-xs">
+                                          {typeof se === 'string' ? se : (se.name || se.id || 'Unknown')}
+                                        </Badge>
+                                      ))}
+                                    </div>
+                                  </div>
+                                )}
+
+                                {/* Team Members (if any) */}
+                                {reg.team_members && Array.isArray(reg.team_members) && reg.team_members.length > 0 && (
+                                  <div className="space-y-1">
+                                    <p className="text-[#D2B997]/60 text-xs uppercase">Team Members</p>
+                                    <div className="pl-2 border-l-2 border-[#A8D8EA]/30">
+                                      {reg.team_members.map((member: string, idx: number) => (
+                                        <p key={idx} className="text-white text-sm">{idx + 1}. {member}</p>
+                                      ))}
+                                    </div>
+                                  </div>
+                                )}
+
+                                {/* Action Buttons */}
+                                <div className="flex gap-2 pt-2">
+                                  <Button
+                                    size="sm"
+                                    variant="outline"
+                                    onClick={(e) => {
+                                      e.stopPropagation()
+                                      setViewRegistration(reg)
+                                      setViewDialogOpen(true)
+                                    }}
+                                    className="flex-1 border-[#A8D8EA]/30 text-[#A8D8EA] hover:bg-[#A8D8EA]/10"
+                                  >
+                                    <Eye className="w-4 h-4 mr-2" />
+                                    View All Details
+                                  </Button>
+                                </div>
+                              </div>
+                            )}
                           </CardContent>
                         </Card>
                       )
@@ -864,19 +1033,46 @@ export default function AdminDashboardPage() {
                                           )
                                         }
                                         
+                                        // Handle status and payment columns separately to avoid nesting div in p
+                                        if (col === "registration_status") {
+                                          return (
+                                            <div key={col} className="space-y-1">
+                                              <p className="text-[#D2B997]/60 text-xs font-depixel-small">
+                                                {formatColumnName(col)}
+                                              </p>
+                                              <div>{getStatusBadge(value)}</div>
+                                            </div>
+                                          )
+                                        }
+                                        
+                                        if (col === "payment_verified" || col === "checked_in") {
+                                          return (
+                                            <div key={col} className="space-y-1">
+                                              <p className="text-[#D2B997]/60 text-xs font-depixel-small">
+                                                {formatColumnName(col)}
+                                              </p>
+                                              <div>{col === "payment_verified" ? getPaymentBadge(value) : (
+                                                value ? (
+                                                  <Badge className="bg-green-500/20 text-green-400 border-green-500/30">
+                                                    <CheckCircle className="w-3 h-3 mr-1" />Yes
+                                                  </Badge>
+                                                ) : (
+                                                  <Badge className="bg-gray-500/20 text-gray-400 border-gray-500/30">
+                                                    <XCircle className="w-3 h-3 mr-1" />No
+                                                  </Badge>
+                                                )
+                                              )}</div>
+                                            </div>
+                                          )
+                                        }
+                                        
                                         return (
                                           <div key={col} className={`space-y-1 ${Array.isArray(value) || typeof value === "object" ? "md:col-span-2 lg:col-span-3" : ""}`}>
                                             <p className="text-[#D2B997]/60 text-xs font-depixel-small">
                                               {formatColumnName(col)}
                                             </p>
                                             <p className={`text-sm ${col.includes("email") ? "text-[#A8D8EA]" : "text-white"} ${col === "id" || col.includes("uid") || col.includes("utr") ? "font-mono text-xs" : "font-depixel-small"} whitespace-pre-wrap`}>
-                                              {col === "registration_status" ? (
-                                                getStatusBadge(value)
-                                              ) : col === "payment_verified" ? (
-                                                getPaymentBadge(value)
-                                              ) : (
-                                                formatCellValue(value, col)
-                                              )}
+                                              {formatCellValue(value, col)}
                                             </p>
                                           </div>
                                         )
@@ -932,9 +1128,14 @@ export default function AdminDashboardPage() {
                         <p className="text-[#D2B997]/60 text-xs font-depixel-small uppercase">
                           {formatColumnName(col)}
                         </p>
-                        {renderSubEventsDetails(value as SubEventInfo[])}
+                        {renderSubEventsDetails(value as (SubEventInfo | string)[])}
                       </div>
                     )
+                  }
+                  
+                  // Skip status fields as they're shown at the top
+                  if (col === "registration_status" || col === "payment_verified" || col === "checked_in") {
+                    return null
                   }
                   
                   return (
@@ -969,15 +1170,30 @@ export default function AdminDashboardPage() {
               <div className="p-4 bg-[#1A1A1A]/50 rounded-lg space-y-2">
                 <p className="text-white font-depixel-body">
                   {selectedRegistration.team_name || selectedRegistration.team_leader_name || 
-                   selectedRegistration.participant_name || selectedRegistration.player1_name}
+                   selectedRegistration.participant_name || selectedRegistration.player1_name ||
+                   selectedRegistration.name}
                 </p>
                 <p className="text-[#A8D8EA] text-sm">
                   {selectedRegistration.team_leader_email || selectedRegistration.participant_email || 
-                   selectedRegistration.player1_email}
+                   selectedRegistration.player1_email || selectedRegistration.email}
                 </p>
                 <p className="text-[#D2B997]/60 text-xs font-depixel-small">
                   {selectedRegistration._event_name}
                 </p>
+                {selectedRegistration.pass_type && (
+                  <p className="text-[#B8A7D9] text-sm font-depixel-small">
+                    {selectedRegistration.pass_type === 'couple' ? 'Couple Pass' : 
+                     `Single Pass (${selectedRegistration.gender === 'male' ? 'Male' : 'Female'})`}
+                  </p>
+                )}
+                {selectedRegistration.category && (
+                  <p className="text-[#B8A7D9] text-sm font-depixel-small">
+                    Category: {selectedRegistration.category === 'mens' ? "Men's" : 
+                              selectedRegistration.category === 'womens' ? "Women's" : 
+                              selectedRegistration.category === 'mixed' ? "Mixed" : 
+                              selectedRegistration.category}
+                  </p>
+                )}
               </div>
 
               {/* Status Update */}
