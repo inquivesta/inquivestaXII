@@ -429,22 +429,22 @@ export default function InquivestaLanding() {
           </FadeIn>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* CSI Event Card */}
+            {/* Botprix Event Card */}
             <FadeIn delay={0.2}>
-              <Link href="/events" className="block group">
+              <Link href="/events#botprix" className="block group">
                 <div className="relative overflow-hidden rounded-lg border border-[#D2B997]/30 bg-gradient-to-b from-[#2A2A2A]/50 to-[#3A3A3A]/50 transition-all duration-300 group-hover:border-[#A8D8EA] group-hover:shadow-[0_0_20px_rgba(168,216,234,0.3)]">
                   <div className="relative h-48 overflow-hidden">
                     <Image
-                      src="/events/csi/csi.png"
-                      alt="CSI Event"
+                      src="/events/botprix/botprix.png"
+                      alt="Botprix Event"
                       fill
                       className="object-cover transition-transform duration-300 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] to-transparent" />
                   </div>
                   <div className="p-4">
-                    <h3 className="text-xl font-bold text-[#A8D8EA] font-futura tracking-wide mb-2">CSI</h3>
-                    <p className="text-[#D2B997] text-sm font-depixel-small">Crime Scene Investigation</p>
+                    <h3 className="text-xl font-bold text-[#A8D8EA] font-futura tracking-wide mb-2">Botprix</h3>
+                    <p className="text-[#D2B997] text-sm font-depixel-small">Robot Racing Challenge</p>
                   </div>
                 </div>
               </Link>

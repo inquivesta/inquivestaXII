@@ -28,7 +28,7 @@ const availableItems: Omit<MerchItem, 'quantity' | 'size'>[] = [
   { id: 4, code: "CF", name: "Inquivesta XII Sweatshirt (Caffine)", price: 749, frontImage: "/merch/8.png" },
 ]
 
-const sizes = ["NA", "S", "M", "L", "XL", "XXL", "XXXL"]
+const sizes = ["NA", "XS", "S", "M", "L", "XL", "XXL", "XXXL"]
 
 export default function BuyMerchPage() {
   const [selectedItems, setSelectedItems] = useState<MerchItem[]>(

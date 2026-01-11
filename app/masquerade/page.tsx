@@ -297,32 +297,40 @@ export default function MasqueradePage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {[
                 {
-                  img: '/events/masquerade/couples_dream.png',
+                  img: '/events/masquerade/Couples_dream.png',
                   icon: 'fa-hourglass-half',
                   title: 'Speed Dating',
                   description: 'Join a time tight event, where every second counts.',
-                  color: 'neon-pink'
+                  color: 'neon-pink',
+                  textClass: 'text-neon-pink',
+                  borderClass: 'border-neon-pink/30'
                 },
                 {
                   img: '/events/masquerade/blind_dating_card.jpg',
                   icon: 'fa-user-secret',
                   title: 'Blind Dates',
                   description: 'Is love truly blind? Chemistry can lead to unexpected reactions.',
-                  color: 'retro-gold'
+                  color: 'retro-gold',
+                  textClass: 'text-retro-gold',
+                  borderClass: 'border-retro-gold/30'
                 },
                 {
                   img: '/events/masquerade/Bingo_card.jpg',
                   icon: 'fa-th',
                   title: 'Event Bingo',
                   description: 'Put your bets in and mingle with the ravishing crowd.',
-                  color: 'neon-cyan'
+                  color: 'neon-cyan',
+                  textClass: 'text-neon-cyan',
+                  borderClass: 'border-neon-cyan/30'
                 },
                 {
                   img: '/events/masquerade/peopledancing2.png',
                   icon: 'fa-music',
                   title: 'Disco Dance',
                   description: 'Take more chances, dance more dances.',
-                  color: 'neon-purple'
+                  color: 'neon-purple',
+                  textClass: 'text-neon-purple',
+                  borderClass: 'border-neon-purple/30'
                 }
               ].map((activity, i) => (
                 <div key={i} className="group relative rounded-xl overflow-hidden bg-black/40 border border-white/10 hover:border-retro-gold/40 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(255,215,0,0.2)]">
@@ -336,13 +344,13 @@ export default function MasqueradePage() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
                     {/* Icon Overlay */}
-                    <div className={`absolute top-4 right-4 w-10 h-10 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center text-${activity.color} border border-${activity.color}/30`}>
+                    <div className={`absolute top-4 right-4 w-10 h-10 rounded-full bg-black/60 backdrop-blur-sm flex items-center justify-center ${activity.textClass} ${activity.borderClass}`}>
                       <i className={`fas ${activity.icon}`}></i>
                     </div>
                   </div>
                   {/* Text Section */}
                   <div className="p-5">
-                    <h3 className={`text-lg font-[family-name:var(--font-futura)] tracking-[0.1em] uppercase text-${activity.color} mb-2`}>
+                    <h3 className={`text-lg font-[family-name:var(--font-futura)] tracking-[0.1em] uppercase ${activity.textClass} mb-2`}>
                       {activity.title}
                     </h3>
                     <p className="text-sm font-[family-name:var(--font-depixel-body)] text-gray-300 leading-relaxed">
@@ -496,7 +504,7 @@ export default function MasqueradePage() {
               </p>
               
               <Link 
-                href="/events" 
+                href="/events/registration/masquerade" 
                 className="group relative inline-flex items-center justify-center gap-4 px-16 py-6 bg-transparent overflow-hidden rounded-full transition-all duration-300 hover:scale-105"
               >
                 <div className="absolute inset-0 w-full h-full bg-retro-gold opacity-80 group-hover:opacity-100 transition-opacity" />

@@ -373,6 +373,23 @@ export default function SoulbeatsRegistrationPage() {
               <p className="text-[#D2B997] text-lg font-depixel-body">
                 Dance Competition & Workshop
               </p>
+              <div className="mt-4 flex flex-wrap justify-center gap-2 text-xs">
+                <div className="inline-flex items-center gap-1.5 bg-[#A8D8EA]/10 border border-[#A8D8EA]/30 px-3 py-1.5 rounded-full">
+                  <Users className="w-3 h-3 text-[#A8D8EA]" />
+                  <span className="text-[#A8D8EA] font-depixel-small">X-Press: ₹150 / ₹70</span>
+                </div>
+                <div className="inline-flex items-center gap-1.5 bg-[#B8A7D9]/10 border border-[#B8A7D9]/30 px-3 py-1.5 rounded-full">
+                  <User className="w-3 h-3 text-[#B8A7D9]" />
+                  <span className="text-[#B8A7D9] font-depixel-small">Survival: ₹100 / ₹50</span>
+                </div>
+                <div className="inline-flex items-center gap-1.5 bg-[#F9A8D4]/10 border border-[#F9A8D4]/30 px-3 py-1.5 rounded-full">
+                  <GraduationCap className="w-3 h-3 text-[#F9A8D4]" />
+                  <span className="text-[#F9A8D4] font-depixel-small">Workshop: ₹130 / ₹60</span>
+                </div>
+              </div>
+              <p className="text-[#D2B997]/50 text-xs font-depixel-small mt-2">
+                External / IISER Kolkata pricing
+              </p>
             </div>
           </FadeIn>
 

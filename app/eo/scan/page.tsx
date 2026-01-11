@@ -23,16 +23,38 @@ import { Html5QrcodeScanner, Html5QrcodeScanType } from "html5-qrcode"
 
 interface Registration {
   id: string
+  // Team-based events (hoop-hustle, tt-doubles, smash7, nukkad-natak)
   team_name?: string
   team_leader_name?: string
   team_leader_email?: string
   team_leader_phone?: string
+  // Participant-based events (inquicon, tt-singles)
   participant_name?: string
   participant_email?: string
   participant_phone?: string
+  // Doubles/pairs events
   player1_name?: string
   player1_email?: string
   player1_phone?: string
+  // Direct field events (masquerade, soulbeats)
+  name?: string
+  email?: string
+  phone?: string
+  institution?: string
+  // Masquerade-specific
+  pass_type?: string
+  gender?: string
+  partner?: {
+    name: string
+    email: string
+    phone: string
+    institution: string
+    gender: string
+  } | null
+  // Multi-event specific (soulbeats, bullseye)
+  sub_events?: string[]
+  // Common fields
+  category?: string
   amount_paid?: number
   registration_status?: string
   checked_in: boolean
@@ -71,6 +93,10 @@ export default function EOScanPage() {
       qrbox: { width: 250, height: 250 },
       supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA],
       rememberLastUsedCamera: true,
+      // Prefer back camera (environment) for mobile devices
+      videoConstraints: {
+        facingMode: { ideal: "environment" },
+      },
     }
 
     scannerRef.current = new Html5QrcodeScanner("qr-reader", config, false)
@@ -194,24 +220,70 @@ export default function EOScanPage() {
     }
   }
 
-  const resetScan = () => {
+  const resetScan = (autoStartScanner: boolean = false) => {
     setScanStatus("idle")
     setMessage("")
     setScannedRegistration(null)
     setScannedId(null)
     setManualId("")
+    
+    // Auto-start scanner after a brief delay (allows DOM to update)
+    if (autoStartScanner) {
+      setTimeout(() => {
+        startScanner()
+      }, 100)
+    }
   }
 
   const getDisplayName = (reg: Registration) => {
-    return reg.team_leader_name || reg.participant_name || reg.player1_name || "N/A"
+    return reg.team_leader_name || reg.participant_name || reg.player1_name || reg.name || "N/A"
   }
 
   const getDisplayEmail = (reg: Registration) => {
-    return reg.team_leader_email || reg.participant_email || reg.player1_email || "N/A"
+    return reg.team_leader_email || reg.participant_email || reg.player1_email || reg.email || "N/A"
   }
 
   const getDisplayPhone = (reg: Registration) => {
-    return reg.team_leader_phone || reg.participant_phone || reg.player1_phone || "N/A"
+    return reg.team_leader_phone || reg.participant_phone || reg.player1_phone || reg.phone || "N/A"
+  }
+
+  const getDisplayInstitution = (reg: Registration) => {
+    return reg.institution || "N/A"
+  }
+
+  const getEventSpecificInfo = (reg: Registration) => {
+    // Build array of extra info to display based on event type
+    const info: { label: string; value: string }[] = []
+    
+    // Category (for TT singles/doubles)
+    if (reg.category) {
+      const categoryLabels: Record<string, string> = {
+        mens: "Men's",
+        womens: "Women's",
+        mixed: "Mixed",
+      }
+      info.push({ label: "Category", value: categoryLabels[reg.category] || reg.category })
+    }
+    
+    // Pass type and gender (for Masquerade)
+    if (reg.pass_type) {
+      const passLabel = reg.pass_type === 'couple' 
+        ? 'Couple Pass' 
+        : `Single Pass (${reg.gender === 'male' ? 'Male' : 'Female'})`
+      info.push({ label: "Pass Type", value: passLabel })
+    }
+    
+    // Partner info (for Masquerade couples)
+    if (reg.partner && reg.pass_type === 'couple') {
+      info.push({ label: "Partner", value: reg.partner.name })
+    }
+    
+    // Sub-events (for Soulbeats, Bullseye)
+    if (reg.sub_events && Array.isArray(reg.sub_events) && reg.sub_events.length > 0) {
+      info.push({ label: "Events", value: reg.sub_events.join(", ") })
+    }
+    
+    return info
   }
 
   return (
@@ -315,13 +387,28 @@ export default function EOScanPage() {
                       
                       <div className="flex justify-between">
                         <span className="text-[#D2B997]/60 text-sm">Email:</span>
-                        <span className="text-[#A8D8EA] font-depixel-small text-xs">{getDisplayEmail(scannedRegistration)}</span>
+                        <span className="text-[#A8D8EA] font-depixel-small text-xs break-all">{getDisplayEmail(scannedRegistration)}</span>
                       </div>
                       
                       <div className="flex justify-between">
                         <span className="text-[#D2B997]/60 text-sm">Phone:</span>
                         <span className="text-white font-depixel-small">{getDisplayPhone(scannedRegistration)}</span>
                       </div>
+
+                      {getDisplayInstitution(scannedRegistration) !== "N/A" && (
+                        <div className="flex justify-between">
+                          <span className="text-[#D2B997]/60 text-sm">Institution:</span>
+                          <span className="text-white font-depixel-small text-right max-w-[60%]">{getDisplayInstitution(scannedRegistration)}</span>
+                        </div>
+                      )}
+
+                      {/* Event-specific info (category, pass type, partner, etc.) */}
+                      {getEventSpecificInfo(scannedRegistration).map((info, index) => (
+                        <div key={index} className="flex justify-between">
+                          <span className="text-[#D2B997]/60 text-sm">{info.label}:</span>
+                          <span className="text-[#B8A7D9] font-depixel-small">{info.value}</span>
+                        </div>
+                      ))}
 
                       {scannedRegistration.amount_paid !== undefined && (
                         <div className="flex justify-between">
@@ -374,7 +461,7 @@ export default function EOScanPage() {
                     )}
                     
                     <Button
-                      onClick={resetScan}
+                      onClick={() => resetScan(scanStatus === "success" || scanStatus === "already-checked-in")}
                       variant={scanStatus === "scanned" && !scannedRegistration?.checked_in ? "outline" : "default"}
                       className={
                         scanStatus === "scanned" && !scannedRegistration?.checked_in
@@ -382,7 +469,8 @@ export default function EOScanPage() {
                           : "flex-1 bg-gradient-to-r from-[#A8D8EA] to-[#85C1E9] hover:from-[#7FB3D3] hover:to-[#6BB6FF] text-[#1A1A1A] font-depixel-body"
                       }
                     >
-                      {scanStatus === "success" || scanStatus === "already-checked-in" ? "Scan Another" : "Cancel"}
+                      <Camera className="w-5 h-5 mr-2" />
+                      {scanStatus === "success" || scanStatus === "already-checked-in" ? "Scan Next" : "Cancel"}
                     </Button>
                   </div>
                 </div>
