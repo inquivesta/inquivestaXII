@@ -219,8 +219,8 @@ export default function InquivestaLanding() {
             <Link href="#home" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
               Home
             </Link>
-            <Link href="/sponsors" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
-              Sponsors
+            <Link href="/accommodation" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
+              Accommodation
             </Link>
             <Link href="/events" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
               Events
@@ -252,8 +252,8 @@ export default function InquivestaLanding() {
               <Link href="#home" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
                 Home
               </Link>
-              <Link href="/sponsors" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
-                Sponsors
+              <Link href="/accommodation" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
+                Accommodation
               </Link>
               <Link href="/events" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
                 Events
