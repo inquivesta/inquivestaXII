@@ -73,7 +73,7 @@ interface SubEventInfo {
   name: string
   fee: number
   group_size?: number
-  members?: string[]
+  members?: (string | Record<string, unknown>)[]
 }
 
 export default function AdminDashboardPage() {
@@ -350,11 +350,29 @@ export default function AdminDashboardPage() {
                 <div className="mt-2 pl-3 border-l-2 border-[#A8D8EA]/30">
                   <p className="text-[#A8D8EA] text-xs font-depixel-small mb-1">Team Members:</p>
                   <ul className="space-y-1">
-                    {se.members.map((member, mIdx) => (
-                      <li key={mIdx} className="text-white text-sm font-depixel-small">
-                        {mIdx + 1}. {member}
-                      </li>
-                    ))}
+                    {se.members.map((member, mIdx) => {
+                      // Handle both string and object members
+                      let memberDisplay: string
+                      if (typeof member === 'string') {
+                        memberDisplay = member
+                      } else if (typeof member === 'object' && member !== null) {
+                        // Handle objects with name, college, etc.
+                        const memberObj = member as Record<string, unknown>
+                        const parts: string[] = []
+                        if (memberObj.name) parts.push(String(memberObj.name))
+                        if (memberObj.college) parts.push(`(${String(memberObj.college)})`)
+                        if (memberObj.email) parts.push(`- ${String(memberObj.email)}`)
+                        if (memberObj.phone) parts.push(`- ${String(memberObj.phone)}`)
+                        memberDisplay = parts.length > 0 ? parts.join(' ') : JSON.stringify(member)
+                      } else {
+                        memberDisplay = String(member)
+                      }
+                      return (
+                        <li key={mIdx} className="text-white text-sm font-depixel-small">
+                          {mIdx + 1}. {memberDisplay}
+                        </li>
+                      )
+                    })}
                   </ul>
                 </div>
               )}
@@ -794,16 +812,17 @@ export default function AdminDashboardPage() {
                                   {reg.institution && (
                                     <div className="space-y-1 col-span-2">
                                       <p className="text-[#D2B997]/60 text-xs uppercase">Institution</p>
-                                      <p className="text-white text-sm">{reg.institution}</p>
+                                      <p className="text-white text-sm">{typeof reg.institution === 'object' ? JSON.stringify(reg.institution) : String(reg.institution)}</p>
                                     </div>
                                   )}
                                   {reg.category && (
                                     <div className="space-y-1">
                                       <p className="text-[#D2B997]/60 text-xs uppercase">Category</p>
                                       <p className="text-[#B8A7D9] text-sm">
-                                        {reg.category === 'mens' ? "Men's" : 
+                                        {typeof reg.category === 'object' ? JSON.stringify(reg.category) :
+                                         reg.category === 'mens' ? "Men's" : 
                                          reg.category === 'womens' ? "Women's" : 
-                                         reg.category === 'mixed' ? "Mixed" : reg.category}
+                                         reg.category === 'mixed' ? "Mixed" : String(reg.category)}
                                       </p>
                                     </div>
                                   )}
@@ -835,12 +854,12 @@ export default function AdminDashboardPage() {
                                 </div>
 
                                 {/* Partner Info (Masquerade) */}
-                                {reg.partner && (
+                                {reg.partner && typeof reg.partner === 'object' && (
                                   <div className="space-y-1 p-3 bg-[#1A1A1A]/50 rounded-lg">
                                     <p className="text-[#D2B997]/60 text-xs uppercase">Partner</p>
-                                    <p className="text-white text-sm">{reg.partner.name}</p>
-                                    <p className="text-[#A8D8EA] text-xs">{reg.partner.email}</p>
-                                    <p className="text-white/60 text-xs">{reg.partner.phone}</p>
+                                    <p className="text-white text-sm">{String(reg.partner.name || '-')}</p>
+                                    <p className="text-[#A8D8EA] text-xs">{String(reg.partner.email || '-')}</p>
+                                    <p className="text-white/60 text-xs">{String(reg.partner.phone || '-')}</p>
                                   </div>
                                 )}
 
@@ -863,9 +882,24 @@ export default function AdminDashboardPage() {
                                   <div className="space-y-1">
                                     <p className="text-[#D2B997]/60 text-xs uppercase">Team Members</p>
                                     <div className="pl-2 border-l-2 border-[#A8D8EA]/30">
-                                      {reg.team_members.map((member: string, idx: number) => (
-                                        <p key={idx} className="text-white text-sm">{idx + 1}. {member}</p>
-                                      ))}
+                                      {reg.team_members.map((member: string | Record<string, unknown>, idx: number) => {
+                                        let memberDisplay: string
+                                        if (typeof member === 'string') {
+                                          memberDisplay = member
+                                        } else if (typeof member === 'object' && member !== null) {
+                                          const parts: string[] = []
+                                          if (member.name) parts.push(String(member.name))
+                                          if (member.college) parts.push(`(${String(member.college)})`)
+                                          if (member.email) parts.push(`- ${String(member.email)}`)
+                                          if (member.phone) parts.push(`- ${String(member.phone)}`)
+                                          memberDisplay = parts.length > 0 ? parts.join(' ') : JSON.stringify(member)
+                                        } else {
+                                          memberDisplay = String(member)
+                                        }
+                                        return (
+                                          <p key={idx} className="text-white text-sm">{idx + 1}. {memberDisplay}</p>
+                                        )
+                                      })}
                                     </div>
                                   </div>
                                 )}
