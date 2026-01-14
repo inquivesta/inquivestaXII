@@ -18,13 +18,13 @@ const EVENT_CONFIG = {
   subEvents: [
     {
       id: "x-press",
-      name: "X-Press (Group Dance)",
+      name: "X-Press",
       fee: 150,
       iiserkFee: 70,
       type: "team" as const,
-      minTeamSize: 2,
+      minTeamSize: 1,
       maxTeamSize: 10,
-      description: "Group dance competition with pre-rehearsed performances (3-8 mins)",
+      description: "Stage dance competition with pre-rehearsed performances (3-8 mins) - Solo, Duet, or Group",
       Icon: Users,
       requiresMembers: true
     },
@@ -540,7 +540,7 @@ export default function SoulbeatsRegistrationPage() {
                               <div className="mt-4 ml-7 space-y-4">
                                 <div className="flex items-center gap-4">
                                   <Label className="text-[#D2B997] font-depixel-small">
-                                    Group Size (including you):
+                                    Performance Type:
                                   </Label>
                                   <div className="flex items-center gap-2">
                                     <Button
@@ -548,21 +548,26 @@ export default function SoulbeatsRegistrationPage() {
                                       variant="outline"
                                       size="icon"
                                       className="h-8 w-8 border-[#D2B997]/50"
-                                      onClick={() => updateGroupSize(subEvent.id, (selection.groupSize || 2) - 1)}
-                                      disabled={(selection.groupSize || 2) <= subEvent.minTeamSize!}
+                                      onClick={() => updateGroupSize(subEvent.id, (selection.groupSize || 1) - 1)}
+                                      disabled={(selection.groupSize || 1) <= subEvent.minTeamSize!}
                                     >
                                       <Minus className="w-4 h-4" />
                                     </Button>
-                                    <span className="text-white font-futura w-8 text-center text-xl">
-                                      {selection.groupSize || subEvent.minTeamSize}
+                                    <span className="text-white font-futura w-16 text-center text-sm font-depixel-small">
+                                      {(() => {
+                                        const size = selection.groupSize || subEvent.minTeamSize
+                                        if (size === 1) return "Solo"
+                                        if (size === 2) return "Duet"
+                                        return `${size} Members`
+                                      })()}
                                     </span>
                                     <Button
                                       type="button"
                                       variant="outline"
                                       size="icon"
                                       className="h-8 w-8 border-[#D2B997]/50"
-                                      onClick={() => updateGroupSize(subEvent.id, (selection.groupSize || 2) + 1)}
-                                      disabled={(selection.groupSize || 2) >= subEvent.maxTeamSize!}
+                                      onClick={() => updateGroupSize(subEvent.id, (selection.groupSize || 1) + 1)}
+                                      disabled={(selection.groupSize || 1) >= subEvent.maxTeamSize!}
                                     >
                                       <Plus className="w-4 h-4" />
                                     </Button>
@@ -570,20 +575,22 @@ export default function SoulbeatsRegistrationPage() {
                                 </div>
 
                                 {/* Member names */}
-                                <div className="space-y-2">
-                                  <Label className="text-[#D2B997] font-depixel-small">
-                                    Team Member Names (other than you):
-                                  </Label>
-                                  {selection.members?.map((member, idx) => (
-                                    <Input
-                                      key={idx}
-                                      placeholder={`Member ${idx + 2} name`}
-                                      value={member}
-                                      onChange={(e) => updateMemberName(subEvent.id, idx, e.target.value)}
-                                      className="bg-[#1A1A1A]/50 border-[#D2B997]/30 text-white"
-                                    />
-                                  ))}
-                                </div>
+                                {(selection.groupSize || subEvent.minTeamSize) > 1 && (
+                                  <div className="space-y-2">
+                                    <Label className="text-[#D2B997] font-depixel-small">
+                                      Team Member Names (other than you):
+                                    </Label>
+                                    {selection.members?.map((member, idx) => (
+                                      <Input
+                                        key={idx}
+                                        placeholder={`Member ${idx + 2} name`}
+                                        value={member}
+                                        onChange={(e) => updateMemberName(subEvent.id, idx, e.target.value)}
+                                        className="bg-[#1A1A1A]/50 border-[#D2B997]/30 text-white"
+                                      />
+                                    ))}
+                                  </div>
+                                )}
                               </div>
                             )}
                           </div>

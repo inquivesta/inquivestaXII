@@ -45,6 +45,7 @@ interface Event {
   maxParticipants?: string
   duration: string
   teamSize: string // e.g., "3-4 members", "Individual", "1 member + 1 substitute"
+  ruleBook?: string // Optional link to rule book
 }
 
 const events: Event[] = [
@@ -63,6 +64,7 @@ const events: Event[] = [
     registrationLink: "/events/registration/beat-the-drop",
     socialLink: "#",
     maxParticipants: "Teams of 2-4 members",
+    ruleBook: "https://drive.google.com/file/d/1WorG1MSaC6hW_0vlexkSGsgikPcLE6eL/view?usp=sharing",
     duration: "5 hours",
     teamSize: "2-4 members",
   },
@@ -393,8 +395,8 @@ const events: Event[] = [
   {
     id: "table-tennis",
     name: "Table Tennis",
-    day: "Day 2 & 3",
-    date: "Feb 07-08, 2026",
+    day: "Day 2",
+    date: "Feb 07, 2026",
     time: "10:00 AM - 05:00 PM",
     description: "Compete in Men's Singles, Women's Singles, Men's Doubles, or Mixed Doubles in this exciting table tennis tournament.",
     detailedDescription: "Table Tennis at Inquivesta XII features multiple categories for all skill levels!\n\nCATEGORIES:\n• Men's Singles\n• Women's Singles\n• Men's Doubles\n• Mixed Doubles\n\nTOURNAMENT FORMAT:\n• Knockout rounds with best-of-3 sets format\n• Finals will be best-of-5 sets\n• Standard ITTF rules apply\n\nELIGIBILITY:\n• Open to students from IISER Kolkata, other colleges, and schools\n• Must register for specific category\n\nREGISTRATION FEE:\n• Singles: ₹100 (External) / ₹30 (IISER Kolkata)\n• Doubles: ₹200 per team (External) / ₹60 per team (IISER Kolkata)\n\nBring your paddles and compete for glory!",
@@ -405,7 +407,7 @@ const events: Event[] = [
     registrationLink: "/events/registration/table-tennis",
     socialLink: "#",
     maxParticipants: "#",
-    duration: "2 days",
+    duration: "1 day",
     teamSize: "Individual / Doubles"
   },
   {
@@ -762,6 +764,15 @@ export default function EventsPage() {
                               <h5 className="text-[#F4D03F] font-semibold mb-1 font-depixel-body">Prizes & Rewards</h5>
                               <p className="text-[#F8C471] font-depixel-small">{event.prizes}</p>
                             </div>
+
+                            {event.ruleBook && (
+                              <a href={event.ruleBook} target="_blank" rel="noopener noreferrer">
+                                <Button className="w-full bg-gradient-to-r from-[#B8A7D9] to-[#D2B997] hover:from-[#D2B997] hover:to-[#B8A7D9] text-[#1A1A1A] font-depixel-body">
+                                  <ExternalLink className="w-4 h-4 mr-2" />
+                                  View Rulebook
+                                </Button>
+                              </a>
+                            )}
 
                             <div className="flex gap-3 pt-4">
                               {event.registrationLink !== "#" ? (
