@@ -553,7 +553,7 @@ export default function SoulbeatsRegistrationPage() {
                                     >
                                       <Minus className="w-4 h-4" />
                                     </Button>
-                                    <span className="text-white font-futura w-16 text-center text-sm font-depixel-small">
+                                    <span className="text-white w-16 text-center text-sm font-depixel-small">
                                       {(() => {
                                         const size = selection.groupSize || subEvent.minTeamSize
                                         if (size === 1) return "Solo"
