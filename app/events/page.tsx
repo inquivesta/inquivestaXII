@@ -289,9 +289,9 @@ const events: Event[] = [
     name: "Masquerade",
     day: "Day 1",
     date: "Feb 06, 2026",
-    time: "06:00 PM - 08:30 PM",
-    description: "In 1912, love and dreams sank with the Titanic. But in 2025, the spirit rises again for one last night of magic.",
-    detailedDescription: "The year was 1912, when love, dreams and destiny were lost to the depths of the sea. Yet tonight, in 2025, the spirit of the Titanic calls again – summoning lovers, dreamers, and wanderers to one another night of magic before the world crumbled and the night fades away.\n\nThis masquerade is not just a ball, but a second chance – where the elegance of the past meets the daring glow of the future. This time, behind every hidden face is a yearning — for a reunion, or a first-time spark, for seekers who crave moments without judgement.\n\nA night where masks free us from the whispers of 'vo mahaule wali aunty dekhegi toh kya bolegi' — and only the magic of the moment remains. It's not about guts to get on the floor, its about whose elegance touch ZINGs you.\n\nBehind the mask lies a reunion or a new story to origin. No judgements, no boundaries – just style, mystery and a chance to live the night where even the cupid's grace blesses us all.",
+    time: "06:00 PM - 09:00 PM",
+    description: "It is New Year's Eve, 1969. Join us for a masquerade where love, mystery, and the end of everything join together under one starlit roof.",
+    detailedDescription: "It is New Year's Eve, 1969.\nThe world stands on the edge of a new age. An age of machines, intelligence, and electric dreams. Whispers of an AI uprising stir in the cold December air, the future buzzing beneath the neon lights — uncertain and alive.\n\nWithin the gold and rose lit floor, a romantic crowd gathers. Disco beats echo in the hall, champagne sparkles, and secrets shimmer behind satin masks. Every glance threatens to reveal. Confessions tremble on the edge of their tongues. Laughter mixes with the fear of what dawn might bring.\n\nWhen the clock strikes twelve, will you hold on or let go?\n\nJoin us for a masquerade where love, mystery, and the end of everything join together under one starlit roof.\nDress bold. Dance reckless. Tonight, the future begins.\n\nEVENT DETAILS:\n• Solo or Couple entries welcome\n• Dress Code: Formal attire with masks encouraged\n• Registration Fees:\n  - Couple Pass: ₹169\n  - Single Male Pass: ₹91\n  - Single Female Pass: ₹52\n• Venue: LHC Backyard\n• Duration: 3 hours\n• An evening of disco vibes, dance, and unforgettable moments\n\nBe Bold. Dance Bolder. Have Fun!",
     image: "/events/masquerade/masquerade.jpg",
     category: "Performance",
     venue: "LHC Backyard",
@@ -299,8 +299,8 @@ const events: Event[] = [
     registrationLink: "/events/registration/masquerade",
     socialLink: "#",
     maxParticipants: "#",
-    duration: "2.5 hours",
-    teamSize: "Individual"
+    duration: "3 hours",
+    teamSize: "Solo or Couple"
   },
   {
     id: "photon",
@@ -572,9 +572,6 @@ export default function EventsPage() {
                     <SelectItem value="Cultural Competition" className="text-white hover:bg-[#D2B997]/20 font-depixel-small">Cultural Competition</SelectItem>
                     <SelectItem value="Engineering Event" className="text-white hover:bg-[#D2B997]/20 font-depixel-small">Engineering Event</SelectItem>
                     <SelectItem value="Science Event" className="text-white hover:bg-[#D2B997]/20 font-depixel-small">Science Event</SelectItem>
-                    <SelectItem value="Workshop" className="text-white hover:bg-[#D2B997]/20 font-depixel-small">Workshop</SelectItem>
-                    <SelectItem value="Exhibition" className="text-white hover:bg-[#D2B997]/20 font-depixel-small">Exhibition</SelectItem>
-                    <SelectItem value="Talk" className="text-white hover:bg-[#D2B997]/20 font-depixel-small">Talk</SelectItem>
                     <SelectItem value="Performance" className="text-white hover:bg-[#D2B997]/20 font-depixel-small">Performance</SelectItem>
                     </SelectContent>
                 </Select>
