@@ -487,7 +487,7 @@ export default function BuyMerchPage() {
 
                   <div className="bg-[#F4D03F]/10 border border-[#F4D03F]/30 p-4 rounded-lg">
                     <p className="text-[#F4D03F] font-depixel-small text-sm">
-                      <span className="font-bold">Note:</span> One can only collect the merch while on campus. Anybody who is not on campus before the fest, must send someone to collect the merch during the fest.
+                      <span className="font-bold">Note:</span> Merch will be delivered on campus when shipments are received from the supplier.
                     </p>
                   </div>
 

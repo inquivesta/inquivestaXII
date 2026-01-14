@@ -313,7 +313,7 @@ export default function MerchPage() {
                           {currentItem.originalPrice}
                         </p>
                         <span className="bg-gradient-to-r from-[#F4D03F] to-[#e6b43d] text-black text-[10px] md:text-xs font-bold px-2 py-1 rounded-full font-depixel-small">
-                          NEW YEAR SALE
+                          PRE-FEST SALE
                         </span>
                       </div>
                       <p className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#e7b63d] font-futura leading-none">
