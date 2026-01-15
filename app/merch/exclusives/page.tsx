@@ -57,7 +57,7 @@ const merchItems: MerchItem[] = [
   },
   {
     id: 5,
-    name: "Exclusive Mug",
+    name: "Genius's mug",
     description: "Premium ceramic mug with custom design",
     price: "₹289",
     frontImage: "/merch/exclusive/mug.jpeg",
@@ -65,7 +65,7 @@ const merchItems: MerchItem[] = [
   },
   {
     id: 6,
-    name: "Alumni Cap",
+    name: "Inquisitive Cap",
     description: "Adjustable cap with embroidered design",
     price: "₹279",
     frontImage: "/merch/exclusive/cap.jpeg",
@@ -73,7 +73,7 @@ const merchItems: MerchItem[] = [
   },
   {
     id: 7,
-    name: "Coffee Sipper",
+    name: "Limitless Sipper",
     description: "Insulated stainless steel coffee mug",
     price: "₹549",
     frontImage: "/merch/exclusive/cofee_sipper.jpeg",
@@ -109,7 +109,7 @@ function ProductCard({ item, onExpandClick }: ProductCardProps) {
       {/* Card Container */}
       <div className="bg-gradient-to-br from-[#2a2a2a] to-[#1a1a1a] rounded-2xl overflow-hidden border border-[#D2B997]/30 hover:border-[#D2B997] transition-all duration-300 h-full flex flex-col shadow-lg hover:shadow-2xl group-hover:shadow-[#D2B997]/20">
         {/* Image Container */}
-        <div className="relative w-full aspect-square bg-black overflow-hidden">
+        <div className="relative w-full aspect-square bg-gradient-to-br from-[#404040] to-[#2a2a2a] overflow-hidden">
           {/* Front Image */}
           <div
             className={`absolute inset-0 transition-opacity duration-700 ${
@@ -334,7 +334,7 @@ function ExpandedProductView({ item, onClose }: ExpandedViewProps) {
             <p className="text-5xl font-bold text-[#e7b63d] mb-4 font-futura">
               {item.price}
             </p>
-            <Link href="/merch/buy">
+            <Link href="/merch/exclusives/buy">
               <Button className="w-full bg-gradient-to-r from-[#A8D8EA] to-[#85C1E9] hover:from-[#7FB3D3] hover:to-[#6BB6FF] text-[#1A1A1A] font-depixel-body px-6 py-4 text-lg shadow-lg hover:shadow-2xl transition-all hover:scale-105">
                 <ShoppingCart className="w-5 h-5 mr-2" />
                 Buy Now
@@ -373,11 +373,11 @@ export default function MerchExclusivesPage() {
         <FadeIn>
           {/* Title Section */}
           <div className="mb-12 text-center">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3 font-futura">
-              Exclusive Alumni Collection
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#D2B997] mb-3 font-futura">
+              Exclusive Merch Collection
             </h2>
             <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto font-depixel-small">
-              Premium merchandise featuring the IISER K emblem and Inquivesta insignia, perfect for alumni worldwide
+              Premium merchandise featuring the IISER K emblem and Inquivesta insignia! Now available for international delivery!!!
             </p>
           </div>
 
@@ -398,9 +398,9 @@ export default function MerchExclusivesPage() {
               About This Collection
             </h3>
             <p className="text-white/80 text-lg font-depixel-small leading-relaxed">
-              Our exclusive alumni merchandise is designed for those who want to carry a piece of IISER K and Inquivesta
+              Our exclusive merchandise is designed for those who want to carry a piece of IISER K and Inquivesta
               worldwide. Each item proudly features both the IISER K emblem and the Inquivesta insignia, celebrating the
-              spirit of inquiry and academic excellence. Available for international delivery to alumni across the globe.
+              spirit of inquiry and academic excellence. Available for international delivery.
             </p>
           </div>
         </FadeIn>
