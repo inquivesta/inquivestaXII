@@ -201,6 +201,16 @@ export default function MerchPage() {
           Size Chart
         </Button>
 
+        {/* Exclusives Button - Below Size Chart */}
+        <Link href="/merch/exclusives">
+          <Button
+            className="fixed top-36 md:top-[8.5rem] right-4 md:right-8 z-40 bg-gradient-to-r from-[#A8D8EA] to-[#85C1E9] hover:from-[#7FB3D3] hover:to-[#6BB6FF] text-[#1A1A1A] font-depixel-small px-3 py-2 md:px-4 md:py-3 text-xs md:text-sm shadow-lg hover:shadow-2xl transition-all hover:scale-105"
+          >
+            <Sparkles className="w-4 h-4 mr-1 md:mr-2" />
+            More Exclusive Merch!!!
+          </Button>
+        </Link>
+
         {/* Main Slide */}
         {isClient && (
           <div
