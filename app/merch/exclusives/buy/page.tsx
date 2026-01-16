@@ -29,7 +29,7 @@ const availableItems: Omit<MerchItem, 'quantity' | 'size'>[] = [
   { id: 4, code: "CF", name: "Caffeine Sweatshirt", price: 799, frontImage: "/merch/exclusive/coffee_back_mock.png", hasSize: true },
   { id: 5, code: "MG", name: "Genius's mug", price: 289, frontImage: "/merch/exclusive/mug.jpeg", hasSize: false },
   { id: 6, code: "CP", name: "Inquisitive Cap", price: 279, frontImage: "/merch/exclusive/cap.jpeg", hasSize: false },
-  { id: 7, code: "SP", name: "Limitless Sipper", price: 549, frontImage: "/merch/exclusive/cofee_sipper.jpeg", hasSize: false },
+  { id: 7, code: "SP", name: "Limitless Sipper", price: 549, frontImage: "/merch/exclusive/coffee_sipper.png", hasSize: false },
 ]
 
 const sizes = ["NA", "XS", "S", "M", "L", "XL", "XXL", "XXXL"]

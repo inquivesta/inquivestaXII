@@ -76,7 +76,7 @@ const merchItems: MerchItem[] = [
     name: "Limitless Sipper",
     description: "Insulated stainless steel coffee mug",
     price: "₹549",
-    frontImage: "/merch/exclusive/cofee_sipper.jpeg",
+    frontImage: "/merch/exclusive/coffee_sipper.png",
     features: ["Insulated", "Stainless Steel", "Leak Proof"],
   },
   {
