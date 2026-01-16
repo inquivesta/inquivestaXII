@@ -21,7 +21,7 @@ interface MerchItem {
 const merchItems: MerchItem[] = [
   {
     id: 1,
-    name: "Blast Off Alumni T-Shirt",
+    name: "Blast Off T-Shirt",
     description: "Featuring IISER K Emblem & Inquivesta Insignia",
     price: "₹599",
     frontImage: "/merch/1.png",
@@ -30,7 +30,7 @@ const merchItems: MerchItem[] = [
   },
   {
     id: 2,
-    name: "Circuitree Alumni T-Shirt",
+    name: "Circuitree T-Shirt",
     description: "Featuring IISER K Emblem & Inquivesta Insignia",
     price: "₹599",
     frontImage: "/merch/3.png",
@@ -39,7 +39,7 @@ const merchItems: MerchItem[] = [
   },
   {
     id: 3,
-    name: "Skyline Alumni Sweatshirt",
+    name: "Skyline Sweatshirt",
     description: "Featuring IISER K Emblem & Inquivesta Insignia",
     price: "₹799",
     frontImage: "/merch/exclusive/blue_back_mock.png",
@@ -48,7 +48,7 @@ const merchItems: MerchItem[] = [
   },
   {
     id: 4,
-    name: "Caffeine Alumni Sweatshirt",
+    name: "Caffeine Sweatshirt",
     description: "Featuring IISER K Emblem & Inquivesta Insignia",
     price: "₹799",
     frontImage: "/merch/exclusive/coffee_back_mock.png",

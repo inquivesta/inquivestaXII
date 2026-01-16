@@ -23,10 +23,10 @@ interface MerchItem {
 }
 
 const availableItems: Omit<MerchItem, 'quantity' | 'size'>[] = [
-  { id: 1, code: "BO", name: "Blast Off Alumni T-Shirt", price: 599, frontImage: "/merch/1.png", hasSize: true },
-  { id: 2, code: "CT", name: "Circuitree Alumni T-Shirt", price: 599, frontImage: "/merch/3.png", hasSize: true },
-  { id: 3, code: "SL", name: "Skyline Alumni Sweatshirt", price: 799, frontImage: "/merch/exclusive/blue_back_mock.png", hasSize: true },
-  { id: 4, code: "CF", name: "Caffeine Alumni Sweatshirt", price: 799, frontImage: "/merch/exclusive/coffee_back_mock.png", hasSize: true },
+  { id: 1, code: "BO", name: "Blast Off T-Shirt", price: 599, frontImage: "/merch/1.png", hasSize: true },
+  { id: 2, code: "CT", name: "Circuitree T-Shirt", price: 599, frontImage: "/merch/3.png", hasSize: true },
+  { id: 3, code: "SL", name: "Skyline Sweatshirt", price: 799, frontImage: "/merch/exclusive/blue_back_mock.png", hasSize: true },
+  { id: 4, code: "CF", name: "Caffeine Sweatshirt", price: 799, frontImage: "/merch/exclusive/coffee_back_mock.png", hasSize: true },
   { id: 5, code: "MG", name: "Genius's mug", price: 289, frontImage: "/merch/exclusive/mug.jpeg", hasSize: false },
   { id: 6, code: "CP", name: "Inquisitive Cap", price: 279, frontImage: "/merch/exclusive/cap.jpeg", hasSize: false },
   { id: 7, code: "SP", name: "Limitless Sipper", price: 549, frontImage: "/merch/exclusive/cofee_sipper.jpeg", hasSize: false },
