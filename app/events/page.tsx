@@ -183,7 +183,7 @@ const events: Event[] = [
     date: "Feb 06, 2026",
     time: "03:00 PM - 05:30 PM",
     description: "A stage play performed in open areas to spread awareness about social issues directly to the audience.",
-    detailedDescription: "Nukkad natak is a stage play which is performed by a group of participants in an open areas preferably a market place or on streets which helps in spreading awareness about a particular issue directly to the general audience.\n\nNukkad natak is generally performed by a group of skilled dramatists who are fluent in voice acting, choreography, screenplay, creative writing along with being able to write catchy slogans/dialogues which hits the audience like a truck. It's generally performed by a group of 10-15 people.\n\nIn IISER K and in general vicinity there is a very vibrant drama culture, so we expect this edition's nukkad natak to be a successful one.",
+    detailedDescription: "Nukkad natak is a stage play which is performed by a group of participants in an open areas preferably a market place or on streets which helps in spreading awareness about a particular issue directly to the general audience.\n\nNukkad natak is generally performed by a group of skilled dramatists who are fluent in voice acting, choreography, screenplay, creative writing along with being able to write catchy slogans/dialogues which hits the audience like a truck.\n\nIn IISER K and in general vicinity there is a very vibrant drama culture, so we expect this edition's nukkad natak to be a successful one.\n\n📋 RULES & REGULATIONS:\n\n1. Teams are expected to perform at an open-air venue, on a stage with an audience on 3 sides.\n\n2. The permitted team limit is 3-15 participants excluding 2 instrumentalists.\n\n3. Time limit shall be 15 minutes, exceeding which will lead to cut of marks.\n\n4. The play should be in Hindi/English.\n\n5. Usage of fire, water or smoke is not allowed. Any props, if used, must be cleared off by the participants after the performance within the time limit.\n\n6. Any instance of vulgarity or disturbing content of any order will lead to forceful halt of performance and immediate disqualification.\n\n7. Only live music is allowed. Teams will have to bring their own instruments.\n\n8. Gulaal or any props, if used, must be cleared off by the participants after their performance within the performance time allotted to them.\n\n🎯 JUDGING CRITERIA:\n• Content, theme and message (40 points)\n• Performance, Direction, gimmicks (40 points)\n• Interaction and improvisation (20 points)\n\n🚌 TRAVEL SERVICES:\nWe provide travel services with set routes for participant convenience. Pre-arranged transportation will be available for teams arriving from different locations. Details regarding pick-up points, routes, and schedules will be shared upon registration confirmation.",
     image: "/events/drama_events/drama_2.jpeg",
     category: "Performance",
     venue: "LHC Backyard",
@@ -192,7 +192,7 @@ const events: Event[] = [
     socialLink: "https://www.instagram.com/aarshi_iiserk/",
     maxParticipants: "#",
     duration: "3 hours",
-    teamSize: "5-15 members"
+    teamSize: "3-15 members + 2 instrumentalists"
   },
   {
     id: "headshot-bgmi",
