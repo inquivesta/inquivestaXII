@@ -67,8 +67,19 @@ export default function StallsPage() {
             </Card>
           </FadeIn>
 
-          {/* Pricing Card */}
+          {/* Register Your Stall Now Button */}
           <FadeIn delay={0.2}>
+            <div className="flex justify-center pt-8">
+              <Link href="/stalls/registration">
+                <Button className="bg-gradient-to-r from-[#A8D8EA] to-[#B8A7D9] hover:from-[#7FB3D3] hover:to-[#9A8BC4] text-[#1A1A1A] font-depixel-body px-12 py-7 text-lg">
+                  Register Your Stall Now
+                </Button>
+              </Link>
+            </div>
+          </FadeIn>
+
+          {/* Pricing Card */}
+          <FadeIn delay={0.3}>
             <Card className="bg-[#2A2A2A]/50 border-[#D2B997]/30">
               <CardHeader>
                 <CardTitle className="text-2xl text-[#D2B997] font-futura tracking-wide flex items-center gap-2">
@@ -128,7 +139,7 @@ export default function StallsPage() {
           </FadeIn>
 
           {/* What's Included */}
-          <FadeIn delay={0.3}>
+          <FadeIn delay={0.4}>
             <Card className="bg-[#2A2A2A]/50 border-[#D2B997]/30">
               <CardHeader>
                 <CardTitle className="text-2xl text-[#D2B997] font-futura tracking-wide">
@@ -162,7 +173,7 @@ export default function StallsPage() {
           </FadeIn>
 
           {/* Registration Details */}
-          <FadeIn delay={0.4}>
+          <FadeIn delay={0.5}>
             <Card className="bg-[#2A2A2A]/50 border-[#D2B997]/30">
               <CardHeader>
                 <CardTitle className="text-2xl text-[#D2B997] font-futura tracking-wide flex items-center gap-2">
@@ -205,7 +216,7 @@ export default function StallsPage() {
           </FadeIn>
 
           {/* Festival Dates */}
-          <FadeIn delay={0.5}>
+          <FadeIn delay={0.6}>
             <Card className="bg-gradient-to-r from-[#0f7c54] to-[#474154] border-[#D2B997]">
               <CardHeader>
                 <CardTitle className="text-2xl text-[#A8D8EA] font-futura tracking-wide flex items-center gap-2">
@@ -236,7 +247,7 @@ export default function StallsPage() {
           </FadeIn>
 
           {/* CTA Button */}
-          <FadeIn delay={0.6}>
+          <FadeIn delay={0.7}>
             <div className="flex justify-center pt-8">
               <Link href="/stalls/registration">
                 <Button className="bg-gradient-to-r from-[#A8D8EA] to-[#B8A7D9] hover:from-[#7FB3D3] hover:to-[#9A8BC4] text-[#1A1A1A] font-depixel-body px-12 py-7 text-lg">
@@ -247,7 +258,7 @@ export default function StallsPage() {
           </FadeIn>
 
           {/* FAQ Section */}
-          <FadeIn delay={0.7}>
+          <FadeIn delay={0.8}>
             <Card className="bg-[#2A2A2A]/50 border-[#D2B997]/30">
               <CardHeader>
                 <CardTitle className="text-2xl text-[#D2B997] font-futura tracking-wide">
@@ -294,7 +305,7 @@ export default function StallsPage() {
           </FadeIn>
 
           {/* Contact Info */}
-          <FadeIn delay={0.8}>
+          <FadeIn delay={0.9}>
             <Card className="bg-gradient-to-r from-[#141415] to-[#292530] border-[#D2B997]">
               <CardHeader>
                 <CardTitle className="text-2xl text-[#A8D8EA] font-futura tracking-wide">

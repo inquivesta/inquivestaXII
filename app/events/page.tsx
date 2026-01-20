@@ -50,6 +50,25 @@ interface Event {
 
 const events: Event[] = [
   {
+    id: "eureka-zurekaa",
+    name: "Eureka-Zurekaa",
+    day: "TBA",
+    date: "Jan 20 - Feb 6, 2026 (Submission) | Feb 08, 2026 (Award Ceremony)",
+    time: "Submission: Ongoing | Award Ceremony: TBD",
+    description: "An exciting academic research competition celebrating Scientific Research. Showcase publications and posters to gain expert feedback and connect with researchers.",
+    detailedDescription: "Eureka-Zurekaa is an exciting academic research competition that celebrates Scientific Research and recognizes outstanding researchers. It's the perfect platform to turn your scientific ideas into eye-catching posters, showcase publications, gain expert feedback, and connect with a professional network of researchers. Both the Best Publication Award and Best Poster Award competitions will be held online on Zurekaa's website. The submission period is from January 20, 2026, to February 6, 2026.\n\nCONTACT:\nAnamika (9122404968)\nAnshika (9799737303)\n\nEVENT DETAILS:\nEntire event is online with award ceremony at IISER Kolkata Campus (offline)\n\nAWARDS:\n• Best Publication Award\n• Best Poster Award\n\n📋 INSTRUCTIONS:\nhttps://drive.google.com/file/d/16Rq-QwsCSbBAY2sGndjrXkVumCXknwB8/view?usp=sharing",
+    image: "/events/zureka.png",
+    category: "Science Event",
+    venue: "Online (Award Ceremony: IISER Kolkata Campus)",
+    prizes: "Prize Pool: ₹56,000",
+    registrationLink: "https://www.zurekaa.com/",
+    ruleBook: "https://drive.google.com/file/d/16Rq-QwsCSbBAY2sGndjrXkVumCXknwB8/view?usp=sharing",
+    socialLink: "#",
+    maxParticipants: "Open",
+    duration: "Ongoing",
+    teamSize: "Individual / Small Teams",
+  },
+  {
     id: "beat-the-drop",
     name: "Beat the Drop",
     day: "Day 2",
