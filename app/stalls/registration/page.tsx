@@ -36,8 +36,8 @@ interface FormData {
 const GOOGLE_FORM_ID = "1FAIpQLSc6fAn8jBDvGZHodDi6CaApLcrT9u-mOEuv4YY6uDCcB_0zmw"
 
 const stallPricing = [
-  { location: "Lecture Hall Complex (LHC)", price: 1000, description: "₹1,000 per day" },
-  { location: "Open Air Stage Arena", price: 1500, description: "₹1,500 per day. Note: Non-food stalls are not preferred and OAS is not available on 6th Feb." },
+  { location: "Lecture Hall Complex (LHC)", price: 999, description: "₹999 per day" },
+  { location: "Open Air Stage Arena", price: 1499, description: "₹1,499 per day. Note: Non-food stalls are not preferred and OAS is not available on 6th Feb." },
 ]
 
 const days = [
@@ -101,7 +101,7 @@ export default function StallsRegistrationPage() {
     // Check if it's 2 days at Open Air Stage Arena for special offer
     const days = getNumberOfDays()
     if (location.location === "Open Air Stage Arena" && days === 2) {
-      return 2900
+      return 2859
     }
 
     // Regular pricing
@@ -194,8 +194,9 @@ export default function StallsRegistrationPage() {
         formDataToSubmit.append("entry.723848085", day)
       })
 
-      // Payment - QR number and UTR
+      // Payment - QR number, amount paid, and UTR
       formDataToSubmit.append("entry.400901891", `QR ${selectedQR}`)
+      formDataToSubmit.append("entry.1359768598", formData.amountPaid)
       formDataToSubmit.append("entry.604879631", formData.utrNumber)
 
       // Submit form using fetch with no-cors mode
@@ -372,9 +373,9 @@ export default function StallsRegistrationPage() {
                       <span className="font-bold">🏪 Stall Locations & Pricing:</span>
                     </p>
                     <ul className="space-y-2 ml-4">
-                      <li>✓ LHC - ₹1,000 per day</li>
-                      <li>✓ Open Air Stage Arena - ₹1,500 per day</li>
-                      <li>✓ <span className="text-[#F4D03F]">SPECIAL OFFER</span>: 2-day stall at Open Air Stage Arena - ₹2,900</li>
+                      <li>✓ LHC - ₹999 per day</li>
+                      <li>✓ Open Air Stage Arena - ₹1,499 per day</li>
+                      <li>✓ <span className="text-[#F4D03F]">SPECIAL OFFER</span>: 2-day stall at Open Air Stage Arena - ₹2,859</li>
                     </ul>
                     <p className="text-[#D2B997]/80 text-xs mt-4">
                       ⚠️ Limited capacity available on a first-come-first-serve basis. Entire payment must be made in advance.

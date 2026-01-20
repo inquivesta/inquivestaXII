@@ -759,7 +759,7 @@ export default function InquivestaLanding() {
             </button>
 
             {/* Popup Content */}
-            <Link href="/merch" onClick={() => setShowMerchPopup(false)} className="block">
+            <Link href="/merch/exclusives" onClick={() => setShowMerchPopup(false)} className="block">
               <div className="p-4 text-center">
                 <h3 className="text-2xl md:text-3xl font-bold text-[#F4D03F] font-futura animate-pulse">
                   Exclusive Merch Available! 
