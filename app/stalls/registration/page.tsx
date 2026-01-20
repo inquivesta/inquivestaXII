@@ -37,7 +37,7 @@ const GOOGLE_FORM_ID = "1FAIpQLSc6fAn8jBDvGZHodDi6CaApLcrT9u-mOEuv4YY6uDCcB_0zmw
 
 const stallPricing = [
   { location: "Lecture Hall Complex (LHC)", price: 1000, description: "₹1,000 per day" },
-  { location: "Open Air Stage Arena", price: 1500, description: "₹1,500 per day (Non-food stalls not preferred)" },
+  { location: "Open Air Stage Arena", price: 1500, description: "₹1,500 per day. Note: Non-food stalls are not preferred and OAS is not available on 6th Feb." },
 ]
 
 const days = [
