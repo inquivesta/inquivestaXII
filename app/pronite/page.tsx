@@ -35,7 +35,7 @@ const RetroRetrofuturisticCRT = ({ children, title, subtitle }: { children: Reac
                 <div className="absolute inset-0 w-full h-full opacity-[0.25] bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.4)_50%)] bg-[length:100%_3px]" />
                 
                 {/* RGB Phosphor Mask */}
-                <div className="absolute inset-0 opacity-[0.05] bg-[linear-gradient(90deg,rgba(255,0,0,0.5),rgba(0,255,0,0.5),rgba(0,0,255,0.5))] bg-[length:3px_100%]" />
+                <div className="absolute inset-0 opacity-[0.15] bg-[linear-gradient(90deg,rgba(255,0,0,0.5),rgba(0,255,0,0.5),rgba(0,0,255,0.5))] bg-[length:3px_100%]" />
                 
                 {/* Heavy Vignette for Depth */}
                 <div className="absolute inset-0 bg-[radial-gradient(circle,rgba(0,0,0,0)_40%,rgba(0,0,0,0.9)_110%)]" />
@@ -73,10 +73,10 @@ const RetroRetrofuturisticCRT = ({ children, title, subtitle }: { children: Reac
         </div>
 
         {/* Branding Footer */}
-        <div className="mt-6 flex justify-between items-end border-t border-zinc-800/50 pt-4">
+        <div className="mt-6 flex justify-between items-end border-t border-[#D2B997]/30 pt-4">
           <div className="font-mono">
-            <h3 className="text-cyan-500 text-lg uppercase tracking-widest leading-none">{title}</h3>
-            <p className="text-pink-600 text-[10px] uppercase font-bold tracking-[0.3em]">{subtitle}</p>
+            <h3 className="text-[#A8D8EA] text-lg uppercase tracking-widest leading-none">{title}</h3>
+            <p className="text-[#D2B997] text-[10px] uppercase font-bold tracking-[0.3em]">{subtitle}</p>
           </div>
           <div className="text-[10px] text-zinc-700 font-mono italic">
             MODULAR_DISPLAY_V0.12
@@ -101,27 +101,27 @@ const ArtistCard = ({ name, date, image, songs, socials, bio }: { name: string; 
           <img 
             src={image} 
             alt={name} 
-            className="w-full h-full object-cover grayscale brightness-90 sepia-[0.2] contrast-[1.1]"
+            className="w-full h-full object-cover brightness-100 contrast-[1.1]"
           />
         </RetroRetrofuturisticCRT>
       </div>
       
       <div className="w-full xl:w-1/3 space-y-6">
-        <div className="inline-flex items-center gap-2 px-3 py-1 bg-pink-500/10 text-pink-500 text-xs font-mono rounded-full border border-pink-500/20">
+        <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#D2B997]/10 text-[#D2B997] text-xs font-mono rounded-full border border-[#D2B997]/30">
           <Radio size={12} className="animate-pulse" /> LIVE AT INQUIVETSA XII
         </div>
         <h2 className="text-5xl font-black text-white tracking-tighter uppercase italic">{name}</h2>
-        <p className="text-zinc-400 text-sm leading-relaxed border-l-2 border-cyan-500/30 pl-4 font-depixel-small">
+        <p className="text-[#B8A7D9] text-sm leading-relaxed border-l-2 border-[#D2B997]/30 pl-4 font-depixel-small">
           {bio}
         </p>
         
-        <div className="space-y-3 bg-zinc-900/50 p-6 rounded-2xl border border-white/5">
-          <p className="text-[10px] font-bold text-cyan-400 uppercase tracking-[0.3em] font-depixel-small">Popular Picks</p>
+        <div className="space-y-3 bg-[#2A2A2A]/50 p-6 rounded-2xl border border-[#D2B997]/10">
+          <p className="text-[10px] font-bold text-[#A8D8EA] uppercase tracking-[0.3em] font-depixel-small">Popular Picks</p>
           <ul className="space-y-3">
             {songs.map((song, i) => (
-              <li key={i} className="flex items-center text-zinc-300 text-sm group cursor-default font-depixel-small">
-                <span className="mr-3 text-zinc-600 text-[10px]">0{i+1}</span>
-                <span className="group-hover:text-cyan-400 transition-colors">{song}</span>
+              <li key={i} className="flex items-center text-[#B8A7D9] text-sm group cursor-default font-depixel-small">
+                <span className="mr-3 text-[#D2B997]/50 text-[10px]">0{i+1}</span>
+                <span className="group-hover:text-[#A8D8EA] transition-colors">{song}</span>
               </li>
             ))}
           </ul>
@@ -130,12 +130,12 @@ const ArtistCard = ({ name, date, image, songs, socials, bio }: { name: string; 
         <div className="flex items-center gap-6 pt-4">
           <div className="flex gap-4">
             {socials.instagram && (
-              <a href={socials.instagram} target="_blank" rel="noreferrer" className="w-10 h-10 flex items-center justify-center rounded-full bg-zinc-900 border border-white/10 text-zinc-400 hover:text-pink-500 hover:border-pink-500/50 transition-all">
+              <a href={socials.instagram} target="_blank" rel="noreferrer" className="w-10 h-10 flex items-center justify-center rounded-full bg-[#2A2A2A] border border-[#D2B997]/20 text-[#B8A7D9] hover:text-[#D2B997] hover:border-[#D2B997]/50 transition-all">
                 <Instagram size={18} />
               </a>
             )}
             {socials.youtube && (
-              <a href={socials.youtube} target="_blank" rel="noreferrer" className="w-10 h-10 flex items-center justify-center rounded-full bg-zinc-900 border border-white/10 text-zinc-400 hover:text-red-500 hover:border-red-500/50 transition-all">
+              <a href={socials.youtube} target="_blank" rel="noreferrer" className="w-10 h-10 flex items-center justify-center rounded-full bg-[#2A2A2A] border border-[#D2B997]/20 text-[#B8A7D9] hover:text-[#A8D8EA] hover:border-[#A8D8EA]/50 transition-all">
                 <Youtube size={18} />
               </a>
             )}
@@ -156,7 +156,7 @@ export default function PronitePage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-black text-white font-sans selection:bg-cyan-500 selection:text-black">
+    <div className="min-h-screen bg-[#1A1A1A] text-white font-sans selection:bg-[#A8D8EA] selection:text-[#1A1A1A]">
       {/* Global Animations */}
       <style>{`
         @keyframes flicker {
@@ -207,10 +207,10 @@ export default function PronitePage() {
       </header>
 
       {/* Hero Header */}
-      <section className="relative pt-48 pb-32 px-8 overflow-hidden min-h-screen flex flex-col justify-center">
+      <section className="relative pt-48 pb-24 px-8 overflow-hidden min-h-screen flex flex-col justify-center">
         {/* Background Image */}
         <div 
-          className="absolute inset-0 z-0 blur-sm"
+          className="absolute inset-0 z-0 blur-[2px]"
           style={{
             backgroundImage: 'url(/pronite/background.jpg)',
             backgroundSize: 'cover',
@@ -219,15 +219,15 @@ export default function PronitePage() {
           }}
         />
         {/* Dark gradient overlay for readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black z-0" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1A1A1A]/80 via-[#1A1A1A]/60 to-[#1A1A1A] z-0" />
         <div className="retro-grid-floor" />
         <div className="max-w-7xl mx-auto w-full relative z-10">
           <div className="flex items-center gap-4 mb-6">
-            <div className="w-12 h-[1px] bg-cyan-500" />
-            <span className="text-cyan-500 font-mono text-xs uppercase tracking-[0.5em]">Live AT INQUIVESTA XII</span>
+            <div className="w-12 h-[1px] bg-[#e3b87c]" />
+            <span className="text-[#e3b87c] font-mono text-xs uppercase tracking-[0.5em]">Live Transmission</span>
           </div>
           <h1 className="text-7xl md:text-[12rem] font-black italic uppercase leading-none tracking-tighter text-white mb-8">
-            PRONITE<span className="text-cyan-500">.</span>
+            PRONITE<span className="text-[#e3b87c]">."</span>
           </h1>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
             <p className="max-w-xl text-zinc-500 text-sm leading-relaxed uppercase tracking-wider font-depixel-small">
@@ -242,39 +242,39 @@ export default function PronitePage() {
       </section>
 
       {/* Lineup Section */}
-      <section className="py-32 px-8 bg-black relative z-10">
+      <section className="py-16 px-8 bg-[#1A1A1A] relative z-10">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col items-center mb-20">
             <h2 className="text-4xl md:text-6xl font-black italic uppercase tracking-tighter">The Headliners</h2>
           </div>
-
+          
           {/* Day 1 */}
           <div className="mb-8">
             <div className="flex items-center gap-4 mb-8">
-              <div className="w-12 h-[1px] bg-cyan-500" />
-              <span className="text-cyan-500 font-mono text-sm uppercase tracking-[0.3em]">Day 1 [Feb 7th]</span>
+              <div className="w-12 h-[1px] bg-[#A8D8EA]" />
+              <span className="text-[#A8D8EA] font-mono text-sm uppercase tracking-[0.3em]">Day 1 [Feb 7th]</span>
             </div>
           </div>
 
           <ArtistCard 
             name="Monali Thakur"
             date="February 7, 2026"
-            image="/pronite/artist_1.jpeg"
+            image="/pronite/artist_2.jpeg"
             bio="Commanding the stage on Night 1, National Award winner Monali Thakur brings her signature blend of vocal precision and infectious energy. Expect a setlist that traverses the depths of Bollywood soul and the peaks of modern pop."
             songs={["Sawaar Loon", "Moh Moh Ke Dhaage", "Cham Cham", "Badri Ki Dulhania"]}
             socials={{
               instagram: "https://www.instagram.com/monalithakur03",
-              youtube: "https://www.youtube.com/c/MonaliThakur"
+              youtube: "https://www.youtube.com/channel/UC5UhoMDm--gaSN2vRY606kg"
             }}
           />
 
-          <div className="h-px w-full bg-gradient-to-r from-transparent via-zinc-800 to-transparent my-20" />
+          {/* <div className="h-px w-full bg-gradient-to-r from-transparent via-[#D2B997]/30 to-transparent my-20" /> */}
 
           {/* Day 2 */}
-          <div className="mb-8">
+          {/* <div className="mb-8">
             <div className="flex items-center gap-4 mb-8">
-              <div className="w-12 h-[1px] bg-cyan-500" />
-              <span className="text-cyan-500 font-mono text-sm uppercase tracking-[0.3em]">Day 2 [Feb 8th]</span>
+              <div className="w-12 h-[1px] bg-[#A8D8EA]" />
+              <span className="text-[#A8D8EA] font-mono text-sm uppercase tracking-[0.3em]">Day 2 [Feb 8th]</span>
             </div>
           </div>
 
@@ -288,36 +288,36 @@ export default function PronitePage() {
               instagram: "https://www.instagram.com/nikhildsouzamusic",
               youtube: "https://www.youtube.com/nikhildsouza81"
             }}
-          />
+          /> */}
         </div>
       </section>
 
       {/* Access & Logistics */}
-      <section className="py-32 px-8 relative bg-zinc-950">
+      <section className="py-32 px-8 relative bg-[#2A2A2A]">
         <div className="max-w-4xl mx-auto">
           <div className="space-y-12">
             <div>
-              <h3 className="text-4xl font-black italic uppercase tracking-tighter mb-8">Protocol</h3>
+              <h3 className="text-4xl font-black italic uppercase tracking-tighter mb-8 text-[#D2B997]">Protocol</h3>
               <div className="space-y-8">
                 <div className="flex gap-6">
-                  <div className="flex-shrink-0 w-12 h-12 bg-zinc-900 border border-white/10 rounded-xl flex items-center justify-center text-cyan-500 font-mono font-bold">01</div>
+                  <div className="flex-shrink-0 w-12 h-12 bg-[#1A1A1A] border border-[#D2B997]/30 rounded-xl flex items-center justify-center text-[#A8D8EA] font-mono font-bold">01</div>
                   <div className="space-y-2">
-                    <h4 className="font-bold uppercase text-xs tracking-widest">Mandatory Credentials</h4>
-                    <p className="text-xs text-zinc-500 leading-relaxed uppercase font-depixel-small">Entry into IISER Kolkata campus requires a physical or digital Day Pass. No exceptions.</p>
+                    <h4 className="font-bold uppercase text-xs tracking-widest text-[#D2B997]">Mandatory Credentials</h4>
+                    <p className="text-xs text-[#B8A7D9] leading-relaxed uppercase font-depixel-small">Entry into IISER Kolkata campus requires a physical or digital Day Pass. No exceptions.</p>
                   </div>
                 </div>
                 <div className="flex gap-6">
-                  <div className="flex-shrink-0 w-12 h-12 bg-zinc-900 border border-white/10 rounded-xl flex items-center justify-center text-cyan-500 font-mono font-bold">02</div>
+                  <div className="flex-shrink-0 w-12 h-12 bg-[#1A1A1A] border border-[#D2B997]/30 rounded-xl flex items-center justify-center text-[#A8D8EA] font-mono font-bold">02</div>
                   <div className="space-y-2">
-                    <h4 className="font-bold uppercase text-xs tracking-widest">Synchronization (Time)</h4>
-                    <p className="text-xs text-zinc-500 leading-relaxed uppercase font-depixel-small">Entry opens at <span className="text-white">18:00</span>, and closes at <span className="text-white">19:00</span>. Ensure early arrival.</p>
+                    <h4 className="font-bold uppercase text-xs tracking-widest text-[#D2B997]">Synchronization (Time)</h4>
+                    <p className="text-xs text-[#B8A7D9] leading-relaxed uppercase font-depixel-small">Entry opens at <span className="text-[#D2B997]">18:00</span>, and closes at <span className="text-[#D2B997]">19:00</span>. Ensure early arrival.</p>
                   </div>
                 </div>
                 <div className="flex gap-6">
-                  <div className="flex-shrink-0 w-12 h-12 bg-zinc-900 border border-white/10 rounded-xl flex items-center justify-center text-cyan-500 font-mono font-bold">03</div>
+                  <div className="flex-shrink-0 w-12 h-12 bg-[#1A1A1A] border border-[#D2B997]/30 rounded-xl flex items-center justify-center text-[#A8D8EA] font-mono font-bold">03</div>
                   <div className="space-y-2">
-                    <h4 className="font-bold uppercase text-xs tracking-widest">Integrity Check</h4>
-                    <p className="text-xs text-zinc-500 leading-relaxed uppercase font-depixel-small">A government-issued/Institute photo ID must match the name on your digital access token.</p>
+                    <h4 className="font-bold uppercase text-xs tracking-widest text-[#D2B997]">Integrity Check</h4>
+                    <p className="text-xs text-[#B8A7D9] leading-relaxed uppercase font-depixel-small">A government-issued/Institute photo ID must match the name on your digital access token.</p>
                   </div>
                 </div>
               </div>
@@ -327,16 +327,16 @@ export default function PronitePage() {
       </section>
 
       {/* Location Section */}
-      <section className="py-32 px-8 relative bg-black">
+      <section className="py-32 px-8 relative bg-[#1A1A1A]">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col items-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-black italic uppercase tracking-tighter mb-4">Location</h2>
-            <p className="text-cyan-500 font-mono text-sm uppercase tracking-[0.3em]">Open Air Stage</p>
+            <h2 className="text-4xl md:text-6xl font-black italic uppercase tracking-tighter mb-4 text-white">Location</h2>
+            <p className="text-[#A8D8EA] font-mono text-sm uppercase tracking-[0.3em]">Open Air Stage</p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Map */}
-            <div className="w-full h-[400px] rounded-2xl overflow-hidden border border-zinc-800">
+            <div className="w-full h-[400px] rounded-2xl overflow-hidden border border-[#D2B997]/30">
               <iframe 
                 className="w-full h-full"
                 frameBorder="0" 
@@ -350,38 +350,38 @@ export default function PronitePage() {
             {/* Venue Details */}
             <div className="space-y-8">
               <div>
-                <h3 className="text-2xl font-black italic uppercase tracking-tighter mb-4">Venue Details</h3>
+                <h3 className="text-2xl font-black italic uppercase tracking-tighter mb-4 text-[#D2B997]">Venue Details</h3>
                 <div className="space-y-4">
                   <div className="flex gap-4 items-start">
-                    <div className="flex-shrink-0 w-10 h-10 bg-zinc-900 border border-white/10 rounded-lg flex items-center justify-center text-cyan-500">
+                    <div className="flex-shrink-0 w-10 h-10 bg-[#2A2A2A] border border-[#D2B997]/30 rounded-lg flex items-center justify-center text-[#A8D8EA]">
                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
                     </div>
                     <div>
-                      <h4 className="font-bold uppercase text-sm tracking-widest text-white">Open Air Stage</h4>
-                      <p className="text-zinc-400 text-sm font-depixel-small">IISER Kolkata</p>
-                      <p className="text-zinc-500 text-xs font-depixel-small">Mohanpur, West Bengal 741246</p>
+                      <h4 className="font-bold uppercase text-sm tracking-widest text-[#D2B997]">Open Air Stage</h4>
+                      <p className="text-[#B8A7D9] text-sm font-depixel-small">IISER Kolkata</p>
+                      <p className="text-[#A8D8EA] text-xs font-depixel-small">Mohanpur, West Bengal 741246</p>
                     </div>
                   </div>
 
                   <div className="flex gap-4 items-start">
-                    <div className="flex-shrink-0 w-10 h-10 bg-zinc-900 border border-white/10 rounded-lg flex items-center justify-center text-cyan-500">
+                    <div className="flex-shrink-0 w-10 h-10 bg-[#2A2A2A] border border-[#D2B997]/30 rounded-lg flex items-center justify-center text-[#A8D8EA]">
                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                     </div>
                     <div>
-                      <h4 className="font-bold uppercase text-sm tracking-widest text-white">Event Timing</h4>
-                      <p className="text-zinc-400 text-sm font-depixel-small">Gates Open: 6:00 PM</p>
-                      <p className="text-zinc-500 text-xs font-depixel-small">Show Starts: 7:00 PM</p>
+                      <h4 className="font-bold uppercase text-sm tracking-widest text-[#D2B997]">Event Timing</h4>
+                      <p className="text-[#B8A7D9] text-sm font-depixel-small">Gates Open: 6:00 PM</p>
+                      <p className="text-[#A8D8EA] text-xs font-depixel-small">Show Starts: 7:00 PM</p>
                     </div>
                   </div>
 
                   <div className="flex gap-4 items-start">
-                    <div className="flex-shrink-0 w-10 h-10 bg-zinc-900 border border-white/10 rounded-lg flex items-center justify-center text-cyan-500">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+                    <div className="flex-shrink-0 w-10 h-10 bg-[#2A2A2A] border border-[#D2B997]/30 rounded-lg flex items-center justify-center text-[#A8D8EA]">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y2="10"/></svg>
                     </div>
                     <div>
-                      <h4 className="font-bold uppercase text-sm tracking-widest text-white">Dates</h4>
-                      <p className="text-zinc-400 text-sm font-depixel-small">February 7-8, 2026</p>
-                      <p className="text-zinc-500 text-xs font-depixel-small">Two nights of live music</p>
+                      <h4 className="font-bold uppercase text-sm tracking-widest text-[#D2B997]">Dates</h4>
+                      <p className="text-[#B8A7D9] text-sm font-depixel-small">February 7-8, 2026</p>
+                      <p className="text-[#A8D8EA] text-xs font-depixel-small">Two nights of live music</p>
                     </div>
                   </div>
                 </div>

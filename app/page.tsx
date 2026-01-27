@@ -217,7 +217,7 @@ export default function InquivestaLanding() {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8 pr-4">
             <Link href="#home" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
-              Home
+              Day Passes
             </Link>
             <Link href="/accommodation" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
               Accommodation
@@ -225,7 +225,7 @@ export default function InquivestaLanding() {
             <Link href="/events" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
               Events
             </Link>
-            <Link href="/coming_soon" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
+            <Link href="/pronite" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
               Pronite
             </Link>
             <Link href="/merch" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
@@ -250,7 +250,7 @@ export default function InquivestaLanding() {
           <div className="md:hidden bg-[#1A1A1A]/95 backdrop-blur-md border-t border-[#D2B997]/30">
             <nav className="container mx-auto px-4 py-4 flex flex-col space-y-4">
               <Link href="#home" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
-                Home
+                Day Passes
               </Link>
               <Link href="/accommodation" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
                 Accommodation
@@ -258,7 +258,7 @@ export default function InquivestaLanding() {
               <Link href="/events" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
                 Events
               </Link>
-              <Link href="/coming_soon" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
+              <Link href="/pronite" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
                 Pronite
               </Link>
               <Link href="/merch" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
@@ -350,17 +350,17 @@ export default function InquivestaLanding() {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/events">
+            <Link href="/coming_soon">
               <Button className="bg-gradient-to-r from-[#A8D8EA] to-[#85C1E9] hover:from-[#7FB3D3] hover:to-[#6BB6FF] text-[#1A1A1A] font-depixel-body px-8 py-3">
-                Register Now
+                Get Day Passes!
               </Button>
             </Link>
-            <Link href="#about">
+            <Link href="/events">
               <Button
                 variant="outline"
-                className="border-[#D2B997] text-[#D2B997] hover:bg-[#D2B997]/10 font-depixel-body px-8 py-3 bg-transparent"
+                className="border-[#D2B997] text-[#D2B997] hover:bg-[#D2B997]/10 font-depixel-body px-8 py-3 bg-translucent"
               >
-                Learn More
+                Register Now
               </Button>
             </Link>
           </div>
