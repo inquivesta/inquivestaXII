@@ -740,7 +740,7 @@ export default function InquivestaLanding() {
               Designed with ❤️ by team inquivesta!
             </p>
             <p className="text-[#D2B997] text-sm font-depixel-small">
-              © 2025 INQUIVESTA XII - IISER Kolkata. All rights reserved.
+              © 2026 INQUIVESTA XII - IISER Kolkata. All rights reserved.
             </p>
           </div>
         </div>
