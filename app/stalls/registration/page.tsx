@@ -37,7 +37,7 @@ const GOOGLE_FORM_ID = "1FAIpQLSc6fAn8jBDvGZHodDi6CaApLcrT9u-mOEuv4YY6uDCcB_0zmw
 
 const stallPricing = [
   { location: "Lecture Hall Complex (LHC)", price: 999, description: "₹999 per day" },
-  { location: "Open Air Stage Arena", price: 1499, description: "₹1,499 per day. Note: Non-food stalls are not preferred and OAS is not available on 6th Feb." },
+  { location: "Open Air Stage Arena", price: 1250, description: "<span class='line-through'>₹1,499</span> ₹1,250 per day. Note: Non-food stalls are not preferred and OAS is not available on 6th Feb." },
 ]
 
 const days = [
@@ -101,7 +101,7 @@ export default function StallsRegistrationPage() {
     // Check if it's 2 days at Open Air Stage Arena for special offer
     const days = getNumberOfDays()
     if (location.location === "Open Air Stage Arena" && days === 2) {
-      return 2859
+      return 2400
     }
 
     // Regular pricing
@@ -374,8 +374,8 @@ export default function StallsRegistrationPage() {
                     </p>
                     <ul className="space-y-2 ml-4">
                       <li>✓ LHC - ₹999 per day</li>
-                      <li>✓ Open Air Stage Arena - ₹1,499 per day</li>
-                      <li>✓ <span className="text-[#F4D03F]">SPECIAL OFFER</span>: 2-day stall at Open Air Stage Arena - ₹2,859</li>
+                      <li>✓ Open Air Stage Arena - <span className="line-through">₹1,499</span> ₹1,250 per day</li>
+                      <li>✓ <span className="text-[#F4D03F]">SPECIAL OFFER</span>: 2-day stall at Open Air Stage Arena - <span className="line-through">₹2,859</span> ₹2,400</li>
                     </ul>
                     <p className="text-[#D2B997]/80 text-xs mt-4">
                       ⚠️ Limited capacity available on a first-come-first-serve basis. Entire payment must be made in advance.

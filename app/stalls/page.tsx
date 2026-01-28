@@ -92,18 +92,16 @@ export default function StallsPage() {
                   {/* Regular Pricing */}
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="bg-[#1A1A1A]/50 p-6 rounded-lg border border-[#D2B997]/30 hover:border-[#D2B997]/60 transition-colors">
-                      <h3 className="text-[#A8D8EA] font-depixel-body text-lg mb-2">LHC (Lecture Hall Complex)</h3>
-                      <p className="text-[#F4D03F] font-futura text-3xl mb-3">₹999 <span className="text-lg text-[#D2B997]">/day</span></p>
-                      <p className="text-[#D2B997]/80 font-depixel-small text-sm">
-                        Stall space in the main lecture hall complex area. Perfect for products, crafts, and services.
+                      <p className="text-[#D2B997] font-depixel-small text-sm">Lecture Hall Complex (LHC)</p>
+                      <p className="text-[#F4D03F] font-futura text-3xl">
+                        ₹999/day
                       </p>
                     </div>
 
                     <div className="bg-[#1A1A1A]/50 p-6 rounded-lg border border-[#D2B997]/30 hover:border-[#D2B997]/60 transition-colors">
-                      <h3 className="text-[#A8D8EA] font-depixel-body text-lg mb-2">Open Air Stage Arena</h3>
-                      <p className="text-[#F4D03F] font-futura text-3xl mb-3">₹1,499 <span className="text-lg text-[#D2B997]">/day</span></p>
-                      <p className="text-[#D2B997]/80 font-depixel-small text-sm">
-                        High-visibility stall space in the open air arena. Better for food and entertainment stalls.
+                      <p className="text-[#D2B997] font-depixel-small text-sm">Open Air Stage Arena</p>
+                      <p className="text-[#F4D03F] font-futura text-3xl">
+                        <span className="line-through">₹1499</span> ₹1250/day
                       </p>
                     </div>
                   </div>
@@ -111,15 +109,17 @@ export default function StallsPage() {
                   {/* Special Offer */}
                   <div className="bg-gradient-to-r from-[#F4D03F]/10 to-[#D2B997]/10 p-6 rounded-lg border-2 border-[#F4D03F]/50">
                     <div className="flex items-center gap-2 mb-3">
-                      <span className="text-2xl">✨</span>
-                      <h4 className="text-[#F4D03F] font-futura text-xl">SPECIAL OFFER!</h4>
+                      <IndianRupee className="w-6 h-6 text-[#F4D03F]" />
+                      <span className="text-[#F4D03F] font-futura text-lg">Special Pre-Fest Offer</span>
                     </div>
                     <p className="text-white font-depixel-body text-lg mb-2">
                       2-day stall at Open Air Stage Arena
                     </p>
-                    <p className="text-[#F4D03F] font-futura text-3xl">₹2,859 <span className="text-lg text-[#D2B997]">for 2 days</span></p>
+                    <p className="text-[#F4D03F] font-futura text-3xl">
+                      <span className="line-through">₹2,859</span> ₹2,400
+                    </p>
                     <p className="text-[#D2B997]/80 font-depixel-small text-sm mt-3">
-                      Save ₹139! Perfect if you want maximum exposure for 2 days.
+                      Save ₹459! Perfect if you want maximum exposure for 2 days.
                     </p>
                   </div>
 
