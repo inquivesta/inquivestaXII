@@ -51,6 +51,9 @@ interface Registration {
     institution: string
     gender: string
   } | null
+  // Day passes specific
+  pass_name?: string
+  pass_date?: string
   // Multi-event specific (soulbeats, bullseye)
   sub_events?: string[]
   // Common fields
@@ -266,11 +269,19 @@ export default function EOScanPage() {
     }
     
     // Pass type and gender (for Masquerade)
-    if (reg.pass_type) {
+    if (reg.pass_type && !reg.pass_name) {
       const passLabel = reg.pass_type === 'couple' 
         ? 'Couple Pass' 
         : `Single Pass (${reg.gender === 'male' ? 'Male' : 'Female'})`
       info.push({ label: "Pass Type", value: passLabel })
+    }
+    
+    // Day pass info
+    if (reg.pass_name) {
+      info.push({ label: "Pass Type", value: reg.pass_name })
+    }
+    if (reg.pass_date) {
+      info.push({ label: "Valid For", value: reg.pass_date })
     }
     
     // Partner info (for Masquerade couples)
