@@ -10,6 +10,9 @@ const GAMING_EVENTS = ['headshot-bgmi', 'headshot-valorant']
 // Individual events that use participant_email instead of team_leader_email
 const INDIVIDUAL_EVENTS = ['photon', 'art-in-a-culture']
 
+// Events that use direct name/email fields
+const DIRECT_FIELD_EVENTS = ['masquerade', 'day-passes']
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
@@ -29,6 +32,7 @@ export async function POST(request: NextRequest) {
     // Determine the email field based on event type
     const isGamingEvent = GAMING_EVENTS.includes(eventId)
     const isIndividualEvent = INDIVIDUAL_EVENTS.includes(eventId)
+    const isDirectFieldEvent = DIRECT_FIELD_EVENTS.includes(eventId)
     
     let emailField: string
     let email: string
@@ -39,6 +43,9 @@ export async function POST(request: NextRequest) {
     } else if (isIndividualEvent) {
       emailField = 'participant_email'
       email = registrationData.participant_email
+    } else if (isDirectFieldEvent) {
+      emailField = 'email'
+      email = registrationData.email
     } else {
       emailField = 'team_leader_email'
       email = registrationData.team_leader_email
@@ -68,6 +75,8 @@ export async function POST(request: NextRequest) {
       insertData.player1_email = email.toLowerCase()
     } else if (isIndividualEvent) {
       insertData.participant_email = email.toLowerCase()
+    } else if (isDirectFieldEvent) {
+      insertData.email = email.toLowerCase()
     } else {
       insertData.team_leader_email = email.toLowerCase()
     }
@@ -106,6 +115,8 @@ export async function POST(request: NextRequest) {
       recipientName = registrationData.player1_name
     } else if (isIndividualEvent) {
       recipientName = registrationData.participant_name
+    } else if (isDirectFieldEvent) {
+      recipientName = registrationData.name
     } else {
       recipientName = registrationData.team_leader_name
     }
@@ -118,14 +129,17 @@ export async function POST(request: NextRequest) {
         subject: `Registration Confirmed - ${config.name} | Inquivesta XII`,
         html: generateEmailHTML({
           eventName: config.name,
-          teamName: isIndividualEvent ? null : registrationData.team_name,
+          teamName: isIndividualEvent || isDirectFieldEvent ? null : registrationData.team_name,
           teamLeaderName: recipientName,
           registrationId: registration.id,
-          teamMembers: isGamingEvent ? generateGamingTeamMembers(registrationData, eventId) : (isIndividualEvent ? null : registrationData.team_members),
+          teamMembers: isGamingEvent ? generateGamingTeamMembers(registrationData, eventId) : (isIndividualEvent || isDirectFieldEvent ? null : registrationData.team_members),
           amountPaid: registrationData.amount_paid,
           isGamingEvent,
           isIndividualEvent,
+          isDirectFieldEvent,
           photoTitles: isIndividualEvent ? registrationData.photo_titles : null,
+          passName: registrationData.pass_name,
+          passDate: registrationData.pass_date,
         }),
         attachments: [
           {
@@ -190,7 +204,10 @@ interface EmailData {
   amountPaid: number
   isGamingEvent?: boolean
   isIndividualEvent?: boolean
+  isDirectFieldEvent?: boolean
   photoTitles?: string[] | null
+  passName?: string
+  passDate?: string
 }
 
 function generateEmailHTML(data: EmailData): string {
@@ -321,10 +338,22 @@ function generateEmailHTML(data: EmailData): string {
                     <p style="margin: 0; font-size: 14px; color: #D2B997;">${data.registrationId}</p>
                   </td>
                   <td style="padding: 15px; border-bottom: 1px solid #333; width: 50%; vertical-align: top;">
-                    <p style="margin: 0; font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px;">${data.isIndividualEvent ? 'PARTICIPANT' : 'TEAM NAME'}</p>
-                    <p style="margin: 0; font-size: 14px; color: #D2B997;">${data.isIndividualEvent ? data.teamLeaderName : data.teamName}</p>
+                    <p style="margin: 0; font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px;">${data.isIndividualEvent || data.isDirectFieldEvent ? 'PARTICIPANT' : 'TEAM NAME'}</p>
+                    <p style="margin: 0; font-size: 14px; color: #D2B997;">${data.isIndividualEvent || data.isDirectFieldEvent ? data.teamLeaderName : data.teamName}</p>
                   </td>
                 </tr>
+                ${data.passName ? `
+                <tr>
+                  <td style="padding: 15px; border-bottom: 1px solid #333; border-right: 1px solid #333; width: 50%; vertical-align: top;">
+                    <p style="margin: 0; font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px;">PASS TYPE</p>
+                    <p style="margin: 0; font-size: 14px; color: #F4D03F;">${data.passName}</p>
+                  </td>
+                  <td style="padding: 15px; border-bottom: 1px solid #333; width: 50%; vertical-align: top;">
+                    <p style="margin: 0; font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px;">VALID FOR</p>
+                    <p style="margin: 0; font-size: 14px; color: #F4D03F;">${data.passDate}</p>
+                  </td>
+                </tr>
+                ` : ''}
                 ${data.isIndividualEvent ? `
                 ${photoTitlesList ? `
                 <tr>

@@ -24,6 +24,7 @@ const EVENT_TABLES = [
   { id: 'table-tennis-singles', name: 'Table Tennis - Singles', tableName: 'event_registrations_table_tennis_singles' },
   { id: 'table-tennis-doubles', name: 'Table Tennis - Doubles', tableName: 'event_registrations_table_tennis_doubles' },
   { id: 'masquerade', name: 'Masquerade', tableName: 'event_registrations_masquerade' },
+  { id: 'day-passes', name: 'Day Passes', tableName: 'event_registrations_day_passes' },
 ]
 
 export async function GET(request: NextRequest) {

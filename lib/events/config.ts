@@ -231,6 +231,20 @@ export const eventConfigs: Record<string, EventConfig> = {
     emailFrom: "masquerade@inquivesta.in",
     customFields: ["pass_type", "gender", "partner"],
   },
+  "day-passes": {
+    id: "day-passes",
+    name: "Day Passes",
+    slug: "day-passes",
+    isTeamEvent: false,
+    minTeamSize: 1,
+    maxTeamSize: 1,
+    fee: 299, // Day 2/3: 299, All days: 499
+    registrationOpen: true,
+    registrationDeadline: "2026-02-08",
+    tableName: "event_registrations_day_passes",
+    emailFrom: "events@inquivesta.in",
+    customFields: ["pass_type", "pass_name", "pass_date"],
+  },
 }
 
 export function isIISERKEmail(email: string): boolean {
