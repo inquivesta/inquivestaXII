@@ -249,14 +249,14 @@ export default function PronitePage() {
           </div>
           
           {/* Day 1 */}
-          <div className="mb-8">
+          {/* <div className="mb-8">
             <div className="flex items-center gap-4 mb-8">
               <div className="w-12 h-[1px] bg-[#A8D8EA]" />
               <span className="text-[#A8D8EA] font-mono text-sm uppercase tracking-[0.3em]">Day 1 [Feb 7th]</span>
             </div>
-          </div>
+          </div> */}
 
-          <ArtistCard 
+          {/* <ArtistCard 
             name="Monali Thakur"
             date="February 7, 2026"
             image="/pronite/artist_2.jpeg"
@@ -266,7 +266,7 @@ export default function PronitePage() {
               instagram: "https://www.instagram.com/monalithakur03",
               youtube: "https://www.youtube.com/channel/UC5UhoMDm--gaSN2vRY606kg"
             }}
-          />
+          /> */}
 
           {/* <div className="h-px w-full bg-gradient-to-r from-transparent via-[#D2B997]/30 to-transparent my-20" /> */}
 
@@ -343,7 +343,7 @@ export default function PronitePage() {
                 scrolling="no" 
                 marginHeight={0} 
                 marginWidth={0} 
-                src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=IISER Kolkata Athletics Ground&amp;t=&amp;z=17&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+                src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=inquivesta&amp;t=&amp;z=18&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
               />
             </div>
 
