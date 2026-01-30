@@ -23,7 +23,7 @@ const DAY_PASS_OPTIONS = [
     name: "Day 2 Pass",
     date: "7th February 2026",
     price: 299,
-    highlight: "🎤 Monali Thakur Live Performance",
+    highlight: "🎤 7th Feb Live Performance",
     description: "Access to all cultural events and pro-night on Day 2",
   },
   {
@@ -287,7 +287,8 @@ export default function DayPassesRegistrationPage() {
                       <Music className="w-5 h-5 text-[#B8A7D9]" />
                       <span className="text-[#B8A7D9] font-depixel-small">7th February</span>
                     </div>
-                    <p className="text-white font-depixel-body">🎤 Monali Thakur Live</p>
+                    {/* <p className="text-white font-depixel-body">🎤 Monali Thakur Live</p> */}
+                    <p className="text-white font-depixel-body">🎤 Live Show</p>
                     <p className="text-[#D2B997]/60 text-xs font-depixel-small">Soulful melodies & high energy performance</p>
                   </div>
                   <div className="bg-[#1A1A1A]/50 p-4 rounded-lg border border-[#A8D8EA]/20">
