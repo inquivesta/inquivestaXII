@@ -245,6 +245,32 @@ export const eventConfigs: Record<string, EventConfig> = {
     emailFrom: "events@inquivesta.in",
     customFields: ["pass_type", "pass_name", "pass_date"],
   },
+  "headshot-fc": {
+    id: "headshot-fc",
+    name: "Headshot - FC 25",
+    slug: "headshot-fc",
+    isTeamEvent: false,
+    minTeamSize: 1,
+    maxTeamSize: 1,
+    fee: 100,
+    registrationOpen: true,
+    registrationDeadline: "2026-02-01",
+    tableName: "event_registrations_headshot_fc",
+    emailFrom: "headshot@inquivesta.in",
+  },
+  "headshot-vr": {
+    id: "headshot-vr",
+    name: "Headshot - VR",
+    slug: "headshot-vr",
+    isTeamEvent: false,
+    minTeamSize: 1,
+    maxTeamSize: 1,
+    fee: 100,
+    registrationOpen: true,
+    registrationDeadline: "2026-02-01",
+    tableName: "event_registrations_headshot_vr",
+    emailFrom: "headshot@inquivesta.in",
+  },
 }
 
 export function isIISERKEmail(email: string): boolean {
