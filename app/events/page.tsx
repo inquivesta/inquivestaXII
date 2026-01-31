@@ -215,7 +215,7 @@ const events: Event[] = [
   },
   {
     id: "headshot-bgmi",
-    name: "HEADSHOT - BGMI",
+    name: "HEADSHOT x UEC - BGMI",
     day: "Day 2 & 3",
     date: "Feb 07-08, 2026",
     time:  "TBA",
@@ -251,12 +251,12 @@ const events: Event[] = [
   },
   {
     id: "headshot-fc",
-    name: "HEADSHOT - FC 25",
+    name: "HEADSHOT x UEC FC26",
     day: "TBA",
     date: "Feb 06-08, 2026",
     time: "TBA",
-    description: "EA Sports FC 25 tournament - showcase your football gaming skills and compete for the championship!",
-    detailedDescription: "Headshot FC 25 is a premier E-sports gaming event hosted as part of Inquivesta, the annual science and cultural festival organized by IISER Kolkata.\n\nHeadshot FC 25 is a competitive gaming tournament designed to test players' reflexes, precision, and decision-making under pressure. In this event, participants will engage in fast-paced, skill-based matches where strategy and quick thinking are the key.\n\nTOURNAMENT FORMAT:\n• Solo tournament - individual matches\n• Matches will be held with standardized equipment and pre-installed game clients\n• The primary focus of the competition will be on skill and tactical performance\n• Each match will be scored objectively, allowing fair comparison across players\n\nPRIZE POOL: ₹5,000",
+    description: "EA Sports FC 26 tournament - showcase your football gaming skills and compete for the championship!",
+    detailedDescription: "Headshot FC 26 is a premier E-sports gaming event hosted as part of Inquivesta, the annual science and cultural festival organized by IISER Kolkata.\n\nHeadshot FC 26 is a competitive gaming tournament designed to test players' reflexes, precision, and decision-making under pressure. In this event, participants will engage in fast-paced, skill-based matches where strategy and quick thinking are the key.\n\nTOURNAMENT FORMAT:\n• Solo tournament - individual matches\n• Matches will be held with standardized equipment and pre-installed game clients\n• The primary focus of the competition will be on skill and tactical performance\n• Each match will be scored objectively, allowing fair comparison across players\n\nPRIZE POOL: ₹5,000",
     image: "/events/headshot/headshot.png",
     category: "Competition",
     venue: "TBA",
@@ -269,7 +269,7 @@ const events: Event[] = [
   },
   {
     id: "headshot-vr",
-    name: "HEADSHOT - VR",
+    name: "HEADSHOT x UEC VR",
     day: "TBA",
     date: "Feb 06-08, 2026",
     time: "TBA",
