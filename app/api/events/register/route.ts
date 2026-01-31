@@ -8,7 +8,7 @@ import QRCode from 'qrcode'
 const GAMING_EVENTS = ['headshot-bgmi', 'headshot-valorant']
 
 // Individual events that use participant_email instead of team_leader_email
-const INDIVIDUAL_EVENTS = ['photon', 'art-in-a-culture']
+const INDIVIDUAL_EVENTS = ['photon', 'art-in-a-culture', 'headshot-fc', 'headshot-vr']
 
 // Events that use direct name/email fields
 const DIRECT_FIELD_EVENTS = ['masquerade', 'day-passes']
