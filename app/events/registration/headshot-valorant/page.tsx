@@ -22,7 +22,7 @@ const EVENT_CONFIG = {
   id: "headshot-valorant",
   name: "Headshot - Valorant",
   fee: 500,
-  teamSize: 4,
+  teamSize: 5,
 }
 
 export default function HeadshotValorantRegistrationPage() {
@@ -43,6 +43,7 @@ export default function HeadshotValorantRegistrationPage() {
     { name: "", phone: "", email: "", game_id: "" }, // Player 2
     { name: "", phone: "", email: "", game_id: "" }, // Player 3
     { name: "", phone: "", email: "", game_id: "" }, // Player 4
+    { name: "", phone: "", email: "", game_id: "" }, // Player 5
   ])
 
   useEffect(() => {
@@ -63,8 +64,8 @@ export default function HeadshotValorantRegistrationPage() {
     e.preventDefault()
     setErrorMessage("")
 
-    // Validate all 4 players (all required for Valorant)
-    for (let i = 0; i < 4; i++) {
+    // Validate all 5 players (all required for Valorant)
+    for (let i = 0; i < 5; i++) {
       const player = players[i]
       if (!player.name.trim() || !player.phone.trim() || !player.email.trim() || !player.game_id.trim()) {
         setErrorMessage(`Please fill in all details for Player ${i + 1}`)
@@ -107,6 +108,11 @@ export default function HeadshotValorantRegistrationPage() {
           player4_phone: players[3].phone,
           player4_email: players[3].email,
           player4_game_id: players[3].game_id,
+          // Player 5
+          player5_name: players[4].name,
+          player5_phone: players[4].phone,
+          player5_email: players[4].email,
+          player5_game_id: players[4].game_id,
           amount_paid: EVENT_CONFIG.fee,
           utr_number: formData.utr_number,
           payment_qr_used: selectedQR,
@@ -225,7 +231,7 @@ export default function HeadshotValorantRegistrationPage() {
               <div className="mt-4 flex flex-wrap justify-center gap-4">
                 <div className="inline-flex items-center gap-2 bg-[#FF4655]/10 border border-[#FF4655]/30 px-4 py-2 rounded-full">
                   <Users className="w-4 h-4 text-[#FF4655]" />
-                  <span className="text-[#FF4655] font-depixel-small">Team: 4 Players</span>
+                  <span className="text-[#FF4655] font-depixel-small">Team: 5 Players</span>
                 </div>
                 <div className="inline-flex items-center gap-2 bg-[#F4D03F]/10 border border-[#F4D03F]/30 px-4 py-2 rounded-full">
                   <span className="text-[#F4D03F] font-depixel-small">₹{EVENT_CONFIG.fee} per team</span>
@@ -378,7 +384,7 @@ export default function HeadshotValorantRegistrationPage() {
                           <span className="text-[#F4D03F] font-futura tracking-wide text-3xl">₹{EVENT_CONFIG.fee}</span>
                         </div>
                         <p className="text-[#D2B997]/60 font-depixel-small text-xs mt-2">
-                          Per team (5 players)
+                          Per team (squad of 5 players)
                         </p>
                       </div>
 
