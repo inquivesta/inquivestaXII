@@ -54,6 +54,8 @@ interface Registration {
   // Day passes specific
   pass_name?: string
   pass_date?: string
+  quantity_type?: string
+  admits?: number
   // Multi-event specific (soulbeats, bullseye)
   sub_events?: string[]
   // Common fields
@@ -283,6 +285,14 @@ export default function EOScanPage() {
     if (reg.pass_date) {
       info.push({ label: "Valid For", value: reg.pass_date })
     }
+    // Day pass admits count
+    if (reg.admits && reg.admits > 0) {
+      info.push({ 
+        label: "⚠️ ADMITS", 
+        value: `${reg.admits} ${reg.admits === 1 ? 'PERSON' : 'PEOPLE'}`,
+        highlight: true 
+      })
+    }
     
     // Partner info (for Masquerade couples)
     if (reg.partner && reg.pass_type === 'couple') {
@@ -415,9 +425,9 @@ export default function EOScanPage() {
 
                       {/* Event-specific info (category, pass type, partner, etc.) */}
                       {getEventSpecificInfo(scannedRegistration).map((info, index) => (
-                        <div key={index} className="flex justify-between">
-                          <span className="text-[#D2B997]/60 text-sm">{info.label}:</span>
-                          <span className="text-[#B8A7D9] font-depixel-small">{info.value}</span>
+                        <div key={index} className={`flex justify-between ${(info as { highlight?: boolean }).highlight ? 'bg-yellow-500/20 p-2 rounded-lg border border-yellow-500/50' : ''}`}>
+                          <span className={`text-sm ${(info as { highlight?: boolean }).highlight ? 'text-yellow-400 font-bold' : 'text-[#D2B997]/60'}`}>{info.label}:</span>
+                          <span className={`font-depixel-small ${(info as { highlight?: boolean }).highlight ? 'text-yellow-400 font-bold text-lg' : 'text-[#B8A7D9]'}`}>{info.value}</span>
                         </div>
                       ))}
 
