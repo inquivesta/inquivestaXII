@@ -12,7 +12,7 @@ export default function manifest(): MetadataRoute.Manifest {
     orientation: 'portrait',
     scope: '/',
     lang: 'en',
-    categories: ['education', 'entertainment', 'events'],
+    categories: ['Science', "IISER Kolkata", 'entertainment', 'events'],
     icons: [
       {
         src: '/ball.jpg',
@@ -41,7 +41,7 @@ export default function manifest(): MetadataRoute.Manifest {
     ],
     screenshots: [
       {
-        src: '/images/about-us-image.png',
+        src: '/spon_all.png',
         sizes: '1280x720',
         type: 'image/png',
         form_factor: 'wide',

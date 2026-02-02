@@ -140,6 +140,7 @@ export async function POST(request: NextRequest) {
           photoTitles: isIndividualEvent ? registrationData.photo_titles : null,
           passName: registrationData.pass_name,
           passDate: registrationData.pass_date,
+          admits: registrationData.admits,
         }),
         attachments: [
           {
@@ -183,7 +184,8 @@ export async function POST(request: NextRequest) {
 // Helper function to generate team members array for gaming events
 function generateGamingTeamMembers(data: Record<string, unknown>, eventId: string): Array<{ name: string }> {
   const members: Array<{ name: string }> = []
-  const playerCount = eventId === 'headshot-bgmi' ? 5 : 4 // BGMI has 5 players, Valorant has 4
+  // BGMI and Valorant both have 5 players
+  const playerCount = (eventId === 'headshot-bgmi' || eventId === 'headshot-valorant') ? 5 : 4
   
   for (let i = 1; i <= playerCount; i++) {
     const playerName = data[`player${i}_name`] as string
@@ -208,6 +210,7 @@ interface EmailData {
   photoTitles?: string[] | null
   passName?: string
   passDate?: string
+  admits?: number
 }
 
 function generateEmailHTML(data: EmailData): string {
@@ -353,6 +356,14 @@ function generateEmailHTML(data: EmailData): string {
                     <p style="margin: 0; font-size: 14px; color: #F4D03F;">${data.passDate}</p>
                   </td>
                 </tr>
+                ${data.admits && data.admits > 1 ? `
+                <tr>
+                  <td colspan="2" style="padding: 15px; border-bottom: 1px solid #333; background-color: #2a2a1a;">
+                    <p style="margin: 0; font-size: 10px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px;">ADMITS</p>
+                    <p style="margin: 0; font-size: 18px; color: #F4D03F; font-weight: bold;">🎫 ${data.admits} People</p>
+                  </td>
+                </tr>
+                ` : ''}
                 ` : ''}
                 ${data.isIndividualEvent ? `
                 ${photoTitlesList ? `

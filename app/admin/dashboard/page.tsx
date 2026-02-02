@@ -118,7 +118,7 @@ export default function AdminDashboardPage() {
     // Masquerade fields
     "name", "email", "phone", "pass_type", "gender", "partner",
     // Day passes fields
-    "pass_name", "pass_date",
+    "pass_name", "pass_date", "quantity_type", "admits",
     // Common fields
     "institute_name", "institution", "category", "sub_events", "total_amount", "amount_paid", 
     "registration_status", "payment_verified", "utr_number", "checked_in"

@@ -4,12 +4,12 @@ Allow: /Merch
 Disallow: /api/
 Disallow: /_next/
 Disallow: /admin/
+Disallow: /eo/
 Disallow: /private/
 Disallow: /definitely-not-cat-videos/
 
 # Sitemap
 Sitemap: https://www.inquivesta.in/sitemap.xml
-Sitemap: https://www.inquivesta.in/manifest.webmanifest
 
 # Crawl-delay
 Crawl-delay: 1

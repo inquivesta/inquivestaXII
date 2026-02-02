@@ -205,6 +205,14 @@ export default function InquivestaLanding() {
     }
   }, [])
 
+  // Auto-close popup after 30 seconds
+  useEffect(() => {
+    if (showMerchPopup) {
+      const closeTimer = setTimeout(() => setShowMerchPopup(false), 30000)
+      return () => clearTimeout(closeTimer)
+    }
+  }, [showMerchPopup])
+
   return (
     <div className="min-h-screen bg-[#1A1A1A] text-white border-8 border-[#D2B997]">
       {/* Header */}
@@ -746,45 +754,69 @@ export default function InquivestaLanding() {
         </div>
       </footer>
 
-      {/* Merch Popup */}
+      {/* Pronite Popup */}
       {showMerchPopup && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
-          <div className="relative max-w-md w-full bg-gradient-to-b from-[#2A2A2A] to-[#1A1A1A] rounded-xl border-2 border-[#F4D03F] shadow-[0_0_40px_rgba(244,208,63,0.3)] overflow-hidden">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-[#1c4d4f80] backdrop-blur-sm p-4">
+          <div className="relative w-80 bg-gradient-to-b from-[#2A2A2A] to-[#1A1A1A] rounded-lg border-4 border-[#F4D03F] shadow-[0_0_50px_rgba(244,208,63,0.4)] overflow-hidden">
             {/* Close Button */}
             <button
               onClick={() => setShowMerchPopup(false)}
-              className="absolute top-3 right-3 z-10 p-2 rounded-full bg-[#1A1A1A]/80 hover:bg-[#F4D03F]/20 transition-colors border border-[#D2B997]/30"
+              className="absolute top-2 right-2 z-10 p-1.5 rounded-full bg-[#1A1A1A]/80 hover:bg-[#F8BBD9]/20 transition-colors border border-[#F8BBD9]/40"
             >
-              <XIcon className="w-5 h-5 text-[#D2B997]" />
+              <XIcon className="w-4 h-4 text-[#F8BBD9]" />
             </button>
 
             {/* Popup Content */}
-            <Link href="/merch/exclusives" onClick={() => setShowMerchPopup(false)} className="block">
-              <div className="p-4 text-center">
-                <h3 className="text-2xl md:text-3xl font-bold text-[#F4D03F] font-futura animate-pulse">
-                  Exclusive Merch Available! 
+            <div>
+              <div className="p-3 text-center">
+                <h3 className="text-xl font-bold text-[#F8BBD9] font-futura">
+                 Pro Show
                 </h3>
-              </div>
-              
-              <div className="relative">
-                <Image
-                  src="/merch/merch_promo.png"
-                  alt="Exclusive Merch"
-                  width={500}
-                  height={400}
-                  className="w-full h-auto"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-transparent to-transparent" />
-              </div>
-              <div className="p-6 text-center">
-                <p className="text-[#D2B997] font-depixel-body mb-4">
-                  Limited edition INQUIVESTA XII merchandise
+                <p className="text-sm font-bold text-[#F4D03F] font-depixel-body mt-1">
+                  Featuring: <span className="text-[#F8C471]">Monali Thakur</span>
                 </p>
-                <div className="inline-block bg-gradient-to-r from-[#F4D03F] to-[#F8C471] text-[#1A1A1A] font-depixel-body px-6 py-3 rounded-lg font-bold hover:from-[#E5C100] hover:to-[#F5B041] transition-all">
-                  BUY NOW!!!
+                <p className="text-xs text-[#D2B997] font-depixel-body mt-0.5">
+                  February 7, 2026
+                </p>
+              </div>
+
+              <div className="relative aspect-square">
+                <Image
+                  src="/pronite/artist_2.jpeg"
+                  alt="Monali Thakur Pronite Artist"
+                  width={300}
+                  height={300}
+                  className="w-full h-full object-cover rounded-md border-2 border-[#F4D03F]/50"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/60 via-transparent to-transparent rounded-md" />
+                <div className="absolute top-2 left-2">
+                  <span className="text-2xl text-[#F4D03F]">★</span>
+                </div>
+                <div className="absolute bottom-2 right-2">
+                  <span className="text-2xl text-[#F4D03F]">★</span>
                 </div>
               </div>
-            </Link>
+              <div className="p-3 text-center">
+                <p className="text-[#F8BBD9] font-depixel-body text-xs mb-3">
+                  Don&apos;t miss the electrifying performance!
+                </p>
+                <p className="text-[#F8BBD9] font-depixel-body text-xs mb-3">
+                  Access to campus for external guests is via Day Passes.
+                </p>
+                <div className="flex flex-col gap-2">
+                  <Link href="/pronite" onClick={() => setShowMerchPopup(false)}>
+                    <div className="inline-block bg-gradient-to-r from-[#A8D8EA] to-[#85C1E9] text-[#1A1A1A] font-depixel-body px-6 py-2 rounded-lg font-bold text-sm shadow-md hover:from-[#7FB3D3] hover:to-[#6BB6FF] transition-all cursor-pointer">
+                      Learn More
+                    </div>
+                  </Link>
+                  <Link href="/events/registration/day_passes" onClick={() => setShowMerchPopup(false)}>
+                    <div className="inline-block bg-gradient-to-r from-[#F8BBD9] to-[#F4D03F] text-[#1A1A1A] font-depixel-body px-6 py-2 rounded-lg font-bold text-sm shadow-md hover:from-[#F4D03F] hover:to-[#F8C471] transition-all cursor-pointer">
+                      Get Day Passes
+                    </div>
+                  </Link>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       )}
