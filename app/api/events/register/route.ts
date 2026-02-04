@@ -73,6 +73,13 @@ export async function POST(request: NextRequest) {
     const insertData = { ...registrationData }
     if (isGamingEvent) {
       insertData.player1_email = email.toLowerCase()
+      // For BGMI (4-player teams), set player5 fields to empty string to satisfy NOT NULL constraints
+      if (eventId === 'headshot-bgmi') {
+        insertData.player5_name = insertData.player5_name || ''
+        insertData.player5_phone = insertData.player5_phone || ''
+        insertData.player5_email = insertData.player5_email || ''
+        insertData.player5_uid = insertData.player5_uid || ''
+      }
     } else if (isIndividualEvent) {
       insertData.participant_email = email.toLowerCase()
     } else if (isDirectFieldEvent) {
