@@ -49,8 +49,8 @@ export async function POST(request: NextRequest) {
     }
 
     // Validate team members
-    if (!team_members || !Array.isArray(team_members) || team_members.length < 6) {
-      return NextResponse.json({ error: 'At least 6 team members are required (7 total including captain)' }, { status: 400 })
+    if (!team_members || !Array.isArray(team_members) || team_members.length < 11) {
+      return NextResponse.json({ error: 'At least 11 team members are required' }, { status: 400 })
     }
 
     // Prepare data for insert
@@ -199,7 +199,7 @@ function generateSmash7EmailHTML(data: Smash7EmailData): string {
             <td style="padding: 40px 30px 20px 30px; text-align: center;">
               <img src="https://www.inquivesta.in/logo.png" alt="INQUIVESTA" width="300" style="display: block; width: 300px; max-width: 100%; height: auto; margin: 0 auto;">
               <p style="color: #666; margin: 15px 0 0 0; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; font-family: monospace;">
-                &lt; SMASH 7 - BOX CRICKET &gt;
+                &lt; SMASH 7 - 10 OVER CRICKET &gt;
               </p>
             </td>
           </tr>

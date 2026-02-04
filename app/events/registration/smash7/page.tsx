@@ -16,10 +16,10 @@ import { FadeIn } from "@/components/ui/fade-in"
 const EVENT_CONFIG = {
   id: "smash7",
   name: "Smash 7",
-  subtitle: "7-Over Box Cricket Tournament",
-  fee: 700,
-  iiserkFee: 350,
-  teamSize: 8, // 7 + 1 extra
+  subtitle: "10-Over Cricket Tournament",
+  fee: 900,
+  iiserkFee: 500,
+  teamSize: 13, // 11 + 2 extra
 }
 
 interface TeamMember {
@@ -51,9 +51,9 @@ export default function Smash7RegistrationPage() {
   const [isIISERKTeam, setIsIISERKTeam] = useState(false)
   const [utrNumber, setUtrNumber] = useState("")
 
-  // Team members (7 additional members)
+  // Team members (11 compulsory + 2 extra members)
   const [teamMembers, setTeamMembers] = useState<TeamMember[]>(
-    Array(7).fill(null).map(() => ({ name: "", phone: "", gender: "" }))
+    Array(11).fill(null).map(() => ({ name: "", phone: "", gender: "" }))
   )
 
   const currentFee = isIISERKTeam ? EVENT_CONFIG.iiserkFee : EVENT_CONFIG.fee
@@ -103,10 +103,10 @@ export default function Smash7RegistrationPage() {
       return
     }
 
-    // Validate team members (at least 6 additional members with complete details)
+    // Validate team members (at least 11 compulsory members with complete details)
     const validMembers = teamMembers.filter(m => m.name.trim() && m.phone.trim() && m.gender)
-    if (validMembers.length < 6) {
-      setErrorMessage("Please add at least 6 additional team members with complete details (7 total including captain)")
+    if (validMembers.length < 11) {
+      setErrorMessage("Please add at least 11 team members with complete details (11 compulsory players)")
       return
     }
 
@@ -277,10 +277,10 @@ export default function Smash7RegistrationPage() {
               </p>
               <div className="mt-4 flex flex-wrap justify-center gap-3">
                 <div className="inline-flex items-center gap-2 bg-[#58D68D]/10 border border-[#58D68D]/30 px-4 py-2 rounded-full">
-                  <span className="text-[#58D68D] font-depixel-small">Outside Teams: ₹700</span>
+                  <span className="text-[#58D68D] font-depixel-small">Outside Teams: ₹900</span>
                 </div>
                 <div className="inline-flex items-center gap-2 bg-[#A8D8EA]/10 border border-[#A8D8EA]/30 px-4 py-2 rounded-full">
-                  <span className="text-[#A8D8EA] font-depixel-small">IISER Kolkata: ₹350</span>
+                  <span className="text-[#A8D8EA] font-depixel-small">IISER Kolkata: ₹500</span>
                 </div>
               </div>
             </div>
@@ -328,7 +328,7 @@ export default function Smash7RegistrationPage() {
                       className="border-[#A8D8EA] data-[state=checked]:bg-[#A8D8EA] data-[state=checked]:border-[#A8D8EA]"
                     />
                     <Label htmlFor="isIISERK" className="text-white font-depixel-small cursor-pointer">
-                      This is an IISER Kolkata team (₹350 instead of ₹700)
+                      This is an IISER Kolkata team (₹500 instead of ₹900)
                     </Label>
                   </div>
                 </CardContent>
@@ -412,10 +412,10 @@ export default function Smash7RegistrationPage() {
               <Card className="bg-[#2A2A2A]/50 border-[#D2B997]/30">
                 <CardHeader>
                   <CardTitle className="text-2xl text-[#D2B997] font-futura tracking-wide">
-                    Team Members (7 + 1 Extra)
+                    Team Members (11 + 2 Extra)
                   </CardTitle>
                   <p className="text-[#D2B997]/70 text-sm font-depixel-small">
-                    Add at least 6 team members (excluding captain). Maximum 7 additional members.
+                    Add at least 11 team members. Maximum 13 members (11 compulsory + 2 extra).
                   </p>
                 </CardHeader>
                 <CardContent className="space-y-4">
