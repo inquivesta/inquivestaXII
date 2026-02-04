@@ -184,8 +184,8 @@ export async function POST(request: NextRequest) {
 // Helper function to generate team members array for gaming events
 function generateGamingTeamMembers(data: Record<string, unknown>, eventId: string): Array<{ name: string }> {
   const members: Array<{ name: string }> = []
-  // BGMI and Valorant both have 5 players
-  const playerCount = (eventId === 'headshot-bgmi' || eventId === 'headshot-valorant') ? 5 : 4
+  // BGMI has 4 players, Valorant has 5 players
+  const playerCount = (eventId === 'headshot-bgmi') ? 4 : 5
   
   for (let i = 1; i <= playerCount; i++) {
     const playerName = data[`player${i}_name`] as string

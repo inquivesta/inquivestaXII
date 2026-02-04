@@ -20,9 +20,9 @@ interface Player {
 
 const EVENT_CONFIG = {
   id: "headshot-bgmi",
-  name: "Headshot - BGMI",
+  name: "Headshot x Krafton - BGMI",
   fee: 100,
-  teamSize: 5,
+  teamSize: 4,
 }
 
 export default function HeadshotBGMIRegistrationPage() {
@@ -43,7 +43,6 @@ export default function HeadshotBGMIRegistrationPage() {
     { name: "", phone: "", email: "", uid: "" }, // Player 2
     { name: "", phone: "", email: "", uid: "" }, // Player 3
     { name: "", phone: "", email: "", uid: "" }, // Player 4
-    { name: "", phone: "", email: "", uid: "" }, // Player 5 (Optional)
   ])
 
   useEffect(() => {
@@ -64,8 +63,8 @@ export default function HeadshotBGMIRegistrationPage() {
     e.preventDefault()
     setErrorMessage("")
 
-    // Validate all 5 players (all required for BGMI)
-    for (let i = 0; i < 5; i++) {
+    // Validate all 4 players (all required for BGMI)
+    for (let i = 0; i < 4; i++) {
       const player = players[i]
       if (!player.name.trim() || !player.phone.trim() || !player.email.trim() || !player.uid.trim()) {
         setErrorMessage(`Please fill in all details for Player ${i + 1}`)
@@ -108,11 +107,6 @@ export default function HeadshotBGMIRegistrationPage() {
           player4_phone: players[3].phone,
           player4_email: players[3].email,
           player4_uid: players[3].uid,
-          // Player 5
-          player5_name: players[4].name,
-          player5_phone: players[4].phone,
-          player5_email: players[4].email,
-          player5_uid: players[4].uid,
           amount_paid: EVENT_CONFIG.fee,
           utr_number: formData.utr_number,
           payment_qr_used: selectedQR,
@@ -223,7 +217,7 @@ export default function HeadshotBGMIRegistrationPage() {
             <div className="text-center mb-12">
               <HyperText
                 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[#FFD700] to-[#FFA500] bg-clip-text text-transparent font-futura tracking-wide"
-                text="HEADSHOT - BGMI"
+                text="HEADSHOT x KRAFTON - BGMI"
               />
               <p className="text-[#D2B997] text-lg font-depixel-body">
                 Ultimate BGMI Showdown at IISER Kolkata
@@ -231,7 +225,7 @@ export default function HeadshotBGMIRegistrationPage() {
               <div className="mt-4 flex flex-wrap justify-center gap-4">
                 <div className="inline-flex items-center gap-2 bg-[#F4D03F]/10 border border-[#F4D03F]/30 px-4 py-2 rounded-full">
                   <Users className="w-4 h-4 text-[#F4D03F]" />
-                  <span className="text-[#F4D03F] font-depixel-small">Squad: 5 Players</span>
+                  <span className="text-[#F4D03F] font-depixel-small">Squad: 4 Players</span>
                 </div>
                 <div className="inline-flex items-center gap-2 bg-[#FFD700]/10 border border-[#FFD700]/30 px-4 py-2 rounded-full">
                   <span className="text-[#FFD700] font-depixel-small">₹{EVENT_CONFIG.fee} per team</span>
@@ -384,7 +378,7 @@ export default function HeadshotBGMIRegistrationPage() {
                           <span className="text-[#F4D03F] font-futura tracking-wide text-3xl">₹{EVENT_CONFIG.fee}</span>
                         </div>
                         <p className="text-[#D2B997]/60 font-depixel-small text-xs mt-2">
-                          Per team (squad of 4-5 players)
+                          Per team (squad of 4 players)
                         </p>
                       </div>
 

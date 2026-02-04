@@ -10,7 +10,7 @@ const EVENT_TABLES = [
   { id: 'inquizzitive', name: 'Inquizzitive', tableName: 'event_registrations_inquizzitive' },
   { id: 'beat-the-drop', name: 'Beat the Drop', tableName: 'event_registrations_beat_the_drop' },
   { id: 'thrust', name: 'Thrust', tableName: 'event_registrations_thrust' },
-  { id: 'headshot-bgmi', name: 'Headshot - BGMI', tableName: 'event_registrations_headshot_bgmi' },
+  { id: 'headshot-bgmi', name: 'Headshot x Krafton - BGMI', tableName: 'event_registrations_headshot_bgmi' },
   { id: 'headshot-valorant', name: 'Headshot - Valorant', tableName: 'event_registrations_headshot_valorant' },
   { id: 'lost', name: 'L.O.S.T', tableName: 'event_registrations_lost' },
   { id: 'photon', name: 'Photon', tableName: 'event_registrations_photon' },

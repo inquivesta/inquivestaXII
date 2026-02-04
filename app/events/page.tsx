@@ -215,21 +215,21 @@ const events: Event[] = [
   },
   {
     id: "headshot-bgmi",
-    name: "HEADSHOT x UEC - BGMI",
-    day: "Day 2 & 3",
-    date: "Feb 07-08, 2026",
+    name: "Headshot x Krafton - BGMI",
+    day: "Day 1 & 2",
+    date: "Feb 06-07, 2026",
     time:  "TBA",
     description: "A premier E-sports gaming event testing players' reflexes, precision, and decision-making under pressure in BGMI.",
-    detailedDescription: "Headshot BGMI is a premier E-sports gaming event hosted as part of Inquivesta, the annual science and cultural festival organized by IISER Kolkata.\n\nHeadshot is a competitive gaming tournament designed to test players' reflexes, precision, and decision-making under pressure. In this event, participants will engage in fast-paced, skill-based matches where accuracy and quick thinking are the key.\n\nTOURNAMENT FORMAT:\n• The format includes team-based matchups in BGMI\n• Matches will be held with standardized equipment and pre-installed game clients\n• The primary focus of the competition will be on accuracy and overall tactical performance\n• Each match will be scored objectively, allowing fair comparison across players or teams\n• Live projections of the matches may also be shown to create an engaging spectator experience",
+    detailedDescription: "Headshot x Krafton BGMI is a premier E-sports gaming event hosted as part of Inquivesta, the annual science and cultural festival organized by IISER Kolkata.\n\nHeadshot is a competitive gaming tournament designed to test players' reflexes, precision, and decision-making under pressure. In this event, participants will engage in fast-paced, skill-based matches where accuracy and quick thinking are the key.\n\nTOURNAMENT FORMAT:\n• The format includes team-based matchups in BGMI with 4-player teams\n• Matches will be held with standardized equipment and pre-installed game clients\n• The primary focus of the competition will be on accuracy and overall tactical performance\n• Each match will be scored objectively, allowing fair comparison across players or teams\n• Live projections of the matches may also be shown to create an engaging spectator experience",
     image: "/events/headshot/headshot.png",
     category: "Competition",
     venue: "Rooms G02, G08, G09",
-    prizes:  "Prize Pool: ₹55,000 (combined)",
+    prizes:  "Prize Pool: ₹30,000",
     registrationLink: "/events/registration/headshot-bgmi",
     socialLink: "https://www.instagram.com/headshot_inq?igsh=MWIyajM5OHNqdjB5bg==",
     maxParticipants: "#",
-    duration: "8.5 hours",
-    teamSize: "Teams"
+    duration: "TBA",
+    teamSize: "4 players per team"
   },
   {
     id: "headshot-valorant",
@@ -252,8 +252,8 @@ const events: Event[] = [
   {
     id: "headshot-fc",
     name: "HEADSHOT x UEC FC26",
-    day: "TBA",
-    date: "Feb 06-08, 2026",
+    day: "Day 2 & 3",
+    date: "Feb 07-08, 2026",
     time: "TBA",
     description: "EA Sports FC 26 tournament - showcase your football gaming skills and compete for the championship!",
     detailedDescription: "Headshot FC 26 is a premier E-sports gaming event hosted as part of Inquivesta, the annual science and cultural festival organized by IISER Kolkata.\n\nHeadshot FC 26 is a competitive gaming tournament designed to test players' reflexes, precision, and decision-making under pressure. In this event, participants will engage in fast-paced, skill-based matches where strategy and quick thinking are the key.\n\nTOURNAMENT FORMAT:\n• Solo tournament - individual matches\n• Matches will be held with standardized equipment and pre-installed game clients\n• The primary focus of the competition will be on skill and tactical performance\n• Each match will be scored objectively, allowing fair comparison across players\n\nPRIZE POOL: ₹5,000",
@@ -270,8 +270,8 @@ const events: Event[] = [
   {
     id: "headshot-vr",
     name: "HEADSHOT x UEC VR",
-    day: "TBA",
-    date: "Feb 06-08, 2026",
+    day: "Day 2 & 3",
+    date: "Feb 07-08, 2026",
     time: "TBA",
     description: "Virtual Reality gaming tournament - immerse yourself in VR and compete for victory!",
     detailedDescription: "Headshot VR is a premier Virtual Reality gaming event hosted as part of Inquivesta, the annual science and cultural festival organized by IISER Kolkata.\n\nHeadshot VR is a competitive gaming tournament designed to test players' reflexes, precision, and spatial awareness in immersive VR environments. Experience gaming like never before!\n\nTOURNAMENT FORMAT:\n• Solo tournament - individual participation\n• VR equipment will be provided on-site\n• The primary focus of the competition will be on accuracy and quick reflexes\n• Each round will be scored objectively, allowing fair comparison across players\n\nPRIZE POOL: ₹5,000",
@@ -381,8 +381,8 @@ const events: Event[] = [
     day: "Day 1, 2 & 3",
     date: "Feb 06-08, 2026",
     time: "09:00 AM - 05:00 PM (Day 1 & 2), 09:00 AM - 12:00 PM (Day 3)",
-    description: "A fast-paced 7-over tennis ball box cricket league combining thrill, strategy, and inclusivity.",
-    detailedDescription: "Smash7 is a high-energy 7-over box cricket tournament where 7-player teams battle it out in fast-paced, action-packed matches. Open to IISER Kolkata, colleges, and schools, the league blends strategy, teamwork, and thrill with short boundaries and quick play.\n\nTOURNAMENT FORMAT:\n• 7-over tennis ball box cricket\n• 7-player teams\n• League stages followed by playoffs\n• Professional umpiring\n• Prizes for champions and top performers\n\nSCHEDULE:\nDay 1:\n9:00 AM – 12:00 Noon → 3 matches\n2:00 PM – 5:00 PM → 3 matches\n\nDay 2:\n9:00 AM – 12:00 Noon → 3 matches\n2:00 PM – 5:00 PM → 3 matches\n\nDay 3:\n2:00 PM – 3:00 PM → Semi Final 1\n3:00 PM – 4:00 PM → Semi Final 2\n4:00 PM – 5:00 PM → Final\n\nSmash7 promises an unforgettable sporting highlight of Inquivesta with fast-paced action, strategic gameplay, and competitive spirit!",
+    description: "A fast-paced 10-over tennis ball box cricket league combining thrill, strategy, and inclusivity.",
+    detailedDescription: "Smash7 is a high-energy 10-over box cricket tournament where 10-player teams battle it out in fast-paced, action-packed matches. Open to IISER Kolkata, colleges, and schools, the league blends strategy, teamwork, and thrill with short boundaries and quick play.\n\nTOURNAMENT FORMAT:\n• 10-over tennis ball box cricket\n• 10-player teams\n• League stages followed by playoffs\n• Professional umpiring\n• Prizes for champions and top performers\n\nSCHEDULE:\nDay 1:\n9:00 AM – 12:00 Noon → 3 matches\n2:00 PM – 5:00 PM → 3 matches\n\nDay 2:\n9:00 AM – 12:00 Noon → 3 matches\n2:00 PM – 5:00 PM → 3 matches\n\nDay 3:\n2:00 PM – 3:00 PM → Semi Final 1\n3:00 PM – 4:00 PM → Semi Final 2\n4:00 PM – 5:00 PM → Final\n\nSmash7 promises an unforgettable sporting highlight of Inquivesta with fast-paced action, strategic gameplay, and competitive spirit!",
     image: "/events/smash7/smash7_b.png",
     category: "Sports Competition",
     venue: "IISER Kolkata Cricket Ground",
@@ -391,7 +391,7 @@ const events: Event[] = [
     socialLink: "https://www.instagram.com/cricket_club_iiserk/",
     maxParticipants: "128 (16 Teams)",
     duration: "3 days (8 hours each)",
-    teamSize: "7 + 1 players per team"
+    teamSize: "11 + 2 players per team"
   },
   {
     id: "soulbeats",
