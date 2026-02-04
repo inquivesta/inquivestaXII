@@ -53,9 +53,9 @@ const QUANTITY_OPTIONS = [
 
 // Pricing matrix: passType -> quantity -> price
 const PRICING: Record<string, Record<string, number>> = {
-  "day2": { single: 299, couple: 590, bulk5: 1425, bulk10: 2699 },
-  "day3": { single: 299, couple: 590, bulk5: 1425, bulk10: 2699 },
-  "all-days": { single: 499, couple: 990, bulk5: 2250, bulk10: 4499 },
+  "day2": { single: 349, couple: 690, bulk5: 1665, bulk10: 3199 },
+  "day3": { single: 349, couple: 690, bulk5: 1665, bulk10: 3199 },
+  "all-days": { single: 599, couple: 1190, bulk5: 2750, bulk10: 5499 },
 }
 
 export default function DayPassesRegistrationPage() {
