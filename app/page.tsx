@@ -233,6 +233,9 @@ export default function InquivestaLanding() {
             <Link href="/events" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
               Events
             </Link>
+            <Link href="/schedule" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
+              Schedule
+            </Link>
             <Link href="/pronite" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
               Pronite
             </Link>
@@ -265,6 +268,9 @@ export default function InquivestaLanding() {
               </Link>
               <Link href="/events" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
                 Events
+              </Link>
+              <Link href="/schedule" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
+                Schedule
               </Link>
               <Link href="/pronite" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
                 Pronite
@@ -357,18 +363,25 @@ export default function InquivestaLanding() {
             )}
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/events/registration/day_passes">
-              <Button className="bg-gradient-to-r from-[#A8D8EA] to-[#85C1E9] hover:from-[#7FB3D3] hover:to-[#6BB6FF] text-[#1A1A1A] font-depixel-body px-8 py-3">
-                Get Day Passes!
-              </Button>
-            </Link>
-            <Link href="/events">
+          <div className="flex flex-col gap-4 justify-center items-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/events/registration/day_passes">
+                <Button className="bg-gradient-to-r from-[#A8D8EA] to-[#85C1E9] hover:from-[#7FB3D3] hover:to-[#6BB6FF] text-[#1A1A1A] font-depixel-body px-8 py-3">
+                  Get Day Passes!
+                </Button>
+              </Link>
+              <Link href="/events">
+                <Button className="bg-gradient-to-r from-[#D2B997] to-[#C4A882] hover:from-[#B8A57E] hover:to-[#A89468] text-[#1A1A1A] font-depixel-body px-8 py-3">
+                  Register Now
+                </Button>
+              </Link>
+            </div>
+            <Link href="/schedule">
               <Button
                 variant="outline"
-                className="border-[#D2B997] text-[#D2B997] hover:bg-[#D2B997]/10 font-depixel-body px-8 py-3 bg-translucent"
+                className="border-[#B8A7D9] text-[#B8A7D9] hover:bg-[#B8A7D9]/10 font-depixel-body px-8 py-3 bg-translucent"
               >
-                Register Now
+                View Schedule
               </Button>
             </Link>
           </div>
