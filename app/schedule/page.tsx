@@ -126,7 +126,7 @@ const scheduleData: DaySchedule[] = [
       {
         id: "opening",
         name: "Opening Ceremony",
-        time: "09:00",
+        time: "10:00",
         endTime: "11:00",
         venue: "RNT Auditorium",
         venueKey: "rnt",
@@ -137,7 +137,7 @@ const scheduleData: DaySchedule[] = [
       {
         id: "smash7-day1",
         name: "Smash 7 (Cricket)",
-        time: "09:00",
+        time: "11:00",
         endTime: "17:00",
         venue: "Cricket Ground",
         venueKey: "cricket",
@@ -149,7 +149,7 @@ const scheduleData: DaySchedule[] = [
       {
         id: "basketball-day1",
         name: "Hoop Hustle (3v3 Basketball)",
-        time: "10:00",
+        time: "11:00",
         endTime: "17:00",
         venue: "Basketball Court",
         venueKey: "basketball",
@@ -159,9 +159,22 @@ const scheduleData: DaySchedule[] = [
         link: "/events#hoop-hustle"
       },
       {
+        id: "headshot-day1",
+        name: "Krafton x Headshot - (Real Cricket)",
+        time: "11:00",
+        endTime: "18:00",
+        venue: "LHC Rooms G02, G08, G09",
+        venueKey: "lhc",
+        category: "Exhibition",
+        description: "Krafton x Headshot - Day 1",
+        prizes: "₹7,500",
+        isContinuous: true,
+        link: "/events"
+      },
+      {
         id: "photon-day1",
         name: "Photon Exhibition",
-        time: "10:00",
+        time: "11:00",
         endTime: "18:00",
         venue: "Beside LHC Cafeteria",
         venueKey: "lhc",
