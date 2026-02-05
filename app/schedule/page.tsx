@@ -466,17 +466,17 @@ const scheduleData: DaySchedule[] = [
         prizes: "₹55,000",
         link: "/events#headshot-bgmi"
       },
-      {
-        id: "bullseye",
-        name: "Bulls Eye",
-        time: "10:00",
-        endTime: "17:00",
-        venue: "Athletics Ground",
-        venueKey: "athletics",
-        category: "Sports",
-        description: "Archery-based fun competition - DartShot, Target Tac-Toe, Cup Knockdown",
-        prizes: "₹8,000"
-      },
+    //   {
+    //     id: "bullseye",
+    //     name: "Bulls Eye",
+    //     time: "10:00",
+    //     endTime: "17:00",
+    //     venue: "Athletics Ground",
+    //     venueKey: "athletics",
+    //     category: "Sports",
+    //     description: "Archery-based fun competition - DartShot, Target Tac-Toe, Cup Knockdown",
+    //     prizes: "₹8,000"
+    //   },
       {
         id: "thrust",
         name: "THRUST - Water Rocket",
