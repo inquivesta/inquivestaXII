@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
@@ -21,12 +21,11 @@ interface Player {
 const EVENT_CONFIG = {
   id: "headshot-bgmi",
   name: "Headshot x Krafton - BGMI",
-  fee: 100,
+  fee: 0,
   teamSize: 4,
 }
 
 export default function HeadshotBGMIRegistrationPage() {
-  const [selectedQR, setSelectedQR] = useState<number>(0)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [errorMessage, setErrorMessage] = useState("")
@@ -35,7 +34,6 @@ export default function HeadshotBGMIRegistrationPage() {
   const [formData, setFormData] = useState({
     team_name: "",
     institute_name: "",
-    utr_number: "",
   })
 
   const [players, setPlayers] = useState<Player[]>([
@@ -44,14 +42,6 @@ export default function HeadshotBGMIRegistrationPage() {
     { name: "", phone: "", email: "", uid: "" }, // Player 3
     { name: "", phone: "", email: "", uid: "" }, // Player 4
   ])
-
-  useEffect(() => {
-    setSelectedQR(Math.floor(Math.random() * 3) + 1)
-  }, [])
-
-  const cycleQR = () => {
-    setSelectedQR(prev => prev === 3 ? 1 : prev + 1)
-  }
 
   const updatePlayer = (index: number, field: keyof Player, value: string) => {
     const updated = [...players]
@@ -70,11 +60,6 @@ export default function HeadshotBGMIRegistrationPage() {
         setErrorMessage(`Please fill in all details for Player ${i + 1}`)
         return
       }
-    }
-
-    if (!formData.utr_number || formData.utr_number.length !== 12) {
-      setErrorMessage("Please enter a valid 12-digit UTR number")
-      return
     }
 
     setIsSubmitting(true)
@@ -107,9 +92,9 @@ export default function HeadshotBGMIRegistrationPage() {
           player4_phone: players[3].phone,
           player4_email: players[3].email,
           player4_uid: players[3].uid,
-          amount_paid: EVENT_CONFIG.fee,
-          utr_number: formData.utr_number,
-          payment_qr_used: selectedQR,
+          amount_paid: 0,
+          utr_number: "000000000000",
+          payment_qr_used: 1,
         }),
       })
 
@@ -227,8 +212,8 @@ export default function HeadshotBGMIRegistrationPage() {
                   <Users className="w-4 h-4 text-[#F4D03F]" />
                   <span className="text-[#F4D03F] font-depixel-small">Squad: 4 Players</span>
                 </div>
-                <div className="inline-flex items-center gap-2 bg-[#FFD700]/10 border border-[#FFD700]/30 px-4 py-2 rounded-full">
-                  <span className="text-[#FFD700] font-depixel-small">₹{EVENT_CONFIG.fee} per team</span>
+                <div className="inline-flex items-center gap-2 bg-[#ABEBC6]/10 border border-[#ABEBC6]/30 px-4 py-2 rounded-full">
+                  <span className="text-[#ABEBC6] font-depixel-small font-bold">FREE ENTRY</span>
                 </div>
               </div>
             </div>
@@ -336,84 +321,11 @@ export default function HeadshotBGMIRegistrationPage() {
               </FadeIn>
             ))}
 
-            {/* Payment Section */}
-            <FadeIn delay={0.5}>
-              <Card className="bg-[#2A2A2A]/50 border-[#D2B997]/30">
-                <CardHeader>
-                  <CardTitle className="text-2xl text-[#D2B997] font-futura tracking-wide">Payment Details</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-col md:flex-row gap-6">
-                    <div className="flex-1">
-                      <div className="bg-white p-4 rounded-lg max-w-xs mx-auto">
-                        {selectedQR > 0 && (
-                          <Image
-                            src={`/payment_qr/qr_${selectedQR}.jpg`}
-                            alt="Payment QR Code"
-                            width={300}
-                            height={300}
-                            className="w-full h-auto"
-                          />
-                        )}
-                      </div>
-                      <p className="text-center text-[#D2B997]/80 font-depixel-small text-sm mt-4">
-                        Scan QR code to pay <span className="text-[#F4D03F] font-bold">₹{EVENT_CONFIG.fee}</span>
-                      </p>
-                      <p className="text-center text-white/60 font-depixel-small text-xs mt-2">
-                        QR Code #{selectedQR}/3
-                      </p>
-                      <button
-                        type="button"
-                        onClick={cycleQR}
-                        className="mt-3 w-full max-w-xs mx-auto block bg-[#D2B997]/20 hover:bg-[#D2B997]/30 border border-[#D2B997]/50 text-[#D2B997] font-depixel-small py-2 px-4 rounded-lg transition-colors"
-                      >
-                        Change QR Code
-                      </button>
-                    </div>
-
-                    <div className="flex-1 space-y-4">
-                      <div className="bg-gradient-to-r from-[#FFD700]/10 to-[#FFA500]/10 rounded-lg border border-[#D2B997]/20 p-4">
-                        <div className="flex justify-between items-center">
-                          <span className="text-white font-depixel-body">Registration Fee:</span>
-                          <span className="text-[#F4D03F] font-futura tracking-wide text-3xl">₹{EVENT_CONFIG.fee}</span>
-                        </div>
-                        <p className="text-[#D2B997]/60 font-depixel-small text-xs mt-2">
-                          Per team (squad of 4 players)
-                        </p>
-                      </div>
-
-                      <div>
-                        <Label htmlFor="utr_number" className="text-[#D2B997] font-depixel-small">UTR Number * (12 digits)</Label>
-                        <Input
-                          id="utr_number"
-                          required
-                          type="text"
-                          inputMode="numeric"
-                          pattern="[0-9]{12}"
-                          maxLength={12}
-                          value={formData.utr_number}
-                          onChange={(e) => {
-                            const value = e.target.value.replace(/\D/g, '').slice(0, 12)
-                            setFormData({ ...formData, utr_number: value })
-                          }}
-                          className="bg-[#1A1A1A] border-[#D2B997]/30 text-white font-depixel-small"
-                          placeholder="Enter 12-digit UTR"
-                        />
-                        <p className="text-white/60 font-depixel-small text-xs mt-1">
-                          Found in your payment confirmation (exactly 12 digits)
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </FadeIn>
-
             {/* Submit Button */}
-            <FadeIn delay={0.55}>
-              <div className="bg-[#F4D03F]/10 border border-[#F4D03F]/30 p-4 rounded-lg mb-6">
-                <p className="text-[#F4D03F] font-depixel-small text-sm">
-                  <span className="font-bold">Note:</span> Confirmation email with entry QR will be sent to Player 1 (In-Game Leader). Check spam folder if not received.
+            <FadeIn delay={0.5}>
+              <div className="bg-[#ABEBC6]/10 border border-[#ABEBC6]/30 p-4 rounded-lg mb-6">
+                <p className="text-[#ABEBC6] font-depixel-small text-sm">
+                  <span className="font-bold">🎮 FREE REGISTRATION!</span> Confirmation email with entry QR will be sent to Player 1 (In-Game Leader). Check spam folder if not received.
                 </p>
               </div>
 
@@ -430,7 +342,7 @@ export default function HeadshotBGMIRegistrationPage() {
                 ) : (
                   <>
                     <Gamepad2 className="w-5 h-5 mr-2" />
-                    Register Squad - ₹{EVENT_CONFIG.fee}
+                    Register Squad - FREE
                   </>
                 )}
               </Button>
