@@ -14,7 +14,7 @@ import { FadeIn } from "@/components/ui/fade-in"
 const EVENT_CONFIG = {
   id: "day-passes",
   name: "Day Passes",
-  subtitle: "INQUIVESTA XII – Day Pass Registration (6th–8th February 2026)",
+  subtitle: "INQUIVESTA XII – Day Pass Registration for NON-IISER Kolkata participants (6th–8th February 2026)",
 }
 
 // Day pass types
