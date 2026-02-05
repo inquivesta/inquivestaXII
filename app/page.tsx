@@ -224,7 +224,7 @@ export default function InquivestaLanding() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8 pr-4">
-            <Link href="/events/registration/day_passes" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
+            <Link href="https://forms.gle/3mzZp6FsxPRrSTBNA" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
               Day Passes
             </Link>
             <Link href="/accommodation" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
@@ -242,9 +242,6 @@ export default function InquivestaLanding() {
             <Link href="/merch" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
               Merch
             </Link>
-            {/* <Link href="#schedule" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-body">
-              Schedule
-            </Link> */}
             <Link href="/about_us" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
               About Us
             </Link>
@@ -260,7 +257,7 @@ export default function InquivestaLanding() {
         {isMenuOpen && (
           <div className="md:hidden bg-[#1A1A1A]/95 backdrop-blur-md border-t border-[#D2B997]/30">
             <nav className="container mx-auto px-4 py-4 flex flex-col space-y-4">
-              <Link href="/events/registration/day_passes" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
+              <Link href="https://forms.gle/3mzZp6FsxPRrSTBNA" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
                 Day Passes
               </Link>
               <Link href="/accommodation" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
@@ -278,9 +275,6 @@ export default function InquivestaLanding() {
               <Link href="/merch" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
                 Merch
               </Link>
-              {/* <Link href="#schedule" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-body">
-                Schedule
-              </Link> */}
               <Link href="/about_us" className="text-[#B8A7D9] hover:text-[#D2B997] transition-colors font-depixel-small">
                 About Us
               </Link>
@@ -365,7 +359,7 @@ export default function InquivestaLanding() {
 
           <div className="flex flex-col gap-4 justify-center items-center">
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/events/registration/day_passes">
+              <Link href="https://forms.gle/3mzZp6FsxPRrSTBNA">
                 <Button className="bg-gradient-to-r from-[#A8D8EA] to-[#85C1E9] hover:from-[#7FB3D3] hover:to-[#6BB6FF] text-[#1A1A1A] font-depixel-body px-8 py-3">
                   Get Day Passes!
                 </Button>
@@ -822,7 +816,7 @@ export default function InquivestaLanding() {
                       Learn More
                     </div>
                   </Link>
-                  <Link href="/events/registration/day_passes" onClick={() => setShowMerchPopup(false)}>
+                  <Link href="https://forms.gle/3mzZp6FsxPRrSTBNA" onClick={() => setShowMerchPopup(false)}>
                     <div className="inline-block bg-gradient-to-r from-[#F8BBD9] to-[#F4D03F] text-[#1A1A1A] font-depixel-body px-6 py-2 rounded-lg font-bold text-sm shadow-md hover:from-[#F4D03F] hover:to-[#F8C471] transition-all cursor-pointer">
                       Get Day Passes
                     </div>
