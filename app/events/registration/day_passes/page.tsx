@@ -30,7 +30,7 @@ const DAY_PASS_TYPES = [
     id: "day3",
     name: "Day 3 Pass",
     date: "8th February 2026",
-    highlight: "🎧 DJ Night + Live Band",
+    highlight: "🎧 DJ Night",
     description: "Access to all cultural events and closing night celebrations",
   },
   {
@@ -273,6 +273,18 @@ export default function DayPassesRegistrationPage() {
                     <p>🎉 See you at INQUIVESTA XII!</p>
                   </div>
 
+                  <div className="bg-red-500/20 border-2 border-red-500 p-4 rounded-lg">
+                    <p className="text-red-400 font-bold text-base md:text-lg font-depixel-body text-center">
+                      ⚠️ IMPORTANT: UTR VERIFICATION NOTICE ⚠️
+                    </p>
+                    <p className="text-red-400 font-bold text-sm md:text-base font-depixel-small mt-2 text-center">
+                      All UTR numbers are verified manually. Digital passes will be declared VOID and UNUSABLE if the UTR is found to be incorrect or fraudulent.
+                    </p>
+                    <p className="text-red-400 font-bold text-sm md:text-base font-depixel-small mt-2 text-center">
+                      📍 You MUST collect your physical wristband from the Registration Desk on campus BEFORE you are allowed entry to any event.
+                    </p>
+                  </div>
+
                   <div className="bg-[#1A1A1A]/50 p-4 rounded-lg text-xs text-[#D2B997]/70 font-depixel-small">
                     <p>💬 If you have any issues, reply to the confirmation email with <span className="text-[#D2B997]">inquivesta@iiserkol.ac.in</span> in CC.</p>
                   </div>
@@ -336,7 +348,7 @@ export default function DayPassesRegistrationPage() {
                       <PartyPopper className="w-5 h-5 text-[#A8D8EA]" />
                       <span className="text-[#A8D8EA] font-depixel-small">8th February</span>
                     </div>
-                    <p className="text-white font-depixel-body">🎧 DJ Night + Live Band</p>
+                    <p className="text-white font-depixel-body">🎧 DJ Night</p>
                     <p className="text-[#D2B997]/60 text-xs font-depixel-small">Grand finale celebrations</p>
                   </div>
                 </div>
@@ -612,6 +624,17 @@ export default function DayPassesRegistrationPage() {
                           <p className="text-white/60 font-depixel-small text-xs mt-1">
                             Found in your payment confirmation (exactly 12 digits)
                           </p>
+                          <div className="bg-red-500/20 border-2 border-red-500 p-3 rounded-lg mt-3">
+                            <p className="text-red-400 font-bold text-sm font-depixel-body">
+                              ⚠️ WARNING: ALL UTRs ARE MANUALLY VERIFIED
+                            </p>
+                            <p className="text-red-400 font-bold text-xs font-depixel-small mt-1">
+                              Digital passes will be declared VOID and UNUSABLE if UTR is incorrect or fraudulent.
+                            </p>
+                            <p className="text-red-400 font-bold text-xs font-depixel-small mt-1">
+                              📍 Physical wristbands MUST be collected from Registration Desk on campus BEFORE entry.
+                            </p>
+                          </div>
                         </div>
                       </div>
                     </div>
