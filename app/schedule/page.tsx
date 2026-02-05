@@ -30,57 +30,57 @@ const venues: Record<string, { name: string; description: string; mapUrl: string
   "tennis": {
     name: "Tennis Court",
     description: "IISER-K Lawn Tennis Court",
-    mapUrl: "https://maps.google.com/maps?width=600&height=400&hl=en&q=IISER-K Lawn tennis court&t=h&z=19&ie=UTF8&iwloc=B&output=embed"
+    mapUrl: "https://maps.google.com/maps?width=600&height=400&hl=en&q=IISER-K Lawn tennis court&t=&z=19&ie=UTF8&iwloc=B&output=embed"
   },
   "lhc": {
     name: "LHC (Lecture Hall Complex)",
     description: "A P C Ray Lecture Hall Complex - Rooms with G-- (ground floor), 1-- (1st floor), 2-- (2nd floor)",
-    mapUrl: "https://maps.google.com/maps?width=600&height=400&hl=en&q=A P C Ray Lecture Hall Complex&t=h&z=19&ie=UTF8&iwloc=B&output=embed"
+    mapUrl: "https://maps.google.com/maps?width=600&height=400&hl=en&q=A P C Ray Lecture Hall Complex&t=&z=19&ie=UTF8&iwloc=B&output=embed"
   },
   "cricket": {
     name: "Cricket Ground",
     description: "IISER Kolkata Cricket Ground",
-    mapUrl: "https://maps.google.com/maps?width=600&height=400&hl=en&q=IISER Kolkata Cricket Ground&t=h&z=19&ie=UTF8&iwloc=B&output=embed"
+    mapUrl: "https://maps.google.com/maps?width=600&height=400&hl=en&q=IISER Kolkata Cricket Ground&t=&z=19&ie=UTF8&iwloc=B&output=embed"
   },
   "athletics": {
     name: "Athletics Ground",
     description: "IISER Kolkata Athletics Ground",
-    mapUrl: "https://maps.google.com/maps?width=600&height=400&hl=en&q=IISER Kolkata Athletics Ground&t=h&z=17&ie=UTF8&iwloc=B&output=embed"
+    mapUrl: "https://maps.google.com/maps?width=600&height=400&hl=en&q=IISER Kolkata Athletics Ground&t=&z=17&ie=UTF8&iwloc=B&output=embed"
   },
   "football": {
     name: "Football Ground",
     description: "IISER Campus Football Play Ground",
-    mapUrl: "https://maps.google.com/maps?width=600&height=400&hl=en&q=IISER Campus Football Play Ground&t=h&z=18&ie=UTF8&iwloc=B&output=embed"
+    mapUrl: "https://maps.google.com/maps?width=600&height=400&hl=en&q=IISER Campus Football Play Ground&t=&z=18&ie=UTF8&iwloc=B&output=embed"
   },
   "rnt": {
     name: "RNT Auditorium",
     description: "IISER-K R N Tagore Auditorium",
-    mapUrl: "https://maps.google.com/maps?width=600&height=400&hl=en&q=IISER-K R N Tagore AUDITORIUM&t=h&z=18&ie=UTF8&iwloc=B&output=embed"
+    mapUrl: "https://maps.google.com/maps?width=600&height=400&hl=en&q=IISER-K R N Tagore AUDITORIUM&t=&z=18&ie=UTF8&iwloc=B&output=embed"
   },
   "sac": {
     name: "SAC (Student Activity Centre)",
     description: "Centre for Student's Activity - includes Dance Room",
-    mapUrl: "https://maps.google.com/maps?width=600&height=400&hl=en&q=Centre for Student's Activity (CSA / SAC) IISER Kolkata&t=h&z=19&ie=UTF8&iwloc=B&output=embed"
+    mapUrl: "https://maps.google.com/maps?width=600&height=400&hl=en&q=Centre for Student's Activity (CSA / SAC) IISER Kolkata&t=&z=19&ie=UTF8&iwloc=B&output=embed"
   },
   "basketball": {
     name: "Basketball Court",
     description: "IISER Kolkata Basketball Court",
-    mapUrl: "https://maps.google.com/maps?width=600&height=400&hl=en&q=IISER Kolkata&t=h&z=17&ie=UTF8&iwloc=B&output=embed"
+    mapUrl: "https://maps.google.com/maps?width=600&height=400&hl=en&q=IISER Kolkata&t=&z=17&ie=UTF8&iwloc=B&output=embed"
   },
   "tt": {
     name: "Table Tennis Room",
     description: "Table Tennis Rooms at SAC",
-    mapUrl: "https://maps.google.com/maps?width=600&height=400&hl=en&q=Centre for Student's Activity (CSA / SAC) IISER Kolkata&t=h&z=19&ie=UTF8&iwloc=B&output=embed"
+    mapUrl: "https://maps.google.com/maps?width=600&height=400&hl=en&q=Centre for Student's Activity (CSA / SAC) IISER Kolkata&t=&z=19&ie=UTF8&iwloc=B&output=embed"
   },
   "pronite": {
     name: "Open Air Stage",
     description: "Pronite venue - Open Air Stage",
-    mapUrl: "https://maps.google.com/maps?width=600&height=400&hl=en&q=inquivesta&t=h&z=18&ie=UTF8&iwloc=B&output=embed"
+    mapUrl: "https://maps.google.com/maps?width=600&height=400&hl=en&q=inquivesta&t=&z=18&ie=UTF8&iwloc=B&output=embed"
   },
   "khokho": {
     name: "Kho Kho Ground",
     description: "IISER Kolkata Kho Kho Ground",
-    mapUrl: "https://maps.google.com/maps?width=600&height=400&hl=en&q=IISER Kolkata Kho Kho Ground&t=h&z=19&ie=UTF8&iwloc=B&output=embed"
+    mapUrl: "https://maps.google.com/maps?width=600&height=400&hl=en&q=IISER Kolkata Kho Kho Ground&t=&z=19&ie=UTF8&iwloc=B&output=embed"
   }
 }
 
@@ -243,7 +243,7 @@ const scheduleData: DaySchedule[] = [
         name: "CSI - Crime Scene Investigation",
         time: "09:30",
         endTime: "17:30",
-        venue: "Rooms 101, 102, 103, 111 + Athletics",
+        venue: "LHC",
         venueKey: "lhc",
         category: "Science",
         description: "Unleash your inner detective! Day 1 - 4 crime scenes, top 25% advance",
@@ -398,7 +398,7 @@ const scheduleData: DaySchedule[] = [
         name: "CSI - Crime Scene Investigation Finals",
         time: "09:30",
         endTime: "17:30",
-        venue: "Rooms 107, 211",
+        venue: "LHC",
         venueKey: "lhc",
         category: "Science",
         description: "CSI Finals - Complex scenes and in-depth analysis for qualified teams",
