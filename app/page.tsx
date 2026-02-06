@@ -16,123 +16,73 @@ const DATE_FEST = "Feb 06 2026"
 const sponsors = {
   current: [
     {
-      id: "YourCompany",
-      name: "Your Company",
-      tagline: "Sponsor Us Now!",
-      logo: "/sponsors/you.png",
-      status: "current",
-    }
-  ],
-  past: [
-    {
-      id: "ccd",
-      name: "Cafe Coffee Day",
-      tagline: "Past Sponsor",
-      logo: "/sponsors/CafeCoffeeDay.png",
+      id: "FriendsFM",
+      name: "Friends FM",
+      tagline: "Associate Partner",
+      logo: "/sponsors/current/friends.png",
       status: "current",
     },
     {
-      id: "BaskinRobbins",
-      name: "Baskin Robbins",
-      tagline: "Former Partner",
-      logo: "/sponsors/BaskinRobins.png",
-      status: "past",
+      id: "Horizon",
+      name: "Horizon",
+      tagline: "Supporting Partner",
+      logo: "/sponsors/current/horizon.png",
+      status: "current",
     },
     {
-      id: "BookMyShow",
-      name: "Book My Show",
-      tagline: "Past Sponsor",
-      logo: "/sponsors/BookMyShow.png",
-      status: "past",
-    },
-    {
-      id: "WowMomo",
-      name: "Wow Momo",
-      tagline: "Former Partner",
-      logo: "/sponsors/Wow_momo.png",
-      status: "past",
-    },
-    {
-      id: "canon",
-      name: "Canon",
-      tagline: "Past Sponsor",
-      logo: "/sponsors/Canon.png",
-      status: "past",
-    },
-    {
-      id: "SBI",
-      name: "State Bank of India",
-      tagline: "Title Sponsor",
-      logo: "/sponsors/SBI.png",
-      status: "past",
+      id: "MeltingHearts",
+      name: "Melting Hearts",
+      tagline: "Gifting Partner",
+      logo: "/sponsors/current/candles.png",
+      status: "current",
     },
     {
       id: "DKMS",
       name: "DKMS",
-      tagline: "Past Sponsor",
+      tagline: "",
       logo: "/sponsors/DKMS.png",
-      status: "past",
+      status: "current",
     },
     {
-      id: "Dominos",
-      name: "Dominos Pizza",
-      tagline: "Past Sponsor",
-      logo: "/sponsors/DominosPizza.png",
-      status: "past",
+      id: "Zurekaa",
+      name: "Zurekaa",
+      tagline: "",
+      logo: "/sponsors/current/zurekaa.png",
+      status: "current",
     },
     {
-      id: "Nissan",
-      name: "Nissan",
-      tagline: "Past Sponsor",
-      logo: "/sponsors/Nissan.png",
-      status: "past",
+      id: "BioBox",
+      name: "Bio_box India",
+      tagline: "",
+      logo: "/sponsors/current/bio.png",
+      status: "current",
     },
     {
-      id: "ebay",
-      name: "eBay",
-      tagline: "Past Sponsor",
-      logo: "/sponsors/ebay.png",
-      status: "past",
+      id: "Axis",
+      name: "Axis Bank",
+      tagline: "",
+      logo: "/sponsors/current/axis.png",
+      status: "current",
     },
     {
-      id: "Firefox",
-      name: "Firefox",
-      tagline: "Digital Partner",
-      logo: "/sponsors/Firefox.png",
-      status: "past",
+      id: "SBI",
+      name: "SBI",
+      tagline: "",
+      logo: "/sponsors/current/SBI.png",
+      status: "current",
     },
     {
-      id: "HP",
-      name: "HP",
-      tagline: "Past Sponsor",
-      logo: "/sponsors/HP.png",
-      status: "past",
+      id: "IOB",
+      name: "IOB",
+      tagline: "",
+      logo: "https://www.iob.bank.in/images/logo.png",
+      status: "current",
     },
-    {
-      id: "godrej",
-      name: "Godrej",
-      tagline: "Sustainable Living Advocate",
-      logo: "/sponsors/Godrej.png",
-      status: "past",
-    },
-    {
-      id: "jet_airways",
-      name: "Jet Airways",
-      tagline: "Past Sponsor",
-      logo: "/sponsors/JetAirways.png",
-      status: "past",
-    },
-    {
-      id: "krafton",
-      name: "Krafton",
-      tagline: "Gaming for a Better Tomorrow",
-      logo: "/sponsors/Krafton.png",
-      status: "past",
-    }
   ],
+  past: [],
 }
 
-const allSponsors = [...sponsors.current, ...sponsors.past]
+const allSponsors = [...sponsors.current]
 
 const galleryImages = [
   "/gallery/1_image_2 (Medium).JPG",
@@ -546,7 +496,7 @@ export default function InquivestaLanding() {
             <div className="text-center mb-12">
               <HyperText
                 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-[#ABEBC6] to-[#A8D8EA] bg-clip-text text-transparent font-futura"
-                text="OUR PAST SPONSORS"
+                text="OUR SPONSORS"
               />
             </div>
           </FadeIn>
@@ -556,18 +506,19 @@ export default function InquivestaLanding() {
               {allSponsors.map((sponsor) => (
                 <div
                   key={sponsor.id}
-                  className="mx-8 p-6 bg-gradient-to-b from-[#2A2A2A]/50 to-[#1A1A1A]/50 rounded-lg border border-[#D2B997]/30 min-w-[200px]"
+                  className="mx-8 p-6 bg-gradient-to-b from-[#2A2A2A]/50 to-[#1A1A1A]/50 rounded-lg border border-[#D2B997]/30 min-w-[200px] hover:border-[#F8C471] transition-all duration-300"
                 >
                   <Image
                     src={sponsor.logo || "/placeholder.svg"}
                     alt={sponsor.name}
-                    width={120}
-                    height={80}
-                    className="mx-auto mb-4 h-16 w-auto"
+                    width={160}
+                    height={100}
+                    className="mx-auto mb-4 h-20 w-auto object-contain"
+                    unoptimized={sponsor.logo.startsWith('http')}
                   />
                   <div className="text-center">
                     <h3 className="text-white font-semibold mb-1">{sponsor.name}</h3>
-                    {sponsor.tagline !== "NA" && <p className="text-[#D2B997] text-sm font-depixel-small">{sponsor.tagline}</p>}
+                    {sponsor.tagline && <p className="text-[#F8C471] text-sm font-depixel-small">{sponsor.tagline}</p>}
                   </div>
                 </div>
               ))}
@@ -577,7 +528,7 @@ export default function InquivestaLanding() {
           <div className="text-center mt-12">
             <Link href="/sponsors">
               <Button className="bg-gradient-to-r from-[#ABEBC6] to-[#A8D8EA] hover:from-[#98E5B5] hover:to-[#7FB3D3] text-[#1A1A1A] font-depixel-body px-8 py-3 text-lg">
-                Sponsor Us
+                View All Sponsors
               </Button>
             </Link>
           </div>

@@ -287,6 +287,18 @@ export default function MasqueradeRegistrationPage() {
       ) : (
         /* Registration Form */
         <main className="container mx-auto px-4 py-12">
+          {/* Single Male Registration Closed Notice */}
+          <FadeIn>
+            <div className="max-w-4xl mx-auto mb-6 bg-red-500/20 border-2 border-red-500 p-4 rounded-lg">
+              <p className="text-red-400 font-bold text-center font-depixel-body text-lg">
+                ⚠️ REGISTRATION FOR SINGLE MALES IS NOW CLOSED ⚠️
+              </p>
+              <p className="text-red-400/80 text-center font-depixel-small text-sm mt-1">
+                Couple passes and Single Female passes are still available.
+              </p>
+            </div>
+          </FadeIn>
+
           <FadeIn>
             <div className="text-center mb-12">
               <HyperText
