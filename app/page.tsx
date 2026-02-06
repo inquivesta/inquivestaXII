@@ -807,18 +807,10 @@ export default function InquivestaLanding() {
                 <p className="text-[#F8BBD9] font-depixel-body text-xs mb-3">
                   Don&apos;t miss the electrifying performance!
                 </p>
-                <p className="text-[#F8BBD9] font-depixel-body text-xs mb-3">
-                  Access to campus for external guests is via Day Passes.
-                </p>
                 <div className="flex flex-col gap-2">
                   <Link href="/pronite" onClick={() => setShowMerchPopup(false)}>
                     <div className="inline-block bg-gradient-to-r from-[#A8D8EA] to-[#85C1E9] text-[#1A1A1A] font-depixel-body px-6 py-2 rounded-lg font-bold text-sm shadow-md hover:from-[#7FB3D3] hover:to-[#6BB6FF] transition-all cursor-pointer">
                       Learn More
-                    </div>
-                  </Link>
-                  <Link href="https://forms.gle/3mzZp6FsxPRrSTBNA" onClick={() => setShowMerchPopup(false)}>
-                    <div className="inline-block bg-gradient-to-r from-[#F8BBD9] to-[#F4D03F] text-[#1A1A1A] font-depixel-body px-6 py-2 rounded-lg font-bold text-sm shadow-md hover:from-[#F4D03F] hover:to-[#F8C471] transition-all cursor-pointer">
-                      Get Day Passes
                     </div>
                   </Link>
                 </div>
