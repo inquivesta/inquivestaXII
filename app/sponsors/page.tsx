@@ -8,6 +8,101 @@ import { FadeIn } from "@/components/ui/fade-in"
 import { HyperText } from "@/components/ui/hyper-text"
 import { ArrowLeft, Menu, X, Twitter, Instagram, Facebook, Download, Mail } from "lucide-react"
 
+// Current Sponsors Data - Tagged sponsors first
+const sponsors = [
+  {
+    name: "Friends FM",
+    logo: "/sponsors/current/friends.png",
+    tagline: "Associate Partner",
+  },
+  {
+    name: "Horizon",
+    logo: "/sponsors/current/horizon.png",
+    tagline: "Supporting Partner",
+  },
+  {
+    name: "Melting Hearts",
+    logo: "/sponsors/current/candles.png",
+    tagline: "Gifting Partner",
+  },
+  {
+    name: "DKMS",
+    logo: "/sponsors/DKMS.png",
+    tagline: null,
+  },
+  {
+    name: "Zurekaa",
+    logo: "/sponsors/current/zurekaa.png",
+    tagline: null,
+  },
+  {
+    name: "Bio_box India",
+    logo: "/sponsors/current/bio.png",
+    tagline: null,
+  },
+  {
+    name: "Axis Bank",
+    logo: "/sponsors/current/axis.png",
+    tagline: null,
+  },
+  {
+    name: "SBI",
+    logo: "/sponsors/current/SBI.png",
+    tagline: null,
+  },
+  {
+    name: "IOB",
+    logo: "https://www.iob.bank.in/images/logo.png",
+    tagline: null,
+  },
+]
+
+// Sponsor Card Component
+function SponsorCard({ name, logo, tagline }: { name: string; logo: string; tagline: string | null }) {
+  return (
+    <div className="group relative">
+      {/* Retro-futuristic glow effect */}
+      <div className="absolute -inset-1 bg-gradient-to-r from-[#F8BBD9] via-[#D2B997] to-[#F8C471] rounded-2xl blur-sm opacity-30 group-hover:opacity-60 transition-opacity duration-500" />
+      
+      {/* Main card */}
+      <div className="relative bg-[#1A1A1A] border-2 border-[#D2B997]/50 rounded-2xl p-8 h-full flex flex-col items-center justify-center gap-5 backdrop-blur-sm hover:border-[#F8C471] transition-all duration-300 hover:shadow-[0_0_30px_rgba(248,196,113,0.3)] min-h-[340px]">
+        {/* Corner accents - retro-futuristic touch */}
+        <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-[#F8BBD9] rounded-tl-lg" />
+        <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-[#F8BBD9] rounded-tr-lg" />
+        <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-[#F8C471] rounded-bl-lg" />
+        <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-[#F8C471] rounded-br-lg" />
+        
+        {/* Tagline at top (only if provided) */}
+        {tagline && (
+          <span className="text-[#F8C471] text-sm md:text-base font-depixel-body px-4 py-2 bg-gradient-to-r from-[#F8BBD9]/20 to-[#F8C471]/20 rounded-full border-2 border-[#F8C471]/50 shadow-[0_0_15px_rgba(248,196,113,0.2)]">
+            {tagline}
+          </span>
+        )}
+        
+        {/* Logo container - BIG LOGOS */}
+        <div className="relative w-full h-44 flex items-center justify-center">
+          <Image
+            src={logo}
+            alt={name}
+            width={280}
+            height={180}
+            className="max-w-[260px] max-h-40 object-contain filter group-hover:brightness-110 group-hover:scale-105 transition-all duration-300"
+            unoptimized={logo.startsWith('http')}
+          />
+        </div>
+        
+        {/* Divider line */}
+        <div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-[#D2B997] to-transparent" />
+        
+        {/* Name */}
+        <h3 className="text-[#D2B997] font-depixel-body text-lg md:text-xl text-center group-hover:text-[#F8C471] transition-colors duration-300">
+          {name}
+        </h3>
+      </div>
+    </div>
+  )
+}
+
 export default function SponsorsPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -85,15 +180,30 @@ export default function SponsorsPage() {
             <div className="text-center mb-16">
               <HyperText
                 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-[#F8BBD9] to-[#F8C471] bg-clip-text text-transparent font-futura"
-                text="OUR PREVIOUS SPONSORS"
+                text="OUR SPONSORS"
               />
               <p className="text-[#D2B997] text-lg font-depixel-body">PARTNERS IN SUCCESS</p>
             </div>
           </FadeIn>
 
-          {/* Description and CTA Section */}
+          {/* Current Sponsors Grid */}
           <FadeIn delay={0.2}>
-            <div className="text-center mb-12 max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto mb-20">
+              {sponsors.map((sponsor, index) => (
+                <FadeIn key={sponsor.name} delay={0.1 * index}>
+                  <SponsorCard
+                    name={sponsor.name}
+                    logo={sponsor.logo}
+                    tagline={sponsor.tagline}
+                  />
+                </FadeIn>
+              ))}
+            </div>
+          </FadeIn>
+
+          {/* Description and CTA Section */}
+          <FadeIn delay={0.4}>
+            <div className="text-center max-w-4xl mx-auto">
               <p className="text-[#B8A7D9] text-lg md:text-xl leading-relaxed mb-8 font-depixel-small">
                 Reach <span className="text-[#F8C471] font-bold">20,000+</span> on-ground audience and 
                 <span className="text-[#F8BBD9] font-bold"> 500,000+</span> eyes on our social media platforms. 
@@ -113,22 +223,6 @@ export default function SponsorsPage() {
                     <span>Contact Us</span>
                   </Button>
                 </Link>
-              </div>
-            </div>
-          </FadeIn>
-
-          {/* Sponsors Image */}
-          <FadeIn delay={0.4}>
-            <div className="flex justify-center">
-              <div className="max-w-4xl w-full">
-                <Image
-                  src="/spon_all.png"
-                  alt="All Previous Sponsors"
-                  width={1200}
-                  height={1600}
-                  className="w-full h-auto rounded-2xl border-2 border-[#F8C471]/60 shadow-2xl shadow-[#F8BBD9]/20"
-                  priority
-                />
               </div>
             </div>
           </FadeIn>
