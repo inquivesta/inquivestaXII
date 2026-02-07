@@ -78,6 +78,20 @@ const sponsors = {
       logo: "https://www.iob.bank.in/images/logo.png",
       status: "current",
     },
+    {
+      id: "Krafton",
+      name: "Krafton",
+      tagline: "",
+      logo: "/sponsors/Krafton.png",
+      status: "current",
+    },
+    {
+      id: "Volercars",
+      name: "Volercars",
+      tagline: "",
+      logo: "/sponsors/current/volercars.jpg",
+      status: "current",
+    },
   ],
   past: [],
 }
