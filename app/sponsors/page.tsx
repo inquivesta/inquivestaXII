@@ -55,6 +55,16 @@ const sponsors = [
     logo: "https://www.iob.bank.in/images/logo.png",
     tagline: null,
   },
+  {
+    name: "Krafton",
+    logo: "/sponsors/Krafton.png",
+    tagline: null,
+  },
+  {
+    name: "Volercars",
+    logo: "/sponsors/current/volercars.jpg",
+    tagline: null,
+  },
 ]
 
 // Sponsor Card Component
